@@ -1,3 +1,7 @@
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 .header {
     background-color: purple;
     color: yellow;
@@ -8,8 +12,7 @@
 .footer {
     /* position: fixed;
     left: 0;
-    bottom: 0;
-    margin-top: 300px; */
+    bottom: 0;*/
     background-color: yellow;
     padding: 10px;
     border: 5px solid purple;
@@ -29,12 +32,19 @@ p {
     background-color: #faf1a1;
 }
 
+.tabela {
+    padding: 10px;
+    margin: 0px;
+    text-align: center;
+    border: 1px solid purple;
+}
+
 a:link {
     text-decoration: none;
     color: yellow;
     margin: 10px;
     padding: 5px;
-    cap
+    font-weight: bold;
 }
 
 a:visited {
@@ -51,9 +61,16 @@ button:active {
     color: white;
 }
 
+.a-button {
+    background-color: purple;
+    color: yellow;
+    padding: 10px;
+    margin: 0px;
+}
+
 .icones {
     width: auto;
     height: auto;
-    max-width: 100px;
-    max-height: 100px;
+    max-width: 70px;
+    max-height: 70px;
 }
