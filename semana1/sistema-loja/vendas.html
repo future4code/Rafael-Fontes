@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">    
+</head>
+<body class="fundo-geral">
+    <div>
+        <p class="header">Loja de Grãos</p>
+    </div>
+    
+    <div class="header">
+        <a href="index.html">Página Inicial</a>
+        <a href="ctrl-estoque.html">Controle de Estoque</a>
+        <a href="add-produto.html">Adicionar Produto</a>
+        <a href="funcionarios.html">Funcionários</a>
+    </div>
+
+    <h2>Gerar Venda</h2>
+
+    <form action="#">
+        
+        <div>
+            <label for="funcionario">Funcionário: </label>
+            <input type="text" id="funcionario" name="funcionario">
+        </div>
+
+        <div>
+            <label for="descricao">Descrição ou código do produto: </label>
+            <input type="text" id="descricao" name="descrição">
+        </div>
+                
+        <div>
+            <label for="quantidade">Quantidade desejada: </label>
+            <input type="number" id="quantidade" name="quantidade" min="0" max="100">
+        </div>
+
+        <div>
+            <label for="pagamento">Forma de pagamento: </label>
+            <select id="pagamento" name="pagamento">
+                <option value="cartao">Cartão</option>
+                <option value="dinheiro">Dinheiro</option>
+            </select>
+        </div>    
+
+        <br>
+
+        <div class="form-add">
+            <button type="submit">Adicionar</button>
+        </div>
+
+    </form>    
+
+    <br>
+   
+    <table>
+        <tr>
+            <th class="tabela">Foto</th>
+            <th class="tabela">Descrição</th>
+            <th class="tabela">Preço (R$)</th>
+            <th class="tabela">Quantidade desejada</th>
+        </tr>
+
+        <tr>
+            <td class="tabela">---</td>
+            <td class="tabela">---</td>
+            <td class="tabela">---</td>
+            <td class="tabela">---</td>
+        </tr>
+    </table>
+
+    <br>
+
+    <div class="form-add">
+        <button type="submit">Finalizar</button>
+    </div>
+
+
+</body>
+</html>
