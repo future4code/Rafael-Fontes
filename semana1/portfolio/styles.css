@@ -1,58 +1,149 @@
 * {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color:  #282c34;
-    color: orangered;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color:  #282c34;
+  color: orangered;
+  margin-left: 0px;
 }
 
 header {
-    display: inline;
-    font-weight: bold;
-    font-size: 20pt;
-    padding: 20px;
-    /* position: fixed;
-    right: 0;
-    top: 0;
-    margin: 100px; */
+  font-weight: bold;
+  font-size: 20pt;
+  padding: 20px;
+  border-bottom: 2px solid orangered;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+footer{
+  background-color: orangered;
+  color: #282c34;
+  padding: 20px;
+  margin-top: 20px;
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
 }
 
 .div-header {
-    display: inline-block;
-    padding: 0px;
+  display: inline-block;
+  padding: 10px;
+  float: left;
 }
+
 .div-ul {
-    float:right
+  float:right
 }
 
 #pagatual {
-    text-decoration: underline;
-    color: orangered;
+  text-decoration: underline;
+  color: orangered;
 }
 
 #pagatual:hover {
-    color: #282c34;
+  color: #282c34;
 }
 
-ul {
-    float: right;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-  }
+.ul-topo {
+  float: right;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
   
-  li {
-    float: left;
-  }
+}
   
-  li a {
-    display: block;
-    color: orangered;
-    text-align: center;
-    padding: 15px;
-    text-decoration: none;
-  }
+.li-topo {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: orangered;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px;
+  float: left;
+}
   
-  li a:hover {
-    background-color: orangered;
-    color: #282c34;
-  }
+a {
+  display: block;
+  color: orangered;
+  text-align: center;
+  text-decoration: none;
+  margin: 10px;
+}
+  
+li a:hover {
+  background-color: orangered;
+  color: #282c34;
+}
+
+h1 {
+  text-align: center;
+  padding: 70px;
+  font-weight: bold;
+  margin-top: 130px;
+  font-size: 250%;
+}
+
+h2 {
+  padding: 10px;
+  margin: 20px;
+}
+
+p {
+  text-align: justify;
+  text-indent: 4ch;
+  font-size: 20pt;
+  color: lightgrey;
+  margin: 0px 70px 10px 70px
+}
+
+.foto {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+  max-width: 100%;
+  height: auto;
+}
+
+.icones {
+  display: inline;
+  background-color: orangered;
+  width: 30px;
+  height: 30px;
+  color: #282c34;
+}
+
+h3 {
+  color: lightgrey;
+}
+
+h6 {
+  background-color: orangered;
+  color: #282c34;
+}
+
+form {
+  margin: 20px;
+}
+
+button {
+  background-color: orangered;
+  color: #282c34;
+  font-size: 15pt;
+  font-weight: bold;
+}
+
+.lista {
+  color: lightgrey;
+  font-size: 15pt;
+  margin-top: 5px;
+}
+
+.sublista {
+  color: lightgrey;
+  font-size: 12pt;
+  list-style-type: none;
+}
