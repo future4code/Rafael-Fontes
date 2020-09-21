@@ -127,6 +127,10 @@ td button:hover {
     height: 100px;
 }
 
+#campo-search {
+    border-bottom: black solid 4px;
+    outline-color: white;
+}
 
 #back-button {
     background-color: white;
