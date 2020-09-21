@@ -25,6 +25,10 @@ button:focus {
     color: white;
 }
 
+button:active {
+    color: white;
+}
+
 img {
     width: 40px;
     height: 40px;
@@ -114,6 +118,10 @@ td button {
     color: black;
 }
 
+td button:hover {
+    background-color: darkgoldenrod;
+}
+
 .container-do-search {
     margin-top: 20px;
     height: 100px;
@@ -132,4 +140,8 @@ td button {
 
 #back-button:hover {
     background-color: #635a3d
+}
+
+#back-button:active {
+    color: white;
 }
