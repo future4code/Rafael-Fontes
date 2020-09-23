@@ -6,30 +6,92 @@ body {
 }
 
 div {
-    border: 1px solid black;
+    /* margin: 10px; */
 }
 
 #first-block {
     background-color: red;
+    margin-bottom: 10px;
+    height: 15vh;
 }
 
 .blue-block {
     background-color: blue;
+    display: grid;
+    justify-items: center;
+    align-items: center;
 }
 
 .yellow-block {
     background-color: yellow;
+    display: grid;
+    justify-items: center;
+    align-items: center;
 }
 
 .green-block {
     background-color: green;
+    display: grid;
+    justify-items: center;
+    align-items: center;
 }
 
 .black-block {
     background-color: black;
+    display: grid;
+    justify-items: center;
+    align-items: center;
     color: white;
 }
 
 .white-block {
     background-color: white;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+#main-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 3fr 1fr;
+    margin: 0;
+    height: 100%;
+}
+
+#container-triplo-colorido {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(2, fr);
+    height: 30vh;
+}
+
+#container-triplo-colorido > div {
+    border: 1px solid black;
+    margin: 10px;
+}
+
+#container-duplo-preto {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: 1fr;
+    height: 30vh;
+}
+
+#container-duplo-preto > div {
+    border: 1px solid black;
+    margin: 10px;
+}
+
+
+#container-triplo-branco {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: 1fr;
+    height: 15vh;
+}
+
+#container-triplo-branco > div {
+    border: 1px solid black;
+    margin: 10px;
 }
