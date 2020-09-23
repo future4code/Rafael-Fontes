@@ -1,0 +1,65 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    font-size: 10px;
+    color: white;
+}
+
+.green-background {
+    background-color: green;
+    width: 25vw;
+    height: 10vh;
+}
+
+.yellow-background {
+    background-color: yellow;
+    width: 75vw;
+    height: 10vh;
+}
+
+.pink-background {
+    background-color: fuchsia;
+    height: 50vh;
+}
+
+.blue-background {
+    background-color: blue;
+    width: 50vw;
+    height: 30vh;
+}
+
+.red-background {
+    background-color: red;
+    width: 25vw;
+    height: 15vh;
+}
+
+.lightgreen-background {
+    background-color: lightgreen;
+    width: 25vw;
+    height: 15vh;
+}
+
+.purple-background {
+    background-color: purple;
+    height: 10vh;
+}
+
+#main-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+#top-container {
+    display: flex;
+    flex-direction: row;
+}
+
+#middle-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
