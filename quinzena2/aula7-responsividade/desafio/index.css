@@ -1,0 +1,157 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+#first-block {
+    background-color: red;
+    height: 15%;
+}
+
+.blue-block {
+    background-color: blue;
+    height: 15vh;
+    width: 33vw;
+    margin: 10px;
+    text-align: center;
+}
+
+.yellow-block {
+    background-color: yellow;
+    height: 15vh;
+    width: 33vw;
+    margin: 10px;
+    text-align: center;
+    
+}
+
+.green-block {
+    background-color: green;
+    height: 15vh;
+    width: 33vw;
+    margin: 10px;
+    text-align: center;
+}
+
+.black-block {
+    background-color: black;
+    color: white;
+    height: 30vh;
+    width: 50vw;
+    margin: 10px;
+    text-align: center;
+}
+
+.white-block {
+    background-color: white;
+    height: 15vh;
+    width: 33vw;
+    margin: 10px;
+    text-align: center;
+}
+
+#main-container {  
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+#container-triplo-colorido-cima {
+    display: inline-flex;
+}
+
+#container-triplo-colorido-cima>div {
+    border: 1px solid black;
+}
+
+#container-triplo-colorido-baixo {
+    display: inline-flex;
+}
+
+#container-triplo-colorido-baixo>div {
+    border: 1px solid black;
+}
+
+#container-duplo-preto {
+    display: inline-flex;
+}
+
+#container-duplo-preto>div {
+    border: 1px solid black;
+}
+
+#container-duplo-branco {
+    display: inline-flex;
+}
+
+#container-duplo-branco>div {
+    border: 1px solid black;
+}
+
+@media screen and (max-width: 420px) {
+           
+    #container-triplo-colorido-cima {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    #container-triplo-colorido-cima>div {
+        width: 100vw;
+    }
+
+    #container-triplo-colorido-baixo {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    
+    #container-triplo-colorido-baixo>div {
+        width: 100vw;
+    }
+
+    #container-duplo-branco {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    #container-duplo-branco>div {
+        width: 100vw;
+    }
+
+    #container-duplo-preto {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    #container-duplo-preto>div {
+        width: 100vw;
+    }
+
+}
+
+@media screen and (min-width: 421px) and (max-width: 800px) {
+
+    .green-block {
+        width: 100vw;
+    }
+    
+    #container-triplo-colorido-cima {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    #container-triplo-colorido-baixo {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    #container-duplo-branco {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    #container-duplo-branco>div:nth-child(3) {
+        width: 100vw;
+    }
+}
