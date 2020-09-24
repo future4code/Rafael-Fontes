@@ -5,31 +5,87 @@ body {
     margin: 0;
 }
 
-div {
-    border: 1px solid black;
-}
-
 #first-block {
     background-color: red;
+    height: 15%;
 }
 
 .blue-block {
     background-color: blue;
+    height: 15vh;
+    width: 33vw;
+    margin: 10px;
+    text-align: center;
 }
 
 .yellow-block {
     background-color: yellow;
+    height: 15vh;
+    width: 33vw;
+    margin: 10px;
+    text-align: center;
+    
 }
 
 .green-block {
     background-color: green;
+    height: 15vh;
+    width: 33vw;
+    margin: 10px;
+    text-align: center;
 }
 
 .black-block {
     background-color: black;
     color: white;
+    height: 30vh;
+    width: 50vw;
+    margin: 10px;
+    text-align: center;
 }
 
 .white-block {
     background-color: white;
+    height: 15vh;
+    width: 33vw;
+    margin: 10px;
+    text-align: center;
+}
+
+#main-container {  
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+#container-triplo-colorido-cima {
+    display: inline-flex;
+}
+
+#container-triplo-colorido-cima>div {
+    border: 1px solid black;
+}
+
+#container-triplo-colorido-baixo {
+    display: inline-flex;
+}
+
+#container-triplo-colorido-baixo>div {
+    border: 1px solid black;
+}
+
+#container-duplo-preto {
+    display: inline-flex;
+}
+
+#container-duplo-preto>div {
+    border: 1px solid black;
+}
+
+#container-duplo-branco {
+    display: inline-flex;
+}
+
+#container-duplo-branco>div {
+    border: 1px solid black;
 }
