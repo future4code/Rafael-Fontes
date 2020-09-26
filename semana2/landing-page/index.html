@@ -9,36 +9,86 @@
 <body>
     <header>
         <div>
-            <h3>HOMENS</h3>
-            <h3>MULHERES</h3>
+            <a href="#homens"><h3>HOMENS</h3></a>
+            <a href="#mulheres"><h3>MULHERES</h3></a>
         </div>
         <div>
-            <h2>4Comfort</h2>
+            <a href="#topo"><h2>4Comfort</h2></a> 
         </div>
         <div>
-            <h3>FAQ</h3>
-            <h3>SOBRE</h3>
-            <h3>CONTATO</h3>
+            <a href="#quem-somos"><h3>QUEM SOMOS</h3></a>
+            <a href="#contato"><h3>CONTATO</h3></a>
         </div>
     </header>
 
     <main>
+        <article id="topo"></article>
         <article>
             <section>
                 <img src="./img/4comfort.png" alt="Logotipo">
             </section>
             <section>
-                <h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac felis nec elit fringilla consectetur id sit amet arcu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus</h1>
-                <!-- <img src="" alt="Tenis"> -->
+                <h1>4Comfort é uma nova empresa cuja proposta é oferecer o tênis mais confortável possível. Seguindo modelos americanos como Allbirds e Atom, o tênis é voltado para um público que trabalha em ambientes casuais (startups, empresas de tecnologia, escritórios modernos etc.) e se destaca por ser vendido exclusivamente online</h1>
             </section>
         </article>
-        <article><h2>Teste</h2></article>
-        <article><h2>Teste</h2></article>
-        <article><h2>Teste</h2></article>
+        <article id="homens">
+            <section>
+                <h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac felis nec elit fringilla consectetur id sit amet arcu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus</h1>
+            </section>
+            <section>
+                <img src="./img/graham-hunt-_42VU0xgPC4-unsplash.jpg" alt="Homem com Tenis">
+            </section>
+        </article>
+        <article id="mulheres">
+            <section>
+                <img src="./img/carlos-andres-gomez-1t59ttW0e5I-unsplash.jpg" alt="Tenis">
+            </section>
+            <section>
+                <h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac felis nec elit fringilla consectetur id sit amet arcu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus</h1>
+            </section>
+        </article>
+        <article id="quem-somos">
+            <section>
+                <h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac felis nec elit fringilla consectetur id sit amet arcu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus</h1>
+            o</section>
+            <section>
+                <img src="./img/pexels-fauxels-3182812.jpg" alt="Homem com Tenis">
+            </section>
+        </article>
+        <article id="contato">
+            <div>
+                <h4>Entre em contato conosco</h4>
+            </div>
+            <div id="form-contato">
+                <label for="nome">Nome: </label>
+                <input type="text" id="nome" name="nome">
+                <label for="email">E-mail: </label>
+                <input type="email" id="email" name="email">
+                <label for="mensagem">Mensagem: </label>
+                <textarea id="mensagem" name="mensagem" rows="10" cols="40"></textarea>
+                <h4></h4>
+                <button type="submit">Enviar</button>
+            </div>
+        </article>
+        <article></article>
     </main>
 
     <footer>
-        <h4>Este é um rodapé</h4>
+        <div><h4>Siga-nos em nossas redes sociais</h4></div>
+        <div>
+            <a href="http://www.facebook.com.br" target="_blank">
+                <img src="./img/facebook.png" alt="facebook">
+            </a>           
+            <a href="http://www.instagram.com.br" target="_blank">
+                <img src="./img/instagram.png" alt="instagram">
+            </a>
+            <a href="http://www.twitter.com.br" target="_blank">
+                <img src="./img/twitter.png" alt="twitter">
+            </a>
+            <a href="http://www.youtube.com.br" target="_blank">
+                <img src="./img/youtube.png" alt="youtube">
+            </a>
+        </div>
     </footer>
 
 </body>
