@@ -10,17 +10,23 @@
 }
 
 h1 { /*Textos dentro das tags section*/
-    font-size: xx-large;
+    font-size: 2rem;
 }
 
 h2{  /*Nome da empresa no cabeçalho*/
     font-family: 'Mr Dafoe', cursive;
     color: #363b40;
+    font-size: 2rem;
 }
 
 h3 { /*Textos de links do cabeçalho*/
     padding: 10px;
     color: #363b40;
+    font-size: 1.25rem;
+}
+
+h4{ /*Texto do rodapé*/
+    font-size: 1rem;
 }
 
 header{ /*Cabeçalho*/
@@ -40,6 +46,10 @@ header>div { /*Tags div do cabeçalho*/
     flex-direction: row;
 }
 
+header>div:nth-child(3){ /*Div oculta para ajudar na mudança de ordem de link do cabeçalho*/
+    display: none;
+}
+
 div>a:hover { /*Links do cabeçalho*/
     text-decoration: underline;
     color: #363b40;
@@ -52,7 +62,6 @@ footer { /*Rodapé*/
     bottom: 0;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     height: 8vh;
     width: 100%;
     padding: 8px;
@@ -65,20 +74,18 @@ footer>div>a>img { /*Imagens do rodapé*/
 }
 
 article:nth-child(even):not(#contato) { /*Tags article em posição ímpar exceto a tag indicada com id contato*/
-    display: grid;
-    grid-template: 1fr / 1fr 2fr;
+    display: flex;
+    flex-direction: row;
     padding: 30px;
-    justify-items: center;
     background-color: #403c36;
     color: #d0d7d9;
     text-align: justify;
 }
 
 article:nth-child(odd) { /*Tags article em posição par*/
-    display: grid;
-    grid-template: 1fr / 2fr 1fr;
+    display: flex;
+    flex-direction: row;
     padding: 30px;
-    justify-items: center;
     background-color: #9ca3a6;
     text-align: justify;
 }
@@ -104,6 +111,7 @@ section { /*Tags section de cada article*/
 img{ /*Imagens das tags article*/
     max-width: 30vw;
     max-height: 70vh;
+    margin: 20px;
 }
 
 #contato { /*Tag article específica para a área de contato*/
@@ -131,3 +139,53 @@ button{ /*Botão do formulário*/
     padding: 8px;
     font-weight: bold;
 }
+
+@media only screen and (max-width: 500px) { /*Design responsivo para iPhone6/7/8*/
+
+    h1{
+        font-size: 100%;
+    }
+    h2{
+        font-size: 150%;
+    }
+    h3{
+        font-size: 80%;
+    }
+    h4{
+        font-size: 80%;
+    }
+    #contato {
+        flex-direction: column;
+    }
+    header{
+        flex-direction: column;
+        height: initial;
+    }
+    header>div:first-child{ /*Div de cabeçalho usada em resoluções de tela maiores*/
+        display: none;
+    }
+    header>div:nth-child(3){ /*Div oculta para ajudar na mudança de ordem de link do cabeçalho*/
+        display: initial;
+        display: flex;
+        flex-direction: row;
+    }
+    article:first-child {
+        height: 12vh;
+    }
+    article:nth-child(even):not(#contato) {
+        flex-direction: column;
+        margin: 0;
+        align-items: center;
+    }
+    article:nth-child(odd) {
+        flex-direction: column-reverse;
+        margin: 0;
+        align-items: center;
+    }
+    img{
+        margin: 0;
+        max-width: 55vw;
+        max-height: 70vh;
+    }   
+}
+
