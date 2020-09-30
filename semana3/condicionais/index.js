@@ -60,4 +60,75 @@
 //     console.log("Escolha outro filme :(")
 // }
 
+// Desafio
+// 1
+// let generoDoFilme = prompt("Qual é o gênero do filme?").toLowerCase()
+// let precoDoIngresso = Number(prompt("Qual é o preço do ingresso?"))
 
+// if (generoDoFilme==='fantasia' && precoDoIngresso<=15) {
+//     console.log("Bom filme!")
+//     let snack = prompt("Qual snack você quer comprar?")
+//     console.log("... com "+snack)
+// } else {
+//     console.log("Escolha outro filme :(")
+// }
+
+// 2
+const nomeCompleto = prompt("Qual é o seu nome completo?")
+let tipoDeJogo = prompt("Digite IN para jogo Internacional ou DO para jogo Doméstico").toLowerCase()
+let etapaDoJogo = prompt("Digite SF para Semi-final ou DT para Decisão de Terceiro Lugar ou FI para Final").toLowerCase()
+let categoria = Number(prompt("Digite a categoria entre 1 e 4"))
+let quantidade = Number(prompt("Digite a quantidade de ingressos"))
+
+const valores = [1320,880,550,220,660,440,330,170,1980,1320,880,330]
+
+let dolar = 4.10
+let valorIngresso
+let valorTotal
+let moeda
+let codigoIngresso
+
+switch (etapaDoJogo) {
+    case 'sf':
+        etapaDoJogo='Semi-final'
+        codigoIngresso=-1
+        break;
+    case 'dt':
+        etapaDoJogo='Decisão de Terceiro Lugar'
+        codigoIngresso=3
+        break;
+    case 'fi':
+        etapaDoJogo='Final'
+        codigoIngresso=7
+        break;
+    default:
+        break;
+}
+
+valorIngresso=valores[codigoIngresso+categoria]
+
+switch (tipoDeJogo) {
+    case 'in':
+        moeda='US$'
+        tipoDeJogo='Internacional'
+        valorIngresso/=dolar
+        valorTotal=valorIngresso*quantidade
+        break;
+    case 'do':
+        moeda='R$'
+        tipoDeJogo='Doméstico'
+        valorTotal=valorIngresso*quantidade
+        break;
+    default:
+        break;
+}
+
+console.log("---Dados da compra---")
+console.log("Nome do cliente: "+nomeCompleto)
+console.log("Tipo do jogo: "+tipoDeJogo)
+console.log("Etapa do jogo: "+etapaDoJogo)
+console.log("Categoria: "+categoria)
+console.log("Quantidade: "+quantidade+" ingressos")
+console.log("---Valores---")
+console.log("Valor do ingresso: "+moeda+valorIngresso)
+console.log("Valor total: "+moeda+valorTotal)
