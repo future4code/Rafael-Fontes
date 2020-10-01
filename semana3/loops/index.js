@@ -53,3 +53,53 @@
 //     }
 // }
 // console.log("O maior número é "+valorMax+" e o menor é "+valorMin)
+
+// Desafios
+// 1
+// 0000
+
+// 2
+// let numeroPensado = Number(prompt("Digite um número pensado"))
+// console.log ("Vamos jogar!")
+// let acerto=0
+// for (let tentativas=1; acerto<1; tentativas++) {
+//     let numeroChutado = Number(prompt("Qual é o número pensado?"))
+//     if (numeroPensado>numeroChutado) {
+//         console.log("O número chutado foi: "+numeroChutado)
+//         console.log("Errrrrrrou, é maior")
+//     }
+//     if (numeroPensado<numeroChutado) {
+//         console.log("O número chutado foi: "+numeroChutado)
+//         console.log("Errrrrrrou, é menor")
+//     }
+//     if (numeroPensado===numeroChutado) {
+//         console.log("O número chutado foi: "+numeroChutado)
+//         console.log("Acertou")
+//         console.log("O número de tentativas foi: "+tentativas)
+//         acerto=1
+//     }
+// }
+
+// 3 A alteração foi relativamente simples, a única mudança foi gerar o número aleatoriamente
+let numeroPensado = Math.floor((Math.random() * 100) + 1)
+console.log ("Vamos jogar!")
+let acerto=0
+for (let tentativas=1; acerto<1; tentativas++) {
+    let numeroChutado = Number(prompt("Qual é o número pensado?"))
+    if (numeroPensado>numeroChutado) {
+        console.log("O número chutado foi: "+numeroChutado)
+        console.log("Errrrrrrou, é maior")
+    }
+    if (numeroPensado<numeroChutado) {
+        console.log("O número chutado foi: "+numeroChutado)
+        console.log("Errrrrrrou, é menor")
+    }
+    if (numeroPensado===numeroChutado) {
+        console.log("O número chutado foi: "+numeroChutado)
+        console.log("Acertou")
+        console.log("O número de tentativas foi: "+tentativas)
+        acerto=1
+    }
+}
+
+
