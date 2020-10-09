@@ -7,11 +7,11 @@ imprimirExtrato()
 function imprimirDespesas(despesas){
     let divDespesas = document.getElementById('despesas')
     divDespesas.innerHTML = '<p><u>Despesas Detalhadas</u></p>'
-    const valorDaDespesa = arrDespesas.map((valorCdt) => {
-        console.log(valorDaDespesa)
+    
+    despesas.map((despesa,idx,array) => {
+         divDespesas.innerHTML += `<p>valor: R$${despesa.valor} | tipo: ${despesa.tipo} | descrição: ${despesa.descricao}</p>`
     })
     
-    // AQUI VEM A IMPLEMENTAÇÃO
 }
 
 
@@ -23,9 +23,21 @@ function imprimirExtrato(){
     let gastoUtilidades = 0
     let gastoViagem = 0
 
-
-    // AQUI VEM A IMPLEMENTAÇÃO
-
+    arrDespesas.map((despesa,idx,array) => {
+        if (despesa.tipo==="alimentação") {
+            gastoAlimentacao+=despesa.valor
+            gastoTotal+=despesa.valor
+        }
+        if (despesa.tipo==="utilidades") {
+            gastoUtilidades+=despesa.valor
+            gastoTotal+=despesa.valor
+        }
+        if (despesa.tipo==="viagem") {
+            gastoViagem+=despesa.valor
+            gastoTotal+=despesa.valor
+        }   
+    })
+    
     divExtrato.innerHTML = `<p>Extrato: Gasto Total: R$${gastoTotal} | Alimentação: R$${gastoAlimentacao} | 
                                         Utilidades: R$${gastoUtilidades} | Viagem: R$${gastoViagem}</p>`
 }
@@ -74,9 +86,12 @@ function filtrarDespesas(){
     let valorMin = Number(document.getElementById('valorFiltroMin').value)
     let valorMax = Number(document.getElementById('valorFiltroMax').value)
 
-
-    let despesasFiltradas // AQUI NESSA VARIÁVEL VEM A IMPLEMENTAÇÃO
-
+    let despesasFiltradas = arrDespesas.filter((despesa,idx,array) => {
+        if ((despesa.tipo===tipoFiltro || tipoFiltro==="todos") && despesa.valor<=valorMax && despesa.valor>=valorMin){
+            return true
+        }
+    })
+    
     imprimirDespesas(despesasFiltradas)
 }
 
