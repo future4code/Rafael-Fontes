@@ -91,6 +91,55 @@
 
 // compararNumeros(num1,num2)
 
-// FUNCÇÕES
+// FUNÇÕES
 
 // 1
+
+// function segundosMaiorMenor (array) {
+//     let maiorNum = array[0]
+//     let menorNum = array[0]
+
+//     for (let numero of array) {
+//         if (numero > maiorNum) {
+//             maiorNum = numero
+//         }
+//         if (numero < menorNum) {
+//             menorNum = numero
+//         }
+//     }
+
+//     const numerosFiltrado = array.filter((numero) => {
+//         return (numero !== menorNum && numero !== maiorNum)
+//     })
+
+//     maiorNum = numeros[0]
+//     menorNum = numeros[0]
+
+//     for (let numero of numerosFiltrado) {
+//         if (numero > maiorNum) {
+//             maiorNum = numero
+//         }
+//         if (numero < menorNum) {
+//             menorNum = numero
+//         }
+//     }
+    
+//     console.log(maiorNum)
+//     console.log(menorNum)
+// }
+
+// const numeros = [25, 12, 55, 64, 121, 44, 11, 283, 31, 183, 1.1, -10, 1590]
+
+// segundosMaiorMenor(numeros)
+
+// 2
+// let alerta = () => {
+//     alert("Hello Labenu")
+// }
+
+// alerta()
+
+// OBJETOS
+
+// 1
+
