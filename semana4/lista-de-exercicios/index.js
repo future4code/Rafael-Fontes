@@ -91,6 +91,7 @@
 
 // compararNumeros(num1,num2)
 
+
 // FUNÇÕES
 
 // 1
@@ -139,7 +140,56 @@
 
 // alerta()
 
+
 // OBJETOS
 
 // 1
+// Arrays e objetos são variáveis que armazenam uma série de informações. A diferença é que objetos permitem guardar essas informações de forma categorizada.
 
+// 2
+// function criaRetangulo (lado1,lado2) {
+//     console.log("A largura é", lado1)
+//     console.log("A altura é", lado2)
+//     console.log("O perímetro é",2*(lado1+lado2))
+//     console.log("A área é",lado1*lado2)
+// }
+
+// l1=Number(prompt("Digite o valor do lado 1"))
+// l2=Number(prompt("Digite o valor do lado 2"))
+
+// const calcRetangulo = criaRetangulo(l1,l2)
+
+// 3
+// const filmesFavorito = {
+//     nome: "Um Sonho de Liberdade",
+//     ano: 1995,
+//     diretor: "Frank Darabont",
+//     ator1: "Tim Robbins",
+//     ator2: "Morgan Freeman"
+// }
+
+// console.log(`Venha assistir ao filme ${filmesFavorito.nome}, de ${filmesFavorito.ano}, dirigido por ${filmesFavorito.diretor} e estrelado por ${filmesFavorito.ator1} e ${filmesFavorito.ator2}.`)
+
+// 4
+// function anonimizarPessoa(pessoa) {
+//     const anonimo = {
+//         ...pessoa,
+//         nome: "ANÔNIMO"
+//     }
+//     console.log(anonimo)
+// }
+
+// const fulano = {
+//     nome: "Fulano de Tal",
+//     idade: 23,
+//     email: "fulano@gmail.com",
+//     endereco: "Rua Que Sobe e Desce, s/n"
+// }
+
+// console.log(fulano)
+// anonimizarPessoa(fulano)
+
+
+// FUNÇÕES DE ARRAY
+
+// 1
