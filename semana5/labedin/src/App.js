@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import CardGrande from './components/CardGrande/CardGrande';
 import ImagemButton from './components/ImagemButton/ImagemButton';
+import CardPequeno from './components/CardPequeno/CardPequeno';
 import fotoPerfil from './img/foto-perfil.jpg';
 
 function App() {
@@ -18,6 +19,17 @@ function App() {
         <ImagemButton 
           imagem="https://image.flaticon.com/icons/png/512/117/117472.png" 
           texto="Ver mais"
+        />
+
+        <CardPequeno
+          imagem="https://www.flaticon.com/svg/static/icons/svg/625/625016.svg"
+          titulo="E-mail:"
+          descricao="eumesmo@email.com"
+        />
+        <CardPequeno
+          imagem="https://www.flaticon.com/svg/static/icons/svg/1239/1239525.svg"
+          titulo="Endereço:"
+          descricao="Rua Que Sobe e Desce, s/n"
         />
       </div>
 
