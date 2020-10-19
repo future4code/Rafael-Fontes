@@ -8,7 +8,7 @@ import { Final } from './components/Final';
 
 class App extends React.Component {
   state = {
-    etapa: 1
+    etapa: 1,
   }
 
   renderizaEtapa = () => {
@@ -29,11 +29,16 @@ class App extends React.Component {
   }
 
   render () {
+    const mostraBotão = () => {
+      if(this.state.etapa<4) {
+        return <button onClick={this.irParaProximaEtapa}>Próxima Etapa</button>
+      }
 
+    }
     return (
       <div>
         {this.renderizaEtapa()}
-        <button onClick={this.irParaProximaEtapa}>Próxima Etapa</button>
+        {mostraBotão()}
       </div>
     )
   }
