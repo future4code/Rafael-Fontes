@@ -26,12 +26,12 @@ class App extends React.Component {
         completa: false // Indica se a tarefa está completa (true ou false)
       },
       {
-        id: Date.now(), // Explicação abaixo
+        id: Date.now()+1, // Explicação abaixo
         texto: 'Texto da segunda tarefa',
         completa: true // Indica se a tarefa está completa (true ou false)
       }],
       inputValue: '',
-      filtro: 'pendentes'
+      filtro: ''
     }
 
   componentDidUpdate() {
@@ -59,7 +59,17 @@ class App extends React.Component {
   
 
   selectTarefa = (id) => {
-
+    const listaStatusTarefa = this.state.tarefas.map((tarefa) => {
+        if (id === tarefa.id) {
+        const novoStatusTarefa = {
+          ...tarefa,
+        completa: !tarefa.completa
+      }
+      return novoStatusTarefa
+    }
+    return tarefa
+   })
+   this.setState({tarefas:listaStatusTarefa})
   }
 
   onChangeFilter = (event) => {
