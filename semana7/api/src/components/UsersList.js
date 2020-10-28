@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import axios from 'axios';
+import Users from './Users';
 
 const UsersTitle = styled.h1 `
 color: blueviolet;
@@ -30,7 +31,6 @@ border: none;
    color: red;
 };
 `
-
 const Divider = styled.hr `
 border: 1px solid blueviolet;
 margin: 0;
@@ -58,10 +58,6 @@ componentDidMount = () => {
     this.getList()
 }
 
-componentDidUpdate = () => {
-
-}
-
 removeUser = (id) => {
     
     let confirmRemove = window.confirm("Deseja apagar este usuário?")
@@ -82,6 +78,7 @@ removeUser = (id) => {
         )
         .then ((res) => {
             console.log(res.data.id)
+            this.getList()
             alert("Usuário apagado com sucesso!")
         })
         .catch ((err) => {
@@ -89,26 +86,32 @@ removeUser = (id) => {
             alert(err)
         })
     }
-    this.getList()
+}
+
+
+detailsUser = (id) => {
+    console.log(id)
 }
 
 render (){
 
 return (
-<div>
-    <UsersTitle>Usuários Cadastrados</UsersTitle>
+
+    <div>
+        <UsersTitle>Usuários Cadastrados</UsersTitle>
         {this.state.users.map(user => {
-         return (   
+         return (
             <UserBlock>
-                <UserLine>
-                    <UserName>{user.name}</UserName>
-                    <Remove onClick={() => this.removeUser(user.id)}>X</Remove>
-                </UserLine>
-                <Divider/>
+            <UserLine>
+                <UserName onClick={() => this.detailsUser(user.id)}>{user.name}</UserName>
+                <Remove onClick={() => this.removeUser(user.id)}>X</Remove>
+            </UserLine>
+            <Divider/>
             </UserBlock>
          )
         })}
-</div>
+    </div>
+
 )
 }
 }

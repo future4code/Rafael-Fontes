@@ -4,6 +4,7 @@ import './App.css';
 import axios from 'axios';
 import Form from './components/Form';
 import UsersList from './components/UsersList';
+import Users from './components/Users';
 
 const ChangeButton = styled.button `
 margin: 20px;
