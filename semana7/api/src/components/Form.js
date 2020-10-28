@@ -57,14 +57,19 @@ addUser = () => {
     )
     .then ((res) => {
         console.log(res)
+        alert("Usuário cadastrado com sucesso")
     })
     .catch ((err) => {
         console.log(err)
+        alert(err)
     })
+
+    this.setState({InputName:""})
+    this.setState({InputEmail:""})
 }
 
 render (){
-    console.log(this.state.InputEmail)
+    
 return (
 <div>
     <Block>

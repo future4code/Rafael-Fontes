@@ -3,6 +3,14 @@ import styled from "styled-components";
 import axios from 'axios';
 
 const UsersTitle = styled.h1 `
+color: blueviolet;
+`
+
+const UserLine = styled.div `
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: space-between;
 `
 
 const UserBlock = styled.div `
@@ -11,7 +19,7 @@ flex-direction: column;
 `
 
 const UserName = styled.p `
-
+margin-right: 15px;
 `
 
 const Remove = styled.a `
@@ -24,10 +32,9 @@ border: none;
 `
 
 const Divider = styled.hr `
-border: 1px solid blue;
+border: 1px solid blueviolet;
 margin: 0;
 `
-
 
 export default class UsersList extends React.Component {
 state = {
@@ -51,17 +58,52 @@ componentDidMount = () => {
     this.getList()
 }
 
+componentDidUpdate = () => {
+
+}
+
+removeUser = (id) => {
+    
+    let confirmRemove = window.confirm("Deseja apagar este usuário?")
+
+    if (confirmRemove) {
+        axios.get(`https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${id}`,
+        {headers: {Authorization:"rafael-fontes-dumont"}}
+        )
+        .then ((res) => {
+            id=res.data.id
+        })
+        .catch ((err) => {
+            console.log(err)
+        })
+    
+        axios.delete(`https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${id}`,
+        {headers: {Authorization:"rafael-fontes-dumont"}}
+        )
+        .then ((res) => {
+            console.log(res.data.id)
+            alert("Usuário apagado com sucesso!")
+        })
+        .catch ((err) => {
+            console.log(err)
+            alert(err)
+        })
+    }
+    this.getList()
+}
+
 render (){
-console.log(this.state.users)
+
 return (
 <div>
     <UsersTitle>Usuários Cadastrados</UsersTitle>
-
         {this.state.users.map(user => {
          return (   
             <UserBlock>
-                <UserName>{user.name}</UserName>
-                <Remove>X</Remove>
+                <UserLine>
+                    <UserName>{user.name}</UserName>
+                    <Remove onClick={() => this.removeUser(user.id)}>X</Remove>
+                </UserLine>
                 <Divider/>
             </UserBlock>
          )
