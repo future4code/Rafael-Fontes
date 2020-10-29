@@ -88,8 +88,7 @@ removeUser = (id) => {
     }
 }
 
-
-detailsUser = (id) => {
+SendId = (id) => {
     console.log(id)
 }
 
@@ -103,7 +102,7 @@ return (
          return (
             <UserBlock>
             <UserLine>
-                <UserName onClick={() => this.detailsUser(user.id)}>{user.name}</UserName>
+                <UserName onClick={() => this.SendId(user.id)}>{user.name}</UserName>
                 <Remove onClick={() => this.removeUser(user.id)}>X</Remove>
             </UserLine>
             <Divider/>

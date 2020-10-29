@@ -2,23 +2,34 @@ import React from 'react';
 import styled from "styled-components";
 import axios from 'axios';
 import UserDetails from './UserDetails';
+import UsersList from './UsersList';
 
 const AllUsers = styled.div `
 `
 
 
-export default class UsersList extends React.Component {
+export default class Users extends React.Component {
 
-detailsUser = () => {
-    return <UserDetails/>
+state = {
+list: true
+}
+
+
+
+showListOrDetails = () => {
+return (
+<div>
+<UsersList />
+<UserDetails/>
+</div>
+)
 }
 
 render (){
 
 return (
 <AllUsers>
-        <UsersList />
-        {this.detailsUser()}
+{this.showListOrDetails()}
 </AllUsers>
 )
 }

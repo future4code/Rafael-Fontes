@@ -27,7 +27,7 @@ export default class App extends React.Component {
     if (this.state.page) {
       return <Form/>
     } else {
-      return <UsersList/>
+      return <Users/>
     }
   }
 
