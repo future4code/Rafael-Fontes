@@ -12,7 +12,9 @@ const MainDiv = styled.div `
 const PlaylistInput = styled.input `
     margin: 30px;
 `
-const CreatePlaylist = styled.button `
+const ColoredButton = styled.button `
+background-color: green;
+color: white;
 `
 const axiosConfig = {
     headers: {
@@ -55,7 +57,7 @@ class Create extends React.Component {
                 placeholder="Digite um novo nome"
                 value={this.state.PlaylistInputValue}
                 />
-                <CreatePlaylist onClick={this.onClickCreatePlaylist}>Criar Playlist</CreatePlaylist>
+                <ColoredButton onClick={this.onClickCreatePlaylist}>Criar Playlist</ColoredButton>
             </MainDiv>
         )
     }

@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import axios from 'axios'
 import Create from './components/Create'
 import Manage from './components/Manage'
 
@@ -16,10 +15,11 @@ const MainTitle = styled.h1 `
   margin: 0;
   padding: 30px;
 `
-const ManagePlaylistButton = styled.button `
-  margin: 30px;
+const ColoredButton = styled.button `
+background-color: green;
+color: white;
+margin-left: 30px;
 `
-
 class App extends React.Component {
   state = {
     currentPage: "create"
@@ -43,19 +43,18 @@ class App extends React.Component {
           (
           <div>
             <Create />
-            <ManagePlaylistButton onClick={this.onClickManagePage}>Gerenciar Playlists
-            </ManagePlaylistButton>
+            <ColoredButton onClick={this.onClickManagePage}>Gerenciar Playlists
+            </ColoredButton>
           </div>
           )
           : 
           (
             <div>
+              <ColoredButton onClick={this.onClickCreatePage}>Criar nova Playlist</ColoredButton>
               <Manage />
-              <button onClick={this.onClickCreatePage}>Criar nova Playlist</button>
             </div>
           )
         }
-        
       </MainDiv>
     )
   }

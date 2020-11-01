@@ -25,6 +25,17 @@ background-color: gray;
 };
 width: 15vw;
 `
+const Line = styled.div `
+display:flex;
+flex-direction: row;
+align-items: center;
+justify-content: space-between;
+width: 20vw;
+`
+const Block = styled.div `
+margin-left: 30px;
+width: 20vw;
+`
 const Remove = styled.a `
 font-weight: bolder;
 cursor:pointer;
@@ -33,6 +44,16 @@ border: none;
 color: red;
 };
 margin-right: 30px;
+`
+const ColoredButton = styled.button `
+background-color: green;
+color: white;
+margin-left: 30px;
+`
+const ColoredDivider = styled.hr `
+border: 2px solid green;
+`
+const WhiteDivider = styled.hr `
 `
 const axiosConfig = {
     headers: {
@@ -45,7 +66,11 @@ class Manage extends React.Component {
         playlists: [],
         changePage: "list",
         selTracks: [],
-        selPlaylist: ""
+        selPlaylist: "",
+        selPlaylistId: "",
+        inputNameValue: "",
+        inputArtistValue: "",
+        inputLinkValue: ""
     }
 
     componentDidMount() {
@@ -60,7 +85,7 @@ class Manage extends React.Component {
     }
 
     onClickX = (id) => {
-        let confirmRemove = window.confirm("Deseja apagar esta lista?")
+        const confirmRemove = window.confirm("Deseja apagar esta lista?")
 
         if (confirmRemove) {
             axios.delete(`https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${id}`, axiosConfig)
@@ -71,6 +96,19 @@ class Manage extends React.Component {
         }
     }
 
+    onClickSongX = (id) => {
+        const confirmRemove = window.confirm("Deseja apagar esta música?")
+
+        if (confirmRemove) {
+            axios.delete(`https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${this.state.selPlaylistId}/tracks/${id}`, axiosConfig)
+            .then(() => {
+                alert("Música apagada com sucesso!");
+                this.onClickLine(this.state.selPlaylistId)
+            })
+        }
+    }
+
+
     onClickLine = (id) => {
         axios.get(`https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${id}/tracks`, axiosConfig)
         .then((response) => {
@@ -78,8 +116,9 @@ class Manage extends React.Component {
         })
         
         {this.state.playlists.map (playlist => {
-            if(id == playlist.id) {
+            if(id === playlist.id) {
                 this.setState({selPlaylist: playlist.name})
+                this.setState({selPlaylistId: playlist.id})
             }
         })}
 
@@ -88,10 +127,42 @@ class Manage extends React.Component {
 
     onClickListPage = () => {
         this.setState({changePage:"list"})
+        this.setState({inputNameValue: ""})
+        this.setState({inputArtistValue: ""})
+        this.setState({inputLinkValue: ""})
+    }
+
+    onChangeNameValue = (event) => {
+        this.setState({inputNameValue: event.target.value})
+    }
+
+    onChangeArtistValue = (event) => {
+        this.setState({inputArtistValue: event.target.value})
+    }
+    
+    onChangeLinkValue = (event) => {
+        this.setState({inputLinkValue: event.target.value})
+    }
+
+    onClickAddSong = () => {
+        const newSong = {
+            "name": this.state.inputNameValue,
+            "artist": this.state.inputArtistValue,
+            "url": this.state.inputLinkValue
+        }
+        axios.post(`https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${this.state.selPlaylistId}/tracks`,
+        newSong,axiosConfig)
+        .then(response => {
+            this.onClickLine(this.state.selPlaylistId)
+            })
+        
+        this.setState({inputNameValue: ""})
+        this.setState({inputArtistValue: ""})
+        this.setState({inputLinkValue: ""})
     }
 
     render() {
-        console.log(this.state.selTracks)
+
         return(
 
             <MainDiv>
@@ -110,20 +181,37 @@ class Manage extends React.Component {
                         }
                         )}
                     </div>)
-                :
+                    :
                     (<div>
-                        <p>{this.state.selPlaylist}</p>
-                        <hr></hr>
+                        <Block>
+                            <Line>
+                                <h2>{this.state.selPlaylist}</h2>
+                                <ColoredButton onClick={this.onClickListPage}>Voltar</ColoredButton>
+                            </Line>
+                            <ColoredDivider></ColoredDivider>
+                        </Block>
                         {this.state.selTracks.map (track => {
                             return(
-                            <div> 
-                            <p>{track.name}</p>
-                            <p>{track.artist}</p>
-                            <a href={track.url}>{track.url}</a>
-                            <hr></hr>
-                            </div>
+                            <Block>
+                                <Line>
+                                    <p>{track.name} ({track.artist})</p>
+                                    <Remove onClick={()=>this.onClickSongX(track.id)}>X</Remove>    
+                                </Line>
+                                <audio src={track.url} controls></audio>
+                                <WhiteDivider></WhiteDivider>
+                            </Block>
                             )})}
-                        <button onClick={this.onClickListPage}>Voltar</button>
+                        <Block>
+                            <p>Nome:</p>
+                            <input onChange={this.onChangeNameValue} placeholder="Nome da música"/>
+                            <p>Artista:</p>
+                            <input onChange={this.onChangeArtistValue} placeholder="Artista"/>
+                            <p>Link:</p>
+                            <input onChange={this.onChangeLinkValue} placeholder="Link da música"/>
+                            <ColoredButton onClick={this.onClickAddSong}>Adicionar música</ColoredButton>
+                        </Block>
+                        
+                       
                     </div>)
                 }
             </MainDiv>
