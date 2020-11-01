@@ -25,8 +25,12 @@ class App extends React.Component {
     currentPage: "create"
   }
 
-  onClickChangePage = () => {
+  onClickManagePage = () => {
     this.setState({currentPage:"manage"})
+  }
+
+  onClickCreatePage = () => {
+    this.setState({currentPage:"create"})
   }
 
   render () {
@@ -39,7 +43,7 @@ class App extends React.Component {
           (
           <div>
             <Create />
-            <ManagePlaylistButton onClick={this.onClickChangePage}>Gerenciar Playlists
+            <ManagePlaylistButton onClick={this.onClickManagePage}>Gerenciar Playlists
             </ManagePlaylistButton>
           </div>
           )
@@ -47,7 +51,7 @@ class App extends React.Component {
           (
             <div>
               <Manage />
-              <button>Criar nova Playlist</button>
+              <button onClick={this.onClickCreatePage}>Criar nova Playlist</button>
             </div>
           )
         }

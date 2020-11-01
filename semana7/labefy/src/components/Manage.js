@@ -13,14 +13,17 @@ display:flex;
 flex-direction: row;
 align-items: center;
 justify-content: space-between;
-width: 15vw;
-&:hover{
-background-color: gray;
-};
+width: 20vw;
 `
 const PlaylistName = styled.p `
 margin-left: 30px;
-
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 8px;
+&:hover{
+background-color: gray;
+};
+width: 15vw;
 `
 const Remove = styled.a `
 font-weight: bolder;
@@ -40,7 +43,9 @@ const axiosConfig = {
 class Manage extends React.Component {
     state = {
         playlists: [],
-        changePage: "list"
+        changePage: "list",
+        selTracks: [],
+        selPlaylist: ""
     }
 
     componentDidMount() {
@@ -50,7 +55,6 @@ class Manage extends React.Component {
     fetchPlaylists = () => {
         axios.get("https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists", axiosConfig)
         .then(response => {
-        console.log(response.data.result.list)
         this.setState({playlists:response.data.result.list})
         })
     }
@@ -70,21 +74,24 @@ class Manage extends React.Component {
     onClickLine = (id) => {
         axios.get(`https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${id}/tracks`, axiosConfig)
         .then((response) => {
-            console.log(response.data)
+            this.setState({selTracks: response.data.result.tracks})
         })
         
         {this.state.playlists.map (playlist => {
             if(id == playlist.id) {
-                console.log(playlist.name)
+                this.setState({selPlaylist: playlist.name})
             }
         })}
 
         this.setState({changePage:"details"})
+    }
 
+    onClickListPage = () => {
+        this.setState({changePage:"list"})
     }
 
     render() {
-
+        console.log(this.state.selTracks)
         return(
 
             <MainDiv>
@@ -93,8 +100,8 @@ class Manage extends React.Component {
                         {this.state.playlists.map (playlist => {
                         return(
                             <div>
-                                <PlaylistLine onClick={()=>this.onClickLine(playlist.id)}>
-                                    <PlaylistName>{playlist.name}</PlaylistName>
+                                <PlaylistLine >
+                                    <PlaylistName onClick={()=>this.onClickLine(playlist.id)}>{playlist.name}</PlaylistName>
                                     <Remove onClick={()=>this.onClickX(playlist.id)}>X</Remove>
                                 </PlaylistLine>
                             </div>
@@ -104,7 +111,20 @@ class Manage extends React.Component {
                         )}
                     </div>)
                 :
-                    (<div>Detalhes</div>)
+                    (<div>
+                        <p>{this.state.selPlaylist}</p>
+                        <hr></hr>
+                        {this.state.selTracks.map (track => {
+                            return(
+                            <div> 
+                            <p>{track.name}</p>
+                            <p>{track.artist}</p>
+                            <a href={track.url}>{track.url}</a>
+                            <hr></hr>
+                            </div>
+                            )})}
+                        <button onClick={this.onClickListPage}>Voltar</button>
+                    </div>)
                 }
             </MainDiv>
         )
