@@ -1,46 +1,23 @@
 import {React, useState, useEffect} from 'react'
-import {DivButtons, ImgProfile} from './styles'
+import {DivButtons, ImgProfile, ProfileBox} from './styles'
 import axios from 'axios'
 
-export default function Main () {
+export default function Main (props) {
  
-    const [profileName,setProfileName] = useState('')
-    const [profileBio,setProfileBio] = useState('')
-    const [profileAge,setProfileAge] = useState('')
-    const [profilePhoto,setProfilePhoto] = useState('')
-    const [profileId,setProfileId] = useState('')
-    
-
     useEffect (() => {
-        showNewProfile()
+        props.showNewProfile()
     }, [])
-
-    const showNewProfile = () => {
-        axios
-        .get(`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/rafael-fontes/person`)
-        .then (res => { 
-            setProfileName(res.data.profile.name)
-            setProfileBio(res.data.profile.bio)
-            setProfileAge(res.data.profile.age)
-            setProfilePhoto(res.data.profile.photo)
-            setProfileId(res.data.profile.id)
-        })
-        .catch (err => {
-            console.log(err)
-        })
-    }
 
     const addToMatchList = () => {
         axios
         .post(`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/rafael-fontes/choose-person`,
         {
-            "id": profileId,
+            "id": props.profileId,
             "choice": true
         })
         .then (res => {
-            console.log(profileId)
-            console.log(res)
             console.log("Match")
+            console.log(res.data)
         })
         .catch (err => {
             console.log(err)
@@ -51,12 +28,12 @@ export default function Main () {
         axios
         .post(`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/rafael-fontes/choose-person`,
         {
-            "id": profileId,
+            "id": props.profileId,
             "choice": false
         })
         .then (res => {
             console.log("Reject")
-            console.log(res)
+            console.log(res.data)
         })
         .catch (err => {
             console.log(err)
@@ -65,25 +42,31 @@ export default function Main () {
 
     const onClickX = () => {
         addToRejectList()
-        showNewProfile()
+        props.showNewProfile()
     }
-
     
     const onClickHeart = () => {
         addToMatchList()
-        showNewProfile()
+        props.showNewProfile()
     }
-
+    
     return (
         <div>
-            <ImgProfile src={profilePhoto}></ImgProfile>
-            <p>{profileName}, {profileAge}</p>
-            <p>{profileBio}</p>
-            <DivButtons>
-                <button onClick={onClickX}>X</button>
-                <button onClick={onClickHeart}>OK</button>
-            </DivButtons>
-
+            {props.profilesEnd !=="" ?
+                (<p>Fim dos perfis</p>)
+                :
+                (<div>
+                    <ProfileBox>
+                        <ImgProfile src={props.profilePhoto}></ImgProfile>
+                        <p>{props.profileName}, {props.profileAge}</p>
+                        <p>{props.profileBio}</p>
+                    </ProfileBox>
+                    <DivButtons>
+                        <button onClick={onClickX}>X</button>
+                        <button onClick={onClickHeart}>OK</button>
+                    </DivButtons>
+                </div>)
+            }
         </div>
     )
 }

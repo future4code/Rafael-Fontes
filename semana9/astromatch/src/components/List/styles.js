@@ -11,3 +11,8 @@ display: flex;
 margin-left: 15px;
 margin-top: 5px;
 `
+
+export const ListDiv = styled.div `
+height: 55vh;
+overflow: auto;
+`

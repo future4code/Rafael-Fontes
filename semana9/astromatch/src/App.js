@@ -7,6 +7,12 @@ import './App.css';
 
 function App() {
   const [currentPage, setCurrentPage] = useState("main")
+  const [profileName,setProfileName] = useState('')
+  const [profileBio,setProfileBio] = useState('')
+  const [profileAge,setProfileAge] = useState('')
+  const [profilePhoto,setProfilePhoto] = useState('')
+  const [profileId,setProfileId] = useState('')
+  const [profilesEnd, setProfilesEnd] = useState('')
 
   const onClickMain = () => {
     setCurrentPage("main")
@@ -21,12 +27,28 @@ function App() {
       axios
       .put(`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/rafael-fontes/clear`)
       .then (res => {
-        console.log("OK")
+        setProfilesEnd("")
       })
       .catch (err => {
         console.log(err)
       })
     }
+  }
+
+  const showNewProfile = () => {
+    axios
+    .get(`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/rafael-fontes/person`)
+    .then (res => { 
+        setProfileName(res.data.profile.name)
+        setProfileBio(res.data.profile.bio)
+        setProfileAge(res.data.profile.age)
+        setProfilePhoto(res.data.profile.photo)
+        setProfileId(res.data.profile.id)
+    })
+    .catch (err => {
+        console.log(err)
+        setProfilesEnd(err)
+    })
   }
 
   return (
@@ -37,9 +59,21 @@ function App() {
           Astromatch
           <button onClick={onClickList}>Lista</button>
         </div>
-        {currentPage === "main" ?
-        (<Main/>):(<List/>)  
-        }
+        <div className="Conditional">
+          {currentPage === "main" ?
+            (<Main
+              showNewProfile={showNewProfile}
+              profileName={profileName}
+              profileBio={profileBio}
+              profileAge={profileAge}
+              profilePhoto={profilePhoto}
+              profileId={profileId}
+              profilesEnd={profilesEnd}
+            />)
+            :
+            (<List/>)  
+          }
+        </div>
         <button className="ClearButton" onClick={onClickClear}>Limpar Matches</button>
       </div>
     </div>
