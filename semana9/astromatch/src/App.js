@@ -1,4 +1,8 @@
 import {React, useState, useEffect} from 'react'
+import { Tooltip, Button } from '@material-ui/core';
+import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
+import ListAltOutlinedIcon from '@material-ui/icons/ListAltOutlined';
+import DeleteIcon from '@material-ui/icons/Delete';
 import List from './components/List/index'
 import Main from './components/Main/index'
 import axios from 'axios'
@@ -13,6 +17,18 @@ function App() {
   const [profilePhoto,setProfilePhoto] = useState('')
   const [profileId,setProfileId] = useState('')
   const [profilesEnd, setProfilesEnd] = useState('')
+  const [homeColor, setHomeColor] = useState("disabeld")
+  const [listColor, setListColor] = useState("secondary")
+
+  useEffect (() => {
+    if(currentPage==="list") {
+      setHomeColor("secondary")
+      setListColor("disabled")
+    } else {
+      setHomeColor("disabled")
+      setListColor("secondary")
+    }
+  },[currentPage])
 
   const onClickMain = () => {
     setCurrentPage("main")
@@ -55,9 +71,13 @@ function App() {
     <div className="App">
       <div className="Box">
         <div className="TitleBar">
-          <button onClick={onClickMain}>Home</button>
-          Astromatch
-          <button onClick={onClickList}>Lista</button>
+          <Tooltip title="Home" arrow>
+            <Button color={homeColor} onClick={onClickMain}><HomeOutlinedIcon/></Button>
+          </Tooltip>
+          <p className="AppName">Astromatch</p>
+          <Tooltip title="Lista" arrow>
+            <Button color={listColor} onClick={onClickList}><ListAltOutlinedIcon/></Button>
+          </Tooltip>
         </div>
         <div className="Conditional">
           {currentPage === "main" ?
@@ -74,7 +94,9 @@ function App() {
             (<List/>)  
           }
         </div>
-        <button className="ClearButton" onClick={onClickClear}>Limpar Matches</button>
+        <div className="ClearButton">
+          <Button variant="contained" startIcon={<DeleteIcon />} onClick={onClickClear}>Limpar Matches</Button>
+        </div>
       </div>
     </div>
   );

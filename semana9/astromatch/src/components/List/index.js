@@ -1,6 +1,6 @@
 import {React, useState, useEffect} from 'react'
 import axios from 'axios'
-import {ImgProfile, ListDiv, ProfileLine} from './styles'
+import {ImgProfile, ListDiv, Name, ProfileLine} from './styles'
 
 export default function List () {
     
@@ -20,13 +20,13 @@ export default function List () {
     return (
         <ListDiv>
         {matchList.length===0 ? 
-            (<p>Você não possui nenhum match</p>)
+            (<Name>Você não possui nenhum match</Name>)
             :
             (matchList.map(profile => {
                 return(
                     <ProfileLine>
                         <ImgProfile src={profile.photo}></ImgProfile>
-                        <p>{profile.name}</p>
+                        <Name>{profile.name}</Name>
                     </ProfileLine>
                 )
             }))
