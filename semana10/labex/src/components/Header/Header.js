@@ -1,6 +1,6 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
-import { MainDiv, RightDiv } from './styles'
+import { MainDiv, RightDiv, Link, LinkAdm, Title } from './styles'
 
 const Header = () => {
 
@@ -36,31 +36,30 @@ const Header = () => {
     
     return (
         <MainDiv>
-            <h1>LabeX</h1>
-            {history.location.pathname !== "/" ?
-                (<div>   
-                    <a onClick={onClickHome}>Home</a>
-                </div>
-                ) : ""
-            }
+            <div>
+                <Title onClick={onClickHome}>LabeX</Title>
+            </div>
+            
             {history.location.pathname === "/" ?
                 (<RightDiv>
-                    <a onClick={onClickAdm}>Administrador</a>   
-                    <a onClick={onClickForm}>Inscrever-se</a>
-                    <a onClick={onClickContact}>Contato</a>
+                    <LinkAdm onClick={onClickAdm}>Administrador</LinkAdm>   
+                    <Link onClick={onClickForm}>Inscrever-se</Link>
+                    <Link onClick={onClickContact}>Contato</Link>
                 </RightDiv>
                 ) : ""
             }
             {history.location.pathname === "/contact" ?
-                (<div>
-                    <a onClick={onClickForm}>Inscrever-se</a>
-                </div>
+                (<RightDiv>
+                    <Link onClick={onClickHome}>Início</Link>
+                    <Link onClick={onClickForm}>Inscrever-se</Link>
+                </RightDiv>
                 ) : ""
             }
             {history.location.pathname === "/form" ?
-                (<div>
-                    <a onClick={onClickContact}>Contato</a>
-                </div>
+                (<RightDiv>
+                    <Link onClick={onClickHome}>Início</Link>
+                    <Link onClick={onClickContact}>Contato</Link>
+                </RightDiv>
                 ) : ""
             }
             
@@ -69,10 +68,11 @@ const Header = () => {
             history.location.pathname === "/create" ||
             history.location.pathname === "/trip"
             ?
-                (<RightDiv>   
-                    <a onClick={onClickList}>Listar</a>
-                    <a onClick={onClickCreate}>Criar</a>
-                    <a onClick={onClickTrip}>Gerenciar</a>
+                (<RightDiv>
+                    <Link onClick={onClickHome}>Início</Link>   
+                    <Link onClick={onClickList}>Listar</Link>
+                    <Link onClick={onClickCreate}>Criar</Link>
+                    <Link onClick={onClickTrip}>Gerenciar</Link>
                 </RightDiv>
                 ) : ""
             }
