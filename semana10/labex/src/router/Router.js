@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import ApplicationFormPage from '../components/ApplicationFormPage/ApplicationFormPage';
-import Contact from '../components/Contact/Contact';
+import MyTrips from '../components/MyTrips/MyTrips';
 import CreateTripPage from '../components/CreateTripPage/CreateTripPage';
 import ErrorPage from '../components/ErrorPage/ErrorPage';
 import HomePage from '../components/HomePage/HomePage';
@@ -37,8 +37,8 @@ export default function Router() {
                     <TripDetailsPage />
                 </Route>
 
-                <Route exact path="/contact">
-                    <Contact />
+                <Route exact path="/mytrips">
+                    <MyTrips />
                 </Route>
 
                 <Route>

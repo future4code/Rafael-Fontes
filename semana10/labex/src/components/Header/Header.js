@@ -18,8 +18,8 @@ const Header = () => {
         history.push("/form")
     }
 
-    const onClickContact = () => {
-        history.push("/contact")
+    const onClickMyTrips = () => {
+        history.push("/mytrips")
     }
 
     const onClickList = () => {
@@ -44,11 +44,11 @@ const Header = () => {
                 (<RightDiv>
                     <LinkAdm onClick={onClickAdm}>Administrador</LinkAdm>   
                     <Link onClick={onClickForm}>Inscrever-se</Link>
-                    <Link onClick={onClickContact}>Contato</Link>
+                    <Link onClick={onClickMyTrips}>Minhas Viagens</Link>
                 </RightDiv>
                 ) : ""
             }
-            {history.location.pathname === "/contact" ?
+            {history.location.pathname === "/mytrips" ?
                 (<RightDiv>
                     <Link onClick={onClickHome}>Início</Link>
                     <Link onClick={onClickForm}>Inscrever-se</Link>
@@ -58,7 +58,7 @@ const Header = () => {
             {history.location.pathname === "/form" ?
                 (<RightDiv>
                     <Link onClick={onClickHome}>Início</Link>
-                    <Link onClick={onClickContact}>Contato</Link>
+                    <Link onClick={onClickMyTrips}>Minhas Viagens</Link>
                 </RightDiv>
                 ) : ""
             }

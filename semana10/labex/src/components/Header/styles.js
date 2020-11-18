@@ -6,7 +6,7 @@ export const MainDiv = styled.div `
     align-items: center;
     padding-right: 30px;
     padding-left: 15px;
-    background-color: orangered;
+    background-color: darkblue;
 `
 
 export const RightDiv = styled.div `
@@ -17,14 +17,16 @@ export const RightDiv = styled.div `
 export const Link = styled.a `
     margin-left: 40px;
     font-weight: bolder;
+    color: white;
     cursor: pointer;
 `
 
 export const LinkAdm = styled.a `
     margin-left: 40px;
     font-weight: bolder;
+    color: white;
     cursor: pointer;
-    border: 1px solid black;
+    border: 1px solid white;
     padding: 5px;
 `
 

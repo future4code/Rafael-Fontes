@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../Header/Header'
 
-const Contact = (props) => {
+const MyTrips = (props) => {
     
     return (
         <div>
@@ -9,15 +9,15 @@ const Contact = (props) => {
                 onClickHome={props.onClickHome}
                 onClickAdm={props.onClickAdm}
                 onClickForm={props.onClickForm}
-                onClickContact={props.onClickContact}
+                onClickMyTrips={props.onClickMyTrips}
                 onClickList={props.onClickList}
                 onClickCreate={props.onClickCreate}
                 onClickTrip={props.onClickTrip}
             />
 
-            Contact
+            MyTrips
         </div>
     )
 }
 
-export default Contact
+export default MyTrips
