@@ -55,7 +55,8 @@ const Header = () => {
                 </RightDiv>
                 ) : ""
             }
-            {history.location.pathname === "/form" ?
+            {history.location.pathname.includes("/form")
+            ?
                 (<RightDiv>
                     <Link onClick={onClickHome}>Início</Link>
                     <Link onClick={onClickMyTrips}>Minhas Viagens</Link>

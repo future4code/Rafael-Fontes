@@ -17,7 +17,11 @@ export default function Router() {
                     <HomePage />
                 </Route>
 
-                <Route exact path="/form">
+                <Route exact path="/form/:id">
+                    <ApplicationFormPage />
+                </Route>
+
+                <Route exact path="/form/">
                     <ApplicationFormPage />
                 </Route>
 
