@@ -1,16 +1,20 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { useProtectedListPage } from '../../hooks/useProtectedListPage'
+
 import Header from '../Header/Header'
 
 const ListTripsPage = (props) => {
-    
     const history = useHistory()
     useProtectedListPage()
     
     const logout = () => {
         localStorage.removeItem("token")
         history.push("/login")
+    }
+
+    const getList = () => {
+
     }
 
     return (
@@ -26,6 +30,7 @@ const ListTripsPage = (props) => {
             />
 
             <button onClick={logout}>Sair da Área do Administrador</button>
+
             ListTripsPage
         </div>
     )

@@ -51,6 +51,30 @@ const TripDetailsPage = (props) => {
         history.push("/login")
     }
 
+    const onClickApprove = (id) => {
+        Axios.put(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/rafael-fontes-dumont/trips/${tripId}/candidates/${id}/decide`,
+        {
+            "approve": true
+        },
+        {
+            headers: {
+                auth: localStorage.getItem("token")
+            }
+        })
+    }
+
+    const onClickReject = (id) => {
+        Axios.put(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/rafael-fontes-dumont/trips/${tripId}/candidates/${id}/decide`,
+        {
+            "approve": false
+        },
+        {
+            headers: {
+                auth: localStorage.getItem("token")
+            }
+        })
+    }
+
     return (
         <div>
             <Header
@@ -82,8 +106,8 @@ const TripDetailsPage = (props) => {
                             <p>{candidate.profession}</p>
                             <p>{candidate.country}</p>
                             <p>{candidate.applicationText}</p>
-                            <button>Aprovar</button>
-                            <button>Rejeitar</button>
+                            <button onClick={()=>onClickApprove(candidate.id)}>Aprovar</button>
+                            <button onClick={()=>onClickReject(candidate.id)}>Rejeitar</button>
                         </div>
                     )
                 })}

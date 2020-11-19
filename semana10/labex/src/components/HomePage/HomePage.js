@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import Card from '../Card/Card'
 import Header from '../Header/Header'
-import { MainDiv } from '../Header/styles'
+import { TripsDiv } from '../HomePage/styles'
 
 const HomePage = (props) => {
     const history = useHistory()
@@ -39,7 +39,7 @@ const HomePage = (props) => {
                 onClickTrip={props.onClickTrip}
             />
 
-            <MainDiv>
+            <TripsDiv>
                 {trips.map(trip=> {
                     return (
                     <Card
@@ -52,7 +52,7 @@ const HomePage = (props) => {
                         selectTrip={()=>applyToTrip(trip.id)}
                     />)
                 })}
-            </MainDiv>
+            </TripsDiv>
         </div>
     )
 }

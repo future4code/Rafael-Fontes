@@ -11,7 +11,6 @@ const ApplicationFormPage = (props) => {
 
     useEffect(() => {
         getTrips()
-        console.log(pathParams.id)
     }, [])
 
     const getTrips = () => {
@@ -40,11 +39,12 @@ const ApplicationFormPage = (props) => {
         }
         Axios.post(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/rafael-fontes-dumont/trips/${form.tripId}/apply`, body)
         .then((res)=> {
-            console.log(res)
+            console.log(res)  
         })
         .catch((err)=> {
             console.log(err)
         })
+        console.log(form)
     }
     
     return (
@@ -67,8 +67,10 @@ const ApplicationFormPage = (props) => {
                         {trips.map(trip=> {
                             if(trip.id===pathParams.id){
                                 return <option value={trip.id} selected>{trip.name}</option>
-                            } else {
+                            } else if(pathParams.id==undefined) {
                                 return <option value={trip.id}>{trip.name}</option>
+                            } else {
+                                return <option value={trip.id} disabled>{trip.name}</option>
                             }
                             // return <option value={trip.id===pathParams.id ? trip.id:false} >{trip.name}</option>
                         })}
@@ -89,8 +91,8 @@ const ApplicationFormPage = (props) => {
                 <div>
                     <label>País:</label>
                     <select value={form.country} name="country" onChange={handleInputChange} required>
-                        <option value="" >Selecione um item da lista</option>
-                        <option value="Brasil" selected>Brasil</option>
+                        <option value="" selected="selected">Selecione um item da lista</option>
+                        <option value="Brasil">Brasil</option>
                         <option value="Afeganistão">Afeganistão</option>
                         <option value="África do Sul">África do Sul</option>
                         <option value="Albânia">Albânia</option>
