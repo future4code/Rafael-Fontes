@@ -64,16 +64,43 @@ const Header = () => {
                 ) : ""
             }
             
-            {history.location.pathname === "/login" ||
-            history.location.pathname === "/list" ||
-            history.location.pathname === "/create" ||
-            history.location.pathname === "/trip"
+            {history.location.pathname === "/login"
             ?
                 (<RightDiv>
                     <Link onClick={onClickHome}>Início</Link>   
                     <Link onClick={onClickList}>Listar</Link>
                     <Link onClick={onClickCreate}>Criar</Link>
                     <Link onClick={onClickTrip}>Gerenciar</Link>
+                </RightDiv>
+                ) : ""
+            }
+
+            {history.location.pathname === "/list"
+            ?
+                (<RightDiv>
+                    <Link onClick={onClickHome}>Início</Link>   
+                    <Link onClick={onClickCreate}>Criar</Link>
+                    <Link onClick={onClickTrip}>Gerenciar</Link>
+                </RightDiv>
+                ) : ""
+            }
+
+            {history.location.pathname === "/create"
+            ?
+                (<RightDiv>
+                    <Link onClick={onClickHome}>Início</Link>   
+                    <Link onClick={onClickList}>Listar</Link>
+                    <Link onClick={onClickTrip}>Gerenciar</Link>
+                </RightDiv>
+                ) : ""
+            }
+
+            {history.location.pathname === "/trip"
+            ?
+                (<RightDiv>
+                    <Link onClick={onClickHome}>Início</Link>   
+                    <Link onClick={onClickList}>Listar</Link>
+                    <Link onClick={onClickCreate}>Criar</Link>
                 </RightDiv>
                 ) : ""
             }

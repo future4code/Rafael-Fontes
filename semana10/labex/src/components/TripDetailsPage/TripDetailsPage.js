@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useProtectedTripPage } from '../../hooks/useProtectedTripPage'
 import Header from '../Header/Header'
+import { CandidateDiv, DataDiv, LogoutButton, SelectDiv, TripDiv } from './styles'
 
 const TripDetailsPage = (props) => {
     const [trips, setTrips] = useState([])
@@ -24,6 +25,7 @@ const TripDetailsPage = (props) => {
         }
         )
         .then((res) => {
+            console.log(res.data)
             setCandidates(res.data.trip.candidates)
         })
         .catch((err) => {
@@ -47,8 +49,10 @@ const TripDetailsPage = (props) => {
 
     const history = useHistory()
     const logout = () => {
-        localStorage.removeItem("token")
-        history.push("/login")
+        if(window.confirm("Deseja sair da Área do Administrador?")){
+            localStorage.removeItem("token")
+            history.push("/login")
+        }
     }
 
     const onClickApprove = (id) => {
@@ -87,31 +91,39 @@ const TripDetailsPage = (props) => {
                 onClickTrip={props.onClickTrip}
             />
 
-            <button onClick={logout}>Sair da Área do Administrador</button>
-            <div>
-                <label>Selecione uma viagem:</label>
-                <select value={tripId} onChange={onSelectTrip}>
-                    <option>Selecione uma viagem</option>
-                    {trips.map(trip=> {
-                        return <option value={trip.id}>{trip.name}</option>
+            <LogoutButton>
+                <p></p>
+                <button onClick={logout}>Sair da Área do Administrador</button>
+            </LogoutButton>
+
+            <TripDiv>
+                <SelectDiv>
+                    <h1>Gerenciar Candidatos</h1>
+                    {/* <label><b>Viagem: </b></label> */}
+                    <select value={tripId} onChange={onSelectTrip}>
+                        <option>Selecione uma viagem</option>
+                        {trips.map(trip=> {
+                            return <option value={trip.id}>{trip.name}</option>
+                        })}
+                    </select>
+                </SelectDiv>
+                <DataDiv>
+                    {candidates.map(candidate => {
+                        return (
+                            <CandidateDiv>
+                                <p>{candidate.name}</p>
+                                <p>{candidate.age}</p>
+                                <p>{candidate.profession}</p>
+                                <p>{candidate.country}</p>
+                                <p>{candidate.applicationText}</p>
+                                <button onClick={()=>onClickApprove(candidate.id)}>Aprovar</button>
+                                <button onClick={()=>onClickReject(candidate.id)}>Rejeitar</button>
+                            </CandidateDiv>
+                        )
                     })}
-                </select>
-            </div>
-            <div>
-                {candidates.map(candidate => {
-                    return (
-                        <div>
-                            <p>{candidate.name}</p>
-                            <p>{candidate.age}</p>
-                            <p>{candidate.profession}</p>
-                            <p>{candidate.country}</p>
-                            <p>{candidate.applicationText}</p>
-                            <button onClick={()=>onClickApprove(candidate.id)}>Aprovar</button>
-                            <button onClick={()=>onClickReject(candidate.id)}>Rejeitar</button>
-                        </div>
-                    )
-                })}
-            </div>
+                </DataDiv>
+            </TripDiv>
+
         </div>
     )
 }

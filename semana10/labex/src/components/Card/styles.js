@@ -9,8 +9,15 @@ export const CardDiv = styled.div `
     padding: 10px;
     margin-top: 20px;
     background-color: white;
+    margin-left: 50px;
 `
 
 export const Title = styled.h2 `
     font-weight:bold;
+`
+
+export const Button = styled.button `
+    position: relative;
+    bottom: 0;
+    
 `

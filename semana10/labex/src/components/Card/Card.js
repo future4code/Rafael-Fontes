@@ -1,5 +1,5 @@
 import React from 'react'
-import { CardDiv, Title } from './styles'
+import { CardDiv, Title, Button } from './styles'
 
 const Card = (props) => {
 
@@ -10,7 +10,7 @@ const Card = (props) => {
             <p><b>Planeta:</b> {props.planet}</p>
             <p><b>Data:</b> {props.date}</p>
             <p><b>Duração:</b> {props.durationInDays} dias</p>
-            <button onClick={props.selectTrip}>Inscrever-se</button>
+            <Button onClick={props.selectTrip}>Inscrever-se</Button>
         </CardDiv>
 
     )
