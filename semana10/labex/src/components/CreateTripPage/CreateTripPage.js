@@ -8,7 +8,7 @@ import { LogoutButton } from '../TripDetailsPage/styles'
 import { CreateDiv } from './styles'
 
 const CreateTripPage = (props) => {
-    const {form, onChange} = useForm({ name: "", planet: "", date: "", description: "", duration: "" })
+    const {form, onChange, resetState} = useForm({ name: "", planet: "", date: "", description: "", duration: "" })
     const history = useHistory()
     useProtectedCreatePage()
     
@@ -40,7 +40,8 @@ const CreateTripPage = (props) => {
             }
         })
         .then((res)=> {
-            console.log(res)  
+            alert("Nova viagem criada com sucesso")
+            resetState()  
         })
         .catch((err)=> {
             console.log(err)
@@ -69,11 +70,11 @@ const CreateTripPage = (props) => {
                 <h1>Adicionar Viagem</h1>
                 <form onSubmit={onSubmitForm}>
                     <div>
-                        <label>Nome:</label>
+                        <label><b>Nome: </b></label>
                         <input value={form.name} name="name" onChange={handleInputChange} pattern={"(.*[a-z]){4}"} required></input>
                     </div>
                     <div>
-                        <label>Planeta:</label>
+                        <label><b>Planeta: </b></label>
                         <select value={form.planet} name="planet" onChange={handleInputChange} required>
                             <option value="" selected="selected">Selecione um item da lista</option>
                             <option value="Terra">Terra</option>
@@ -89,15 +90,15 @@ const CreateTripPage = (props) => {
                         </select>
                     </div>
                     <div>
-                        <label>Data:</label>
+                        <label><b>Data: </b></label>
                         <input value={form.date} name="date" onChange={handleInputChange} type="date" required></input>
                     </div>
                     <div>
-                        <label>Descrição:</label>
+                        <label><b>Descrição: </b></label>
                         <input value={form.description} name="description" onChange={handleInputChange}  required></input>
                     </div>
                     <div>
-                        <label>Duração:</label>
+                        <label><b>Duração: </b></label>
                         <input value={form.duration} name="duration" onChange={handleInputChange} type="number" min="50" required></input>
                     </div>
                     <button>Criar</button>

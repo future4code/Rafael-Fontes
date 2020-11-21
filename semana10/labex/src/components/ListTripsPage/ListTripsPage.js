@@ -84,13 +84,25 @@ const ListTripsPage = (props) => {
 
             <ListDiv>
                 <h1>Lista de Viagens</h1>
+                <table>
+                    <tr>
+                        <th>Viagem</th>
+                        <th>Planeta</th>
+                        <th>Data</th>
+                    </tr>
+                </table>
                 {trips.map(trip=> {
-                                return (
-                                    <TripLine>
-                                        <p value={trip.id}>{trip.name}</p>
-                                        <p value={trip.id}>{trip.date}</p>
-                                    </TripLine>
-                                ) 
+                    return (
+                        <TripLine>
+                            <table>
+                                <tr>
+                                    <td value={trip.id}>{trip.name}</td>
+                                    <td value={trip.id}>{trip.planet}</td>
+                                    <td value={trip.id}>{trip.date}</td>
+                                </tr>
+                            </table>
+                        </TripLine>
+                    ) 
                 })}
             </ListDiv>
         </div>

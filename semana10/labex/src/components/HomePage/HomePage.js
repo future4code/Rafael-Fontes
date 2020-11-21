@@ -23,7 +23,6 @@ const HomePage = (props) => {
     }
 
     const applyToTrip = (id) =>{
-        console.log(id)
         history.push(`/form/${id}`)
     }
 

@@ -2,13 +2,14 @@ import Axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import Header from '../Header/Header'
 import { useForm } from '../../hooks/useForm'
-import { useParams } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { ApplicationDiv } from './styles'
 
 const ApplicationFormPage = (props) => {
     const [trips, setTrips] = useState([])
-    const {form, onChange} = useForm({ tripId: "", name: "", age: "", profession: "", country: "", message: "" })
+    const {form, onChange, resetState} = useForm({ tripId: "", name: "", age: "", profession: "", country: "", message: "" })
     const pathParams = useParams()
+    const history = useHistory()
 
     useEffect(() => {
         getTrips()
@@ -31,6 +32,12 @@ const ApplicationFormPage = (props) => {
 
     const onSubmitForm = (event) => {
         event.preventDefault()
+        if(pathParams===undefined){
+
+        }else{
+            form.tripId=pathParams
+        }
+        
         const body = {
             "name": form.name,
             "age": form.age,
@@ -40,12 +47,13 @@ const ApplicationFormPage = (props) => {
         }
         Axios.post(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/rafael-fontes-dumont/trips/${form.tripId}/apply`, body)
         .then((res)=> {
-            console.log(res)  
+            resetState()
+            alert("Recebemos sua solicitação. Em breve retornaremos.") 
+            history.push('/') 
         })
         .catch((err)=> {
-            console.log(err)
+            alert("Houve algum erro. Tente novamente",err)
         })
-        console.log(form)
     }
     
     return (
@@ -61,9 +69,10 @@ const ApplicationFormPage = (props) => {
             />
 
             <ApplicationDiv>
+                <h1>Candidatar a uma Viagem</h1>
                 <form onSubmit={onSubmitForm}>
                     <div>
-                        <label>Viagem:</label>
+                        <label><b>Viagem: </b></label>
                         <select value={pathParams.id} name="tripId" onChange={handleInputChange} required>
                             <option value="">Selecione um item da lista</option>
                             {trips.map(trip=> {
@@ -79,19 +88,19 @@ const ApplicationFormPage = (props) => {
                         </select>
                     </div>
                     <div>
-                        <label>Nome:</label>
+                        <label><b>Nome: </b></label>
                         <input value={form.name} name="name" onChange={handleInputChange} type="text" pattern={"(.*[a-z]){2}"} required></input>
                     </div>
                     <div>
-                        <label>Idade:</label>
+                        <label><b>Idade: </b></label>
                         <input value={form.age} name="age" onChange={handleInputChange} type="number" min="18" required></input>
                     </div>
                     <div>
-                        <label>Profissão:</label>
+                        <label><b>Profissão: </b></label>
                         <input value={form.profession} name="profession" onChange={handleInputChange} type="text" pattern={"(.*[a-z]){9}"} required></input>
                     </div>
                     <div>
-                        <label>País:</label>
+                        <label><b>País: </b></label>
                         <select value={form.country} name="country" onChange={handleInputChange} required>
                             <option value="" selected="selected">Selecione um item da lista</option>
                             <option value="Brasil">Brasil</option>
@@ -347,7 +356,7 @@ const ApplicationFormPage = (props) => {
                         </select>
                     </div>                        
                     <div>
-                        <label>Porque sou um bom candidato:</label>
+                        <label><b>Porque sou um bom candidato: </b></label>
                         <textarea 
                             value={form.message}
                             name="message"

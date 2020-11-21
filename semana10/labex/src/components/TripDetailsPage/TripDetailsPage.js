@@ -25,7 +25,6 @@ const TripDetailsPage = (props) => {
         }
         )
         .then((res) => {
-            console.log(res.data)
             setCandidates(res.data.trip.candidates)
         })
         .catch((err) => {
@@ -99,7 +98,6 @@ const TripDetailsPage = (props) => {
             <TripDiv>
                 <SelectDiv>
                     <h1>Gerenciar Candidatos</h1>
-                    {/* <label><b>Viagem: </b></label> */}
                     <select value={tripId} onChange={onSelectTrip}>
                         <option>Selecione uma viagem</option>
                         {trips.map(trip=> {
