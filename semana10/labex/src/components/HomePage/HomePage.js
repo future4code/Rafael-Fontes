@@ -3,11 +3,13 @@ import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import Card from '../Card/Card'
 import Header from '../Header/Header'
-import { TripsDiv } from '../HomePage/styles'
+import { Loading, TripsDiv } from '../HomePage/styles'
 
 const HomePage = (props) => {
     const history = useHistory()
     const [trips, setTrips] = useState([])
+    const [error,setError] = useState('')
+    
     useEffect(() => {
         getTrips()
     }, [])
@@ -16,9 +18,11 @@ const HomePage = (props) => {
         axios.get('https://us-central1-labenu-apis.cloudfunctions.net/labeX/rafael-fontes-dumont/trips')
         .then ((res)=>{
             setTrips(res.data.trips)
+            setError('')
         })
         .catch ((err)=>{
             console.log(err)
+            setError(err)
         })
     }
 
@@ -39,7 +43,7 @@ const HomePage = (props) => {
             />
 
             <TripsDiv>
-                {trips.map(trip=> {
+                {(error!=='') ? <Loading><h2>Carregando viagens disponíveis...</h2></Loading> : trips.map(trip=> {
                     return (
                     <Card
                         date={trip.date}

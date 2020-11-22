@@ -4,6 +4,7 @@ import Header from '../Header/Header'
 import { useForm } from '../../hooks/useForm'
 import { useHistory, useParams } from 'react-router-dom'
 import { ApplicationDiv } from './styles'
+import { Button } from '@material-ui/core'
 
 const ApplicationFormPage = (props) => {
     const [trips, setTrips] = useState([])
@@ -365,7 +366,7 @@ const ApplicationFormPage = (props) => {
                             required>
                         </textarea>
                     </div> 
-                    <button>Candidatar</button>
+                    <Button variant="contained" color="primary">Candidatar</Button>
                 </form>
             </ApplicationDiv>
 

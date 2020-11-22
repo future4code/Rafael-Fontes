@@ -1,4 +1,12 @@
 import styled from 'styled-components'
+import { makeStyles } from '@material-ui/core/styles'
+
+export const useStyles = makeStyles({
+    root: {
+      width: '100%',
+      maxWidth: 500,
+    },
+  });
 
 export const MainDiv = styled.div `
     display: flex;

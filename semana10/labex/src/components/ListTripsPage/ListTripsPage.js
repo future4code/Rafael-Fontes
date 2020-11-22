@@ -4,13 +4,16 @@ import { useHistory } from 'react-router-dom'
 import { useProtectedListPage } from '../../hooks/useProtectedListPage'
 import Header from '../Header/Header'
 import { LogoutButton } from '../TripDetailsPage/styles'
-import { ListDiv, TripLine } from './styles'
+import { ListDiv, Table, Td, Th, Tr, TripLine } from './styles'
+import { Button } from '@material-ui/core'
+import { Loading } from '../HomePage/styles'
 
 const ListTripsPage = (props) => {
     const history = useHistory()
     const [trips, setTrips] = useState([])
     const [tripIds, setTripIds] = useState([])
-
+    const [error,setError] = useState('')
+    
     useProtectedListPage()
 
     useEffect(() => {
@@ -43,9 +46,11 @@ const ListTripsPage = (props) => {
         Axios.get('https://us-central1-labenu-apis.cloudfunctions.net/labeX/rafael-fontes-dumont/trips')
         .then ((res)=>{
             setTrips(res.data.trips)
+            setError('')
         })
         .catch ((err)=>{
             console.log(err)
+            setError(err)
         })
         {trips.map(trip=> {
             return console.log(trip.id) /*setTripIds(tripIds.concat(trip.id))*/
@@ -65,6 +70,18 @@ const ListTripsPage = (props) => {
 
     }
 
+    const onClickRemove = (id) => {
+        if(window.confirm("Deseja excluir esta viagem?")){
+        Axios.delete(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/rafael-fontes-dumont/trips/${id}`)
+        .then ((res)=>{
+            alert("Viagem excluída com sucesso")
+        })
+        .catch ((err)=>{
+            console.log(err)
+        })
+        }
+    }
+
     return (
         <div>
             <Header
@@ -79,28 +96,32 @@ const ListTripsPage = (props) => {
 
             <LogoutButton>
                 <p></p>
-                <button onClick={logout}>Sair da Área do Administrador</button>
+                <Button variant="outlined" color="primary" onClick={logout}>Sair da Área do Administrador</Button>
             </LogoutButton>
 
             <ListDiv>
                 <h1>Lista de Viagens</h1>
-                <table>
-                    <tr>
-                        <th>Viagem</th>
-                        <th>Planeta</th>
-                        <th>Data</th>
-                    </tr>
-                </table>
-                {trips.map(trip=> {
+                <Table>
+                    <Tr>
+                        <Th>Viagem</Th>
+                        <Th>Planeta</Th>
+                        <Th>Data</Th>
+                        <Th>Confirmados</Th>
+                        <Th>Pendentes</Th>
+                    </Tr>
+                </Table>
+                {(error!=='') ? <Loading><h2>Acessando banco de dados...</h2></Loading> : trips.map(trip=> {
                     return (
                         <TripLine>
-                            <table>
-                                <tr>
-                                    <td value={trip.id}>{trip.name}</td>
-                                    <td value={trip.id}>{trip.planet}</td>
-                                    <td value={trip.id}>{trip.date}</td>
-                                </tr>
-                            </table>
+                            <Table>
+                                <Tr>
+                                    <Td value={trip.id}>{trip.name}</Td>
+                                    <Td value={trip.id}>{trip.planet}</Td>
+                                    <Td value={trip.id}>{trip.date}</Td>
+                                </Tr>
+                            </Table>
+                            <Button variant="contained" color="primary">Detalhes</Button>
+                            <Button variant="outlined" color="primary" onClick={()=>onClickRemove(trip.id)}>Excluir</Button>
                         </TripLine>
                     ) 
                 })}

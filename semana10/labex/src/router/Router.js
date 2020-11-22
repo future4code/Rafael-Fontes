@@ -8,6 +8,7 @@ import HomePage from '../components/HomePage/HomePage';
 import ListTripsPage from '../components/ListTripsPage/ListTripsPage';
 import LoginPage from '../components/LoginPage/LoginPage';
 import TripDetailsPage from '../components/TripDetailsPage/TripDetailsPage';
+import SignupPage from '../components/SignupPage/SignupPage';
 
 export default function Router() {
     return (
@@ -35,6 +36,10 @@ export default function Router() {
 
                 <Route exact path="/login">
                     <LoginPage />
+                </Route>
+
+                <Route exact path="/signup">
+                    <SignupPage />
                 </Route>
 
                 <Route exact path="/trip">

@@ -11,13 +11,15 @@ export const CardDiv = styled.div `
     background-color: white;
     margin-left: 50px;
 `
-
 export const Title = styled.h2 `
     font-weight:bold;
 `
-
-export const Button = styled.button `
-    position: relative;
-    bottom: 0;
-    
+export const ImgLine = styled.div `
+    display: flex;
+    justify-content: space-between;
+`
+export const SubscriptionButton = styled.div `
+    display: flex;
+    justify-content: center;
+    margin: 10px;
 `

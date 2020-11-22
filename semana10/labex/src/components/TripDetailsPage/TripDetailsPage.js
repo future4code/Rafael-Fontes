@@ -4,11 +4,14 @@ import { useHistory } from 'react-router-dom'
 import { useProtectedTripPage } from '../../hooks/useProtectedTripPage'
 import Header from '../Header/Header'
 import { CandidateDiv, DataDiv, LogoutButton, SelectDiv, TripDiv } from './styles'
+import { Button } from '@material-ui/core'
+import { Loading } from '../HomePage/styles'
 
 const TripDetailsPage = (props) => {
     const [trips, setTrips] = useState([])
     const [candidates, setCandidates] = useState([])
     const [tripId, setTripId] = useState('')
+    const [error,setError] = useState('')
     
     useProtectedTripPage()
     useEffect(() => {
@@ -36,9 +39,11 @@ const TripDetailsPage = (props) => {
         Axios.get('https://us-central1-labenu-apis.cloudfunctions.net/labeX/rafael-fontes-dumont/trips')
         .then ((res)=>{
             setTrips(res.data.trips)
+            setError('')
         })
         .catch ((err)=>{
             console.log(err)
+            setError(err)
         })
     }
 
@@ -64,6 +69,7 @@ const TripDetailsPage = (props) => {
                 auth: localStorage.getItem("token")
             }
         })
+        getTripDetails()
     }
 
     const onClickReject = (id) => {
@@ -76,6 +82,7 @@ const TripDetailsPage = (props) => {
                 auth: localStorage.getItem("token")
             }
         })
+        getTripDetails()
     }
 
     return (
@@ -92,7 +99,7 @@ const TripDetailsPage = (props) => {
 
             <LogoutButton>
                 <p></p>
-                <button onClick={logout}>Sair da Área do Administrador</button>
+                <Button variant="outlined" color="primary" onClick={logout}>Sair da Área do Administrador</Button>
             </LogoutButton>
 
             <TripDiv>
@@ -106,16 +113,17 @@ const TripDetailsPage = (props) => {
                     </select>
                 </SelectDiv>
                 <DataDiv>
-                    {candidates.map(candidate => {
+                    {(error!=='') ? <Loading><h2>Acessando banco de dados...</h2></Loading> : candidates.map(candidate => {
                         return (
                             <CandidateDiv>
-                                <p>{candidate.name}</p>
-                                <p>{candidate.age}</p>
-                                <p>{candidate.profession}</p>
-                                <p>{candidate.country}</p>
+                                <p><b>{candidate.name}</b></p>
+                                <p>Idade: {candidate.age} anos</p>
+                                <p>Profissão: {candidate.profession}</p>
+                                <p>País: {candidate.country}</p>
                                 <p>{candidate.applicationText}</p>
-                                <button onClick={()=>onClickApprove(candidate.id)}>Aprovar</button>
-                                <button onClick={()=>onClickReject(candidate.id)}>Rejeitar</button>
+                                <Button variant="contained" color="primary" onClick={()=>onClickApprove(candidate.id)}>Aprovar</Button>
+                                <span> </span>
+                                <Button variant="outlined" color="primary" onClick={()=>onClickReject(candidate.id)}>Rejeitar</Button>
                             </CandidateDiv>
                         )
                     })}

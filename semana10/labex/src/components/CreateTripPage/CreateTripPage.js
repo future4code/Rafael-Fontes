@@ -5,7 +5,8 @@ import { useForm } from '../../hooks/useForm'
 import Header from '../Header/Header'
 import Axios from 'axios'
 import { LogoutButton } from '../TripDetailsPage/styles'
-import { CreateDiv } from './styles'
+import { CreateDiv, FormLine, CreateButton } from './styles'
+import { Button } from '@material-ui/core'
 
 const CreateTripPage = (props) => {
     const {form, onChange, resetState} = useForm({ name: "", planet: "", date: "", description: "", duration: "" })
@@ -63,17 +64,17 @@ const CreateTripPage = (props) => {
 
             <LogoutButton>
                 <p></p>
-                <button onClick={logout}>Sair da Área do Administrador</button>
+                <Button variant="outlined" color="primary" onClick={logout}>Sair da Área do Administrador</Button>
             </LogoutButton>
 
             <CreateDiv>
                 <h1>Adicionar Viagem</h1>
                 <form onSubmit={onSubmitForm}>
-                    <div>
+                    <FormLine>
                         <label><b>Nome: </b></label>
                         <input value={form.name} name="name" onChange={handleInputChange} pattern={"(.*[a-z]){4}"} required></input>
-                    </div>
-                    <div>
+                    </FormLine>
+                    <FormLine>
                         <label><b>Planeta: </b></label>
                         <select value={form.planet} name="planet" onChange={handleInputChange} required>
                             <option value="" selected="selected">Selecione um item da lista</option>
@@ -88,20 +89,20 @@ const CreateTripPage = (props) => {
                             <option value="Urânio">Urânio</option>
                             <option value="Vênus">Vênus</option>
                         </select>
-                    </div>
-                    <div>
+                    </FormLine>
+                    <FormLine>
                         <label><b>Data: </b></label>
                         <input value={form.date} name="date" onChange={handleInputChange} type="date" required></input>
-                    </div>
-                    <div>
+                    </FormLine>
+                    <FormLine>
                         <label><b>Descrição: </b></label>
-                        <input value={form.description} name="description" onChange={handleInputChange}  required></input>
-                    </div>
-                    <div>
+                        <input value={form.description} name="description" onChange={handleInputChange} pattern='[A-z0-9À-ž\s]{30,}' required></input>
+                    </FormLine>
+                    <FormLine>
                         <label><b>Duração: </b></label>
                         <input value={form.duration} name="duration" onChange={handleInputChange} type="number" min="50" required></input>
-                    </div>
-                    <button>Criar</button>
+                    </FormLine>
+                    <CreateButton><Button variant="contained" color="primary">Criar</Button></CreateButton>
                 </form>     
             </CreateDiv>
        

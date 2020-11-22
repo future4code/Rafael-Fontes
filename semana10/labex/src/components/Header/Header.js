@@ -1,9 +1,10 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
-import { MainDiv, RightDiv, Link, LinkAdm, Title } from './styles'
+import { MainDiv, RightDiv, Link, LinkAdm, Title, useStyles } from './styles'
+import Typography from '@material-ui/core/Typography'
 
 const Header = () => {
-
+    const classes = useStyles();
     const history = useHistory()
 
     const onClickHome = () => {
@@ -36,13 +37,15 @@ const Header = () => {
     
     return (
         <MainDiv>
-            <div>
-                <Title onClick={onClickHome}>LabeX</Title>
+            <div className={classes.root}>
+                <Title onClick={onClickHome}><Typography variant="h2" component="h2" gutterBottom>LabeX
+                </Typography></Title>
             </div>
             
             {history.location.pathname === "/" ?
-                (<RightDiv>
-                    <LinkAdm onClick={onClickAdm}>Administrador</LinkAdm>   
+                (<RightDiv className={classes.root}>
+                    <LinkAdm onClick={onClickAdm}><Typography variant="button" display="block" gutterBottom>Administrador
+                    </Typography></LinkAdm>   
                     <Link onClick={onClickForm}>Inscrever-se</Link>
                     <Link onClick={onClickMyTrips}>Minhas Viagens</Link>
                 </RightDiv>
@@ -64,7 +67,8 @@ const Header = () => {
                 ) : ""
             }
             
-            {history.location.pathname === "/login"
+            {history.location.pathname === "/login" ||
+            history.location.pathname === "/signup"
             ?
                 (<RightDiv>
                     <Link onClick={onClickHome}>Início</Link>   

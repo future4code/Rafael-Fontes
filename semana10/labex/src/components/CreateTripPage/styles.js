@@ -14,3 +14,10 @@ export const CreateDiv = styled.div `
     justify-content: center;
     margin-top: 30px;
 `
+export const FormLine = styled.div `
+    margin-bottom: 10px;
+`
+export const CreateButton = styled.div `
+    display: flex;
+    justify-content: center;
+`
