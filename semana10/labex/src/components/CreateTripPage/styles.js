@@ -20,4 +20,5 @@ export const FormLine = styled.div `
 export const CreateButton = styled.div `
     display: flex;
     justify-content: center;
+    margin: 30px;
 `

@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react'
 import Header from '../Header/Header'
 import { useForm } from '../../hooks/useForm'
 import { useHistory, useParams } from 'react-router-dom'
-import { ApplicationDiv } from './styles'
-import { Button } from '@material-ui/core'
+import { ApplicationDiv, SubmitButton } from './styles'
+import { Button, TextField } from '@material-ui/core'
 
 const ApplicationFormPage = (props) => {
     const [trips, setTrips] = useState([])
@@ -73,9 +73,8 @@ const ApplicationFormPage = (props) => {
                 <h1>Candidatar a uma Viagem</h1>
                 <form onSubmit={onSubmitForm}>
                     <div>
-                        <label><b>Viagem: </b></label>
                         <select value={pathParams.id} name="tripId" onChange={handleInputChange} required>
-                            <option value="">Selecione um item da lista</option>
+                            <option value="">Selecione uma viagem</option>
                             {trips.map(trip=> {
                                 if(trip.id===pathParams.id){
                                     return <option value={trip.id} selected>{trip.name}</option>
@@ -89,21 +88,17 @@ const ApplicationFormPage = (props) => {
                         </select>
                     </div>
                     <div>
-                        <label><b>Nome: </b></label>
-                        <input value={form.name} name="name" onChange={handleInputChange} type="text" pattern={"(.*[a-z]){2}"} required></input>
+                        <input value={form.name} placeholder="Nome" name="name" onChange={handleInputChange} type="text" pattern="(.*[a-z]){2}" required></input>
                     </div>
                     <div>
-                        <label><b>Idade: </b></label>
-                        <input value={form.age} name="age" onChange={handleInputChange} type="number" min="18" required></input>
+                        <input value={form.age} placeholder="Idade" name="age" onChange={handleInputChange} type="number" min="18" required></input>
                     </div>
                     <div>
-                        <label><b>Profissão: </b></label>
-                        <input value={form.profession} name="profession" onChange={handleInputChange} type="text" pattern={"(.*[a-z]){9}"} required></input>
+                        <input value={form.profession} placeholder="Profissão" name="profession" onChange={handleInputChange} type="text" pattern="(.*[a-z]){9}" required></input>
                     </div>
                     <div>
-                        <label><b>País: </b></label>
                         <select value={form.country} name="country" onChange={handleInputChange} required>
-                            <option value="" selected="selected">Selecione um item da lista</option>
+                            <option value="" selected="selected">Selecione um País</option>
                             <option value="Brasil">Brasil</option>
                             <option value="Afeganistão">Afeganistão</option>
                             <option value="África do Sul">África do Sul</option>
@@ -357,16 +352,17 @@ const ApplicationFormPage = (props) => {
                         </select>
                     </div>                        
                     <div>
-                        <label><b>Porque sou um bom candidato: </b></label>
                         <textarea 
                             value={form.message}
                             name="message"
                             onChange={handleInputChange}
                             rows="3" cols="50"
+                            placeholder="Porque sou um bom candidato"
+                            multiline
                             required>
                         </textarea>
                     </div> 
-                    <Button variant="contained" color="primary">Candidatar</Button>
+                    <SubmitButton><button variant="contained" color="primary">Candidatar</button></SubmitButton>
                 </form>
             </ApplicationDiv>
 

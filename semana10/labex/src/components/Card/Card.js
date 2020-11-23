@@ -1,5 +1,5 @@
 import React from 'react'
-import { CardDiv, ImgLine, SubscriptionButton, Title } from './styles'
+import { CardDiv, ImgLine, Info, SubscriptionButton, Title } from './styles'
 import { Button } from '@material-ui/core'
 import Terra from '../../img/planets/earth.jpg'
 import Marte from '../../img/planets/mars.jpg'
@@ -19,6 +19,9 @@ const Card = (props) => {
             imgPlanet=Terra
             break;
         case 'Júpiter':
+            imgPlanet=Jupiter
+            break;
+        case 'Jupiter':
             imgPlanet=Jupiter
             break;
         case 'Marte':
@@ -52,13 +55,13 @@ const Card = (props) => {
     return (
         <CardDiv>
             <Title>{props.name}</Title>
-            <p>{props.description}</p>
+            <Info>{props.description}</Info>
             
             <ImgLine>
                 <div>
-                    <p><b>Planeta:</b> {props.planet}</p>
-                    <p><b>Data:</b> {props.date}</p>
-                    <p><b>Duração:</b> {props.durationInDays} dias</p>
+                    <Info><b>Planeta:</b> {props.planet}</Info>
+                    <Info><b>Data:</b> {props.date}</Info>
+                    <Info><b>Duração:</b> {props.durationInDays} dias</Info>
                 </div>
                 <div>
                     <img src={imgPlanet} />

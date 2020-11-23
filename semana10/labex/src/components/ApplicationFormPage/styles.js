@@ -8,3 +8,8 @@ export const ApplicationDiv = styled.div `
     justify-content: center;
     margin-top: 30px;
 `
+export const SubmitButton = styled.div `
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+`

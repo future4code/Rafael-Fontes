@@ -6,7 +6,7 @@ import Header from '../Header/Header'
 import Axios from 'axios'
 import { LogoutButton } from '../TripDetailsPage/styles'
 import { CreateDiv, FormLine, CreateButton } from './styles'
-import { Button } from '@material-ui/core'
+import { Button, TextField } from '@material-ui/core'
 
 const CreateTripPage = (props) => {
     const {form, onChange, resetState} = useForm({ name: "", planet: "", date: "", description: "", duration: "" })
@@ -71,13 +71,11 @@ const CreateTripPage = (props) => {
                 <h1>Adicionar Viagem</h1>
                 <form onSubmit={onSubmitForm}>
                     <FormLine>
-                        <label><b>Nome: </b></label>
-                        <input value={form.name} name="name" onChange={handleInputChange} pattern={"(.*[a-z]){4}"} required></input>
+                        <input value={form.name} placeholder="Nome" name="name" onChange={handleInputChange} pattern="(.*[a-z]){4}" required></input>
                     </FormLine>
                     <FormLine>
-                        <label><b>Planeta: </b></label>
                         <select value={form.planet} name="planet" onChange={handleInputChange} required>
-                            <option value="" selected="selected">Selecione um item da lista</option>
+                            <option value="" selected="selected">Selecione um planeta</option>
                             <option value="Terra">Terra</option>
                             <option value="Júpiter">Júpiter</option>
                             <option value="Marte">Marte</option>
@@ -91,18 +89,15 @@ const CreateTripPage = (props) => {
                         </select>
                     </FormLine>
                     <FormLine>
-                        <label><b>Data: </b></label>
-                        <input value={form.date} name="date" onChange={handleInputChange} type="date" required></input>
+                        <input value={form.date} helperText="Selecione uma data posterior a hoje" name="date" onChange={handleInputChange} type="date" required></input>
                     </FormLine>
                     <FormLine>
-                        <label><b>Descrição: </b></label>
-                        <input value={form.description} name="description" onChange={handleInputChange} pattern='[A-z0-9À-ž\s]{30,}' required></input>
+                        <input value={form.description} placeholder="Descrição" name="description" onChange={handleInputChange} required></input>
                     </FormLine>
                     <FormLine>
-                        <label><b>Duração: </b></label>
-                        <input value={form.duration} name="duration" onChange={handleInputChange} type="number" min="50" required></input>
+                        <input value={form.duration} placeholder="Duração" name="duration" onChange={handleInputChange} type="number" min="50" required></input>
                     </FormLine>
-                    <CreateButton><Button variant="contained" color="primary">Criar</Button></CreateButton>
+                    <CreateButton><button variant="contained" color="primary">Criar</button></CreateButton>
                 </form>     
             </CreateDiv>
        

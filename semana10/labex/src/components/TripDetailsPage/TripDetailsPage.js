@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom'
 import { useProtectedTripPage } from '../../hooks/useProtectedTripPage'
 import Header from '../Header/Header'
 import { CandidateDiv, DataDiv, LogoutButton, SelectDiv, TripDiv } from './styles'
-import { Button } from '@material-ui/core'
+import { Button, TextField } from '@material-ui/core'
 import { Loading } from '../HomePage/styles'
 
 const TripDetailsPage = (props) => {

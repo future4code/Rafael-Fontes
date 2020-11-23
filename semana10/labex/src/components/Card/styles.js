@@ -10,9 +10,11 @@ export const CardDiv = styled.div `
     margin-top: 20px;
     background-color: white;
     margin-left: 50px;
+    background-color: #0a0617;
 `
 export const Title = styled.h2 `
     font-weight:bold;
+    color: white;
 `
 export const ImgLine = styled.div `
     display: flex;
@@ -22,4 +24,7 @@ export const SubscriptionButton = styled.div `
     display: flex;
     justify-content: center;
     margin: 10px;
+`
+export const Info = styled.p `
+    color: white;
 `

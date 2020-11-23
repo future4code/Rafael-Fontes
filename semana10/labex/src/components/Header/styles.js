@@ -14,7 +14,7 @@ export const MainDiv = styled.div `
     align-items: center;
     padding-right: 30px;
     padding-left: 15px;
-    background-color: darkblue;
+    background-color: #0a0617;
 `
 
 export const RightDiv = styled.div `
