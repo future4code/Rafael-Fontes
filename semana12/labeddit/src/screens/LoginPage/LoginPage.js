@@ -30,6 +30,7 @@ const LoginPage = () => {
         })
         .catch((err)=> {
             console.log(err)
+            alert("Digite senha e/ou usuário válidos")
         })
     }
 
