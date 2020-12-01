@@ -1,8 +1,9 @@
-    import Axios from 'axios'
+import Axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import Header from '../../components/Header/Header'
 import Post from '../../components/Post/Post'
+import { useForm } from '../../hooks/UseForm'
 import { useProtectedPage } from '../../hooks/UseProtectedPage'
 import { goToPostPage } from '../../router/Coordinator'
 import { FeedContainer, NewPostContainer } from './styles'
@@ -11,6 +12,12 @@ const FeedPage = () => {
     useProtectedPage()
     const history = useHistory()
     const [posts,setPosts] = useState([])
+    const {form, onChange, resetState} = useForm({ text: "", title: "" })
+
+    const handleInputChange = (event) => {
+        const { value, name } = event.target
+        onChange(value, name)
+    }
 
     useEffect(()=>{
         GetPosts()
@@ -31,14 +38,52 @@ const FeedPage = () => {
         })
     }
 
+    const CreatePost = (event) => {
+        event.preventDefault()
+        const body = {
+            "text": form.text,
+            "title": form.title
+        }
+
+        Axios.post('https://us-central1-labenu-apis.cloudfunctions.net/labEddit/posts', body,
+        {
+            headers: {
+                Authorization: localStorage.getItem("token")
+            }
+        })
+        .then((res)=>{
+            alert("Post criado com sucesso")
+            GetPosts()
+            resetState()
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+    }
+
     return (
         <div>
             <Header />
 
-            <NewPostContainer>
-                <textarea>Escreva um novo post aqui</textarea>
-                <button>Postar</button>
-            </NewPostContainer>
+            {/* <NewPostContainer> */}
+                <NewPostContainer onSubmit={CreatePost}>
+                    <input
+                        name='title'
+                        value={form.title}
+                        required
+                        onChange={handleInputChange}
+                        placeholder="Escreva um Título"
+                    />
+                    <textarea
+                        name='text'
+                        value={form.text}
+                        required
+                        onChange={handleInputChange}
+                        placeholder="Escreva um novo post aqui"
+                    />
+                    <button type="submit">Postar</button>
+                </NewPostContainer>
+            {/* </NewPostContainer> */}
 
             <FeedContainer>
                 {posts!==[]

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { goToLoginPage, goToFeedPage, goToPostPage, goToSignUpPage } from '../../router/Coordinator'
-import { NavBar, Options, Hello } from './styles'
+import { NavBar, Options, Hello, Title } from './styles'
 
 const Header = () => {
     const history = useHistory()
@@ -16,7 +16,7 @@ const Header = () => {
 
     return (
         <NavBar>
-            <h1 onClick={()=> goToFeedPage(history)}>labeddit</h1>
+            <Title onClick={()=> goToFeedPage(history)}>labeddit</Title>
             {token ?
                 <Options>
                     <Hello>Olá {username}</Hello>

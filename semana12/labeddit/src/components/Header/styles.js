@@ -14,3 +14,6 @@ export const Hello = styled.p `
     margin-right: 15px;
     font-weight: bold;
 `
+export const Title = styled.h1 `
+    cursor: pointer;
+`

@@ -10,6 +10,7 @@ export const PostContainer = styled.div `
     margin-right: auto;
     margin-top: 30px;
     padding: 15px;
+    cursor: pointer;
 `
 export const CountContainer = styled.div `
     display: flex;

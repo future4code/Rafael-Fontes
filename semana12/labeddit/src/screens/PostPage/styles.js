@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const NewCommentContainer = styled.div `
+export const NewCommentContainer = styled.form `
     display: flex;
     flex-direction: column;
     width: 80vw;
