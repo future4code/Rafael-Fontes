@@ -4,8 +4,11 @@ import Header from '../../components/Header/Header'
 import { goToFeedPage, goToSignUpPage } from '../../router/Coordinator'
 import { useForm } from '../../hooks/UseForm'
 import axios from 'axios'
+import { useUnprotectedPage } from '../../hooks/UseUnprotectedPage'
 
 const LoginPage = () => {
+    useUnprotectedPage()
+
     const history = useHistory()
     const {form, onChange, resetState} = useForm({ email: "", password: "" })
 
@@ -22,7 +25,6 @@ const LoginPage = () => {
         }
         axios.post('https://us-central1-labenu-apis.cloudfunctions.net/labEddit/login',body)
         .then((res)=> {
-            console.log(res)
             localStorage.setItem('token',res.data.token)
             localStorage.setItem('username',res.data.user.username)
             goToFeedPage(history)
@@ -42,7 +44,7 @@ const LoginPage = () => {
                 <input name='password' value={form.password} type='password' required onChange={handleInputChange}/>
                 <button type='submit'>Entrar</button>    
             </form>
-            <button onClick={()=> goToSignUpPage(history)}>Primeiro Acesso</button>
+            <button onClick={()=> goToSignUpPage(history)}>Não possui cadastro? Clique Aqui!</button>
         </div>
     )
 }

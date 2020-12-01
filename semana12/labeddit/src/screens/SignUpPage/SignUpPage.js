@@ -1,11 +1,14 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import Header from '../../components/Header/Header'
-import { goToLoginPage } from '../../router/Coordinator'
+import { goToFeedPage, goToLoginPage } from '../../router/Coordinator'
 import { useForm } from '../../hooks/UseForm'
 import axios from 'axios'
+import { useUnprotectedPage } from '../../hooks/UseUnprotectedPage'
 
 const SignUpPage = () => {
+    useUnprotectedPage()
+
     const history = useHistory()
     const {form, onChange, resetState} = useForm({ name: "", email: "", password: "" })
 
@@ -23,8 +26,10 @@ const SignUpPage = () => {
         }
         axios.post('https://us-central1-labenu-apis.cloudfunctions.net/labEddit/signup',body)
         .then((res)=> {
-            goToLoginPage(history)
-            alert(`Bem-vindo ${res.data.user.username}. Acesso criado com sucesso.`)
+            localStorage.setItem('token',res.data.token)
+            localStorage.setItem('username',res.data.user.username)
+            goToFeedPage(history)
+            alert(`Bem-vindo ${res.data.user.username}. Cadastro criado com sucesso.`)
         })
         .catch((err)=> {
             console.log(err)

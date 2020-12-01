@@ -16,7 +16,7 @@ const Header = () => {
 
     return (
         <NavBar>
-            <h1 onClick={()=> goToFeedPage(history)}>LabEddit</h1>
+            <h1 onClick={()=> goToFeedPage(history)}>labeddit</h1>
             {token ?
                 <Options>
                     <Hello>Olá {username}</Hello>
