@@ -94,6 +94,7 @@ const FeedPage = () => {
                                 commentsCount={post.commentsCount}
                                 id={post.id}
                                 title={post.title}
+                                direction={post.userVoteDirection}
                             />
                         )
                     })

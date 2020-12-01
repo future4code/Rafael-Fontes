@@ -7,8 +7,15 @@ import Axios from 'axios'
 const Comment = (props) => {
 
     const VoteUp = () => {
-        const body = {
-            "direction": 1
+        let body = {}
+        if(props.direction===1) {
+            body = {
+                "direction": 0
+            }
+        } else {
+            body = {
+                "direction": 1
+            }
         }
         Axios.put(`https://us-central1-labenu-apis.cloudfunctions.net/labEddit/posts/${props.postId}/comment/${props.id}/vote`,body,
         {
@@ -23,12 +30,18 @@ const Comment = (props) => {
         .catch((err)=>{
             console.log(err)
         })
-
     }
 
     const VoteDown = () => {
-        const body = {
-            "direction": -1
+        let body = {}
+        if(props.direction===-1) {
+            body = {
+                "direction": 0
+            }
+        } else {
+            body = {
+                "direction": -1
+            }
         }
         Axios.put(`https://us-central1-labenu-apis.cloudfunctions.net/labEddit/posts/${props.postId}/comment/${props.id}/vote`,body,
         {
@@ -43,7 +56,6 @@ const Comment = (props) => {
         .catch((err)=>{
             console.log(err)
         })
-
     }
 
     return (

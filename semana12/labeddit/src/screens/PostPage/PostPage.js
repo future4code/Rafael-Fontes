@@ -91,6 +91,7 @@ const PostPage = () => {
                                 votesCount={post.votesCount}
                                 id={post.id}
                                 postId={params.id}
+                                direction={post.userVoteDirection}
                             />
                         )
                         })

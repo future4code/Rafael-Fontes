@@ -1,6 +1,6 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
-import { goToFeedPage, goToPostPage } from '../../router/Coordinator'
+import { goToPostPage } from '../../router/Coordinator'
 import { PostContainer, CountContainer, TitleContainer, VotesContainer } from './styles'
 import { ArrowDownward, ArrowUpward, TextRotateUpSharp } from '@material-ui/icons'
 import {IconButton} from '@material-ui/core'
@@ -11,8 +11,15 @@ const Post = (props) => {
     const history = useHistory()
 
     const VoteUp = () => {
-        const body = {
-            "direction": 1
+        let body = {}
+        if(props.direction===1) {
+            body = {
+                "direction": 0
+            }
+        } else {
+            body = {
+                "direction": 1
+            }
         }
         Axios.put(`https://us-central1-labenu-apis.cloudfunctions.net/labEddit/posts/${props.id}/vote`,body,
         {
@@ -30,8 +37,15 @@ const Post = (props) => {
     }
 
     const VoteDown = () => {
-        const body = {
-            "direction": -1
+        let body = {}
+        if(props.direction===-1) {
+            body = {
+                "direction": 0
+            }
+        } else {
+            body = {
+                "direction": -1
+            }
         }
         Axios.put(`https://us-central1-labenu-apis.cloudfunctions.net/labEddit/posts/${props.id}/vote`,body,
         {
