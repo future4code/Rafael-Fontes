@@ -5,7 +5,6 @@ import Header from '../../components/Header/Header'
 import Post from '../../components/Post/Post'
 import { useForm } from '../../hooks/UseForm'
 import { useProtectedPage } from '../../hooks/UseProtectedPage'
-import { goToPostPage } from '../../router/Coordinator'
 import { FeedContainer, NewPostContainer } from './styles'
 
 const FeedPage = () => {
@@ -65,25 +64,23 @@ const FeedPage = () => {
         <div>
             <Header />
 
-            {/* <NewPostContainer> */}
-                <NewPostContainer onSubmit={CreatePost}>
-                    <input
-                        name='title'
-                        value={form.title}
-                        required
-                        onChange={handleInputChange}
-                        placeholder="Escreva um Título"
-                    />
-                    <textarea
-                        name='text'
-                        value={form.text}
-                        required
-                        onChange={handleInputChange}
-                        placeholder="Escreva um novo post aqui"
-                    />
-                    <button type="submit">Postar</button>
-                </NewPostContainer>
-            {/* </NewPostContainer> */}
+            <NewPostContainer onSubmit={CreatePost}>
+                <input
+                    name='title'
+                    value={form.title}
+                    required
+                    onChange={handleInputChange}
+                    placeholder="Escreva um Título"
+                />
+                <textarea
+                    name='text'
+                    value={form.text}
+                    required
+                    onChange={handleInputChange}
+                    placeholder="Escreva um novo post aqui"
+                />
+                <button type="submit">Postar</button>
+            </NewPostContainer>
 
             <FeedContainer>
                 {posts!==[]
@@ -96,6 +93,7 @@ const FeedPage = () => {
                                 votesCount={post.votesCount}
                                 commentsCount={post.commentsCount}
                                 id={post.id}
+                                title={post.title}
                             />
                         )
                     })

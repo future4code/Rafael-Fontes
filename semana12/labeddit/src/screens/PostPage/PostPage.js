@@ -69,6 +69,7 @@ const PostPage = () => {
                 votesCount={postDetails.votesCount}
                 commentsCount={postDetails.commentsCount}
                 id={postDetails.id}
+                title={postDetails.title}
             />
             <NewCommentContainer onSubmit={SendComment}>
                 <textarea
@@ -79,9 +80,6 @@ const PostPage = () => {
                     placeholder="Escreva um comentário aqui"
                 />
                 <button type="submit">Enviar comentário</button>
-{/* 
-                <textarea>Escreva um comentário aqui</textarea>
-                <button onClick={() => SendComment(postDetails.id)}>Enviar comentário</button> */}
             </NewCommentContainer>
             <CommentsContainer>
                 {postDetails.comments && 
