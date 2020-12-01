@@ -90,6 +90,7 @@ const PostPage = () => {
                                 text={post.text}
                                 votesCount={post.votesCount}
                                 id={post.id}
+                                postId={params.id}
                             />
                         )
                         })

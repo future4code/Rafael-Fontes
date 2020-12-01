@@ -1,28 +1,60 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
-import { goToPostPage } from '../../router/Coordinator'
+import { goToFeedPage, goToPostPage } from '../../router/Coordinator'
 import { PostContainer, CountContainer, TitleContainer, VotesContainer } from './styles'
-import { ArrowDownward, ArrowUpward } from '@material-ui/icons'
+import { ArrowDownward, ArrowUpward, TextRotateUpSharp } from '@material-ui/icons'
 import {IconButton} from '@material-ui/core'
+import { Title, TextPost } from './styles'
+import Axios from 'axios'
 
 const Post = (props) => {
     const history = useHistory()
 
     const VoteUp = () => {
-        alert("VoteUp")
+        const body = {
+            "direction": 1
+        }
+        Axios.put(`https://us-central1-labenu-apis.cloudfunctions.net/labEddit/posts/${props.id}/vote`,body,
+        {
+            headers: {
+                Authorization: localStorage.getItem("token")
+            }
+        })
+        .then((res)=>{
+            console.log(res)
+            alert("VoteUp")
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
     }
 
     const VoteDown = () => {
-        alert("VoteDown")
+        const body = {
+            "direction": -1
+        }
+        Axios.put(`https://us-central1-labenu-apis.cloudfunctions.net/labEddit/posts/${props.id}/vote`,body,
+        {
+            headers: {
+                Authorization: localStorage.getItem("token")
+            }
+        })
+        .then((res)=>{
+            console.log(res)
+            alert("VoteDown")
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
     }
 
     return (
-        <PostContainer onClick={()=> goToPostPage(history,props.id)}>
+        <PostContainer>
             <TitleContainer>
-                <p><b>{props.title}</b></p>
+                <Title onClick={()=> goToPostPage(history,props.id)}><b>{props.title}</b></Title>
                 <p>Postado por {props.username}</p>
             </TitleContainer>
-            <p>{props.text}</p>
+            <TextPost onClick={()=> goToPostPage(history,props.id)}>{props.text}</TextPost>
             <CountContainer>
                 <VotesContainer>
                     <IconButton onClick={VoteUp}>

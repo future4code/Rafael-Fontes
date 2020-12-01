@@ -10,7 +10,6 @@ export const PostContainer = styled.div `
     margin-right: auto;
     margin-top: 30px;
     padding: 15px;
-    cursor: pointer;
 `
 export const CountContainer = styled.div `
     display: flex;
@@ -22,4 +21,10 @@ export const TitleContainer = styled.div `
 `
 export const VotesContainer = styled.div `
     display: flex;
+`
+export const Title = styled.p `
+    cursor: pointer;
+`
+export const TextPost = styled.p `
+    cursor: pointer;
 `
