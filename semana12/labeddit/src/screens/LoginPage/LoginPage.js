@@ -5,8 +5,9 @@ import { goToFeedPage, goToSignUpPage } from '../../router/Coordinator'
 import { useForm } from '../../hooks/UseForm'
 import axios from 'axios'
 import { useUnprotectedPage } from '../../hooks/UseUnprotectedPage'
-import { FormContainer } from './styles'
+import { FormContainer, LoginPageContainer } from './styles'
 import { Button, TextField } from '@material-ui/core'
+import { grey } from '@material-ui/core/colors'
 
 const LoginPage = () => {
     useUnprotectedPage()
@@ -41,12 +42,15 @@ const LoginPage = () => {
     return (
         <div>
             <Header />
-            <FormContainer onSubmit={onSubmitForm}>
-                <TextField label="E-mail" color="primary" variant="outlined" name='email' value={form.email} type='email' required onChange={handleInputChange}/>
-                <TextField label="Senha" color="primary" variant="outlined" name='password' value={form.password} type='password' required onChange={handleInputChange}/>
-                <Button type='submit' color="primary" variant="contained">Entrar</Button>    
-            </FormContainer>
-            <Button onClick={()=> goToSignUpPage(history)}>Não possui cadastro? Clique Aqui!</Button>
+            <LoginPageContainer>
+                <FormContainer onSubmit={onSubmitForm}>
+                    <TextField label="E-mail" color="primary" style={{ backgroundColor: grey[50] }} variant="outlined" name='email' value={form.email} type='email' required onChange={handleInputChange}/>
+                    <TextField label="Senha" color="primary" style={{ backgroundColor: grey[50] }} variant="outlined" name='password' value={form.password} type='password' required onChange={handleInputChange}/>
+                    <Button type='submit' color="primary" variant="contained">Entrar</Button>    
+                </FormContainer>
+                <Button onClick={()=> goToSignUpPage(history)}>Não possui cadastro? Clique Aqui!</Button>
+            </LoginPageContainer>
+
         </div>
     )
 }
