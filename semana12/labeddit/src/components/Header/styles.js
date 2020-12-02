@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Button, Toolbar } from '@material-ui/core'
+import { Button, Toolbar, Typography } from '@material-ui/core'
 
 export const NavBar = styled(Toolbar) `
     display: flex;
@@ -8,15 +8,8 @@ export const NavBar = styled(Toolbar) `
     margin-left: 20px;
     margin-right: 20px;
     height: 8vh;
+    flex-wrap: wrap;
 `
-// export const NavBar = styled.div `
-//     display: flex;
-//     justify-content: space-between;
-//     align-items: center;
-//     margin-left: 20px;
-//     margin-right: 20px;
-//     height: 8vh;
-// `
 export const Options = styled.div `
     display: flex;
     justify-content: space-around;
@@ -24,12 +17,13 @@ export const Options = styled.div `
     padding: 10px;
     width: 11vw;
 `
-export const Hello = styled.p `
+export const Hello = styled(Typography) `
     margin-right: 15px;
     font-weight: bold;
 `
-export const Title = styled.h1 `
+export const Title = styled(Typography) `
     cursor: pointer;
+    font-weight: bold;
 `
 export const ButtonStyled = styled(Button) `
     height: 4vh;

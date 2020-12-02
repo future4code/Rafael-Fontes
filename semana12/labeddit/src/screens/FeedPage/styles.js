@@ -13,5 +13,5 @@ export const NewPostContainer = styled.form `
     margin-left: auto;
     margin-right: auto;
     margin-top: 10vh;
-    height: 15vh;
+    min-height: 18vh;
 `

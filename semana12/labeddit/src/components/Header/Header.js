@@ -2,7 +2,7 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { goToLoginPage, goToFeedPage, goToSignUpPage } from '../../router/Coordinator'
 import { NavBar, Options, Hello, Title, ButtonStyled } from './styles'
-import { AppBar, Toolbar } from '@material-ui/core'
+import { AppBar } from '@material-ui/core'
 
 const Header = () => {
     const history = useHistory()
@@ -17,22 +17,20 @@ const Header = () => {
 
     return (
         <AppBar color="inherit" position="fixed">
-            {/* <Toolbar > */}
-                <NavBar>
-                    <Title onClick={()=> goToFeedPage(history)}>labeddit</Title>
-                    {token ?
-                        <Options>
-                            <Hello>Olá {username}!</Hello>
-                            <ButtonStyled color="primary" variant="outlined" onClick={logout}>Sair</ButtonStyled>
-                        </Options>
-                    :
-                        <Options>
-                            <ButtonStyled color="primary" variant="outlined" onClick={()=> goToLoginPage(history)}>Entrar</ButtonStyled>
-                            <ButtonStyled color="primary" variant="contained" onClick={()=> goToSignUpPage(history)}>Cadastrar</ButtonStyled>
-                        </Options>
-                    }            
-                </NavBar>
-            {/* </Toolbar> */}
+            <NavBar>
+                <Title variant="h3" onClick={()=> goToFeedPage(history)}>labeddit</Title>
+                {token ?
+                    <Options>
+                        <Hello>Olá {username}!</Hello>
+                        <ButtonStyled color="primary" variant="outlined" onClick={logout}>Sair</ButtonStyled>
+                    </Options>
+                :
+                    <Options>
+                        <ButtonStyled color="primary" variant="outlined" onClick={()=> goToLoginPage(history)}>Entrar</ButtonStyled>
+                        <ButtonStyled color="primary" variant="contained" onClick={()=> goToSignUpPage(history)}>Cadastrar</ButtonStyled>
+                    </Options>
+                }            
+            </NavBar>
         </AppBar>
 
     )

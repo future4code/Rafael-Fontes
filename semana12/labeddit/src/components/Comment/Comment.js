@@ -3,6 +3,7 @@ import { CommentContainer, CountContainer, VotesContainer } from './styles'
 import { ArrowDownward, ArrowUpward } from '@material-ui/icons'
 import { IconButton } from '@material-ui/core'
 import Axios from 'axios'
+import { green, red } from '@material-ui/core/colors'
 
 const Comment = (props) => {
 
@@ -65,7 +66,7 @@ const Comment = (props) => {
                     <IconButton onClick={VoteUp}>
                         {props.direction===1
                             ?
-                            <ArrowUpward fontSize="inherit" color="secondary"/>
+                            <ArrowUpward fontSize="inherit" style={{ color: green[500] }}/>
                             :
                             <ArrowUpward fontSize="inherit" color="inherit"/>
                         }
@@ -74,7 +75,7 @@ const Comment = (props) => {
                     <IconButton onClick={VoteDown}>
                         {props.direction===-1
                             ?
-                            <ArrowDownward fontSize="inherit" color="secondary"/>
+                            <ArrowDownward fontSize="inherit" style={{ color: red[500] }}/>
                             :
                             <ArrowDownward fontSize="inherit" color="inherit"/>
                         }

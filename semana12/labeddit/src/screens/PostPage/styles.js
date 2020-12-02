@@ -10,7 +10,7 @@ export const NewCommentContainer = styled.form `
     margin-right: auto;
     margin-top: 20px;
     margin-bottom: 20px;
-    height: 10vh;
+    min-height: 12vh;
 `
 export const CommentsContainer = styled.div `
     display: flex;
