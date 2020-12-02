@@ -3,8 +3,6 @@ import styled from 'styled-components'
 export const CommentContainer = styled.div `
     display: flex;
     flex-direction: column;
-    border: 1px black solid;
-    border-radius: 5px;
     width: 80vw;
     max-width: 465px;
     margin-left: auto;
@@ -16,6 +14,7 @@ export const CommentContainer = styled.div `
 export const CountContainer = styled.div `
     display: flex;
     justify-content: space-between;
+    padding: 10px;
 `
 export const VotesContainer = styled.div `
     display: flex;

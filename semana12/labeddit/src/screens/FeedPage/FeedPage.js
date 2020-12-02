@@ -5,8 +5,9 @@ import Header from '../../components/Header/Header'
 import Post from '../../components/Post/Post'
 import { useForm } from '../../hooks/UseForm'
 import { useProtectedPage } from '../../hooks/UseProtectedPage'
-import { FeedContainer, NewPostContainer } from './styles'
+import { FeedContainer, FeedPageContainer, NewPostContainer } from './styles'
 import { Button, TextField } from '@material-ui/core'
+import { grey } from '@material-ui/core/colors'
 
 const FeedPage = () => {
     useProtectedPage()
@@ -64,52 +65,55 @@ const FeedPage = () => {
     return (
         <div>
             <Header />
+            <FeedPageContainer>
+                <NewPostContainer onSubmit={CreatePost}>
+                    <TextField
+                        name='title'
+                        value={form.title}
+                        label="Título"
+                        variant="outlined"
+                        color="primary"
+                        style={{ backgroundColor: grey[50] }}
+                        required
+                        onChange={handleInputChange}
+                        placeholder="Escreva um título aqui"
+                    />
+                    <TextField
+                        name='text'
+                        value={form.text}
+                        label="Texto"
+                        variant="outlined"
+                        color="primary"
+                        style={{ backgroundColor: grey[50] }}
+                        multiline
+                        required
+                        onChange={handleInputChange}
+                        placeholder="Escreva um texto aqui"
+                    />
+                    <Button type="submit" variant="contained" color="primary">Postar</Button>
+                </NewPostContainer>
+                <FeedContainer>
+                    {posts!==[]
+                        ? 
+                        posts.map(post=> {
+                            return(
+                                <Post
+                                    username={post.username}
+                                    text={post.text}
+                                    votesCount={post.votesCount}
+                                    commentsCount={post.commentsCount}
+                                    id={post.id}
+                                    title={post.title}
+                                    direction={post.userVoteDirection}
+                                />
+                            )
+                        })
+                        :
+                        "Carregando..."
+                    }
+                </FeedContainer>
+            </FeedPageContainer>
 
-            <NewPostContainer onSubmit={CreatePost}>
-                <TextField
-                    name='title'
-                    value={form.title}
-                    label="Título"
-                    variant="outlined"
-                    color="primary"
-                    required
-                    onChange={handleInputChange}
-                    placeholder="Escreva um título aqui"
-                />
-                <TextField
-                    name='text'
-                    value={form.text}
-                    label="Texto"
-                    variant="outlined"
-                    color="primary"
-                    multiline
-                    required
-                    onChange={handleInputChange}
-                    placeholder="Escreva um texto aqui"
-                />
-                <Button type="submit" variant="contained" color="primary">Postar</Button>
-            </NewPostContainer>
-
-            <FeedContainer>
-                {posts!==[]
-                    ? 
-                    posts.map(post=> {
-                        return(
-                            <Post
-                                username={post.username}
-                                text={post.text}
-                                votesCount={post.votesCount}
-                                commentsCount={post.commentsCount}
-                                id={post.id}
-                                title={post.title}
-                                direction={post.userVoteDirection}
-                            />
-                        )
-                    })
-                    :
-                    "Carregando..."
-                }
-            </FeedContainer>
         </div>
     )
 }

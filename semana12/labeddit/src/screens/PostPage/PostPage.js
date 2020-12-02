@@ -7,6 +7,7 @@ import { useProtectedPage } from '../../hooks/UseProtectedPage'
 import { CommentsContainer, NewCommentContainer, PostPageContainer } from './styles'
 import { Button, TextField } from '@material-ui/core'
 import { useParams } from 'react-router-dom'
+import { grey } from '@material-ui/core/colors'
 import Axios from 'axios'
 
 const PostPage = () => {
@@ -81,6 +82,7 @@ const PostPage = () => {
                         label="Novo Comentário"
                         variant="outlined"
                         color="primary"
+                        style={{ backgroundColor: grey[50] }}
                         multiline
                         required
                         onChange={handleInputChange}

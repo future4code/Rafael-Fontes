@@ -1,7 +1,7 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { goToLoginPage, goToFeedPage, goToSignUpPage } from '../../router/Coordinator'
-import { NavBar, Options, Hello, Title, ButtonStyled } from './styles'
+import { NavBar, Options, Hello, Title, ButtonStyled, TitleContainer, TitleColor } from './styles'
 import { AppBar } from '@material-ui/core'
 
 const Header = () => {
@@ -18,10 +18,14 @@ const Header = () => {
     return (
         <AppBar color="inherit" position="fixed">
             <NavBar>
-                <Title variant="h3" onClick={()=> goToFeedPage(history)}>labeddit</Title>
+                <TitleContainer onClick={()=> goToFeedPage(history)}>
+                    <Title variant="h3">labedd</Title>
+                    <TitleColor variant="h3">i</TitleColor>
+                    <Title variant="h3">t</Title>
+                </TitleContainer>
                 {token ?
                     <Options>
-                        <Hello>Olá {username}!</Hello>
+                        <Hello color="primary">Olá {username}!</Hello>
                         <ButtonStyled color="primary" variant="outlined" onClick={logout}>Sair</ButtonStyled>
                     </Options>
                 :

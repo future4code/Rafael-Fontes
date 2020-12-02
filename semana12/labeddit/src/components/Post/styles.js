@@ -1,10 +1,9 @@
 import styled from 'styled-components'
+import { CardContent } from '@material-ui/core'
 
 export const PostContainer = styled.div `
     display: flex;
     flex-direction: column;
-    border: 1px red solid;
-    border-radius: 5px;
     width: 80vw;
     max-width: 465px;
     margin-left: auto;
@@ -16,6 +15,7 @@ export const PostContainer = styled.div `
 export const CountContainer = styled.div `
     display: flex;
     justify-content: space-between;
+    padding: 10px;
 `
 export const TitleContainer = styled.div `
     display: flex;
@@ -24,12 +24,9 @@ export const TitleContainer = styled.div `
 export const VotesContainer = styled.div `
     display: flex;
 `
-export const Title = styled.p `
-    
-`
-export const TextPost = styled.p `
-    
-`
-export const ClickContainer = styled.div `
+export const ClickContainer = styled(CardContent)`
     cursor: pointer;
+    &:hover {
+    background-color: lightgrey;
+    };
 `

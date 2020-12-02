@@ -3,8 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { goToPostPage } from '../../router/Coordinator'
 import { PostContainer, CountContainer, TitleContainer, VotesContainer, ClickContainer } from './styles'
 import { ArrowDownward, ArrowUpward } from '@material-ui/icons'
-import {IconButton} from '@material-ui/core'
-import { Title, TextPost } from './styles'
+import { IconButton, Card, Typography } from '@material-ui/core'
 import Axios from 'axios'
 import { green, red } from '@material-ui/core/colors'
 
@@ -63,36 +62,41 @@ const Post = (props) => {
 
     return (
         <PostContainer>
-            <ClickContainer onClick={()=> goToPostPage(history,props.id)}>
-                <TitleContainer>
-                    <Title><b>{props.title}</b></Title>
-                    <p>Postado por {props.username}</p>
-                </TitleContainer>
-                <TextPost>{props.text}</TextPost>
-            </ClickContainer>
-
-            <CountContainer>
-                <VotesContainer>
-                    <IconButton onClick={VoteUp}>
-                        {props.direction===1
-                            ?
-                            <ArrowUpward fontSize="inherit" style={{ color: green[500] }}/>
-                            :
-                            <ArrowUpward fontSize="inherit" color="inherit"/>
-                        }
-                    </IconButton>
-                    <p><b>{props.votesCount}</b></p>
-                    <IconButton onClick={VoteDown}>
-                        {props.direction===-1
-                            ?
-                            <ArrowDownward fontSize="inherit" style={{ color: red[500] }}/>
-                            :
-                            <ArrowDownward fontSize="inherit" color="inherit"/>
-                        }
-                    </IconButton>
-                </VotesContainer>
-                <p>{props.commentsCount} comentários</p>
-            </CountContainer>
+            <Card variant="contained">
+                <ClickContainer onClick={()=> goToPostPage(history,props.id)}>
+                    <Typography color="textSecondary" gutterBottom>
+                        <p>Postado por <b>{props.username}</b></p>
+                    </Typography>
+                    <Typography variant="h5" component="h2">
+                        <p><b>{props.title}</b></p>
+                    </Typography>
+                    <Typography variant="body2" component="p">
+                        <p>{props.text}</p>
+                    </Typography>
+                </ClickContainer>
+                <CountContainer>
+                    <VotesContainer>
+                        <IconButton onClick={VoteUp}>
+                            {props.direction===1
+                                ?
+                                <ArrowUpward fontSize="inherit" style={{ color: green[500] }}/>
+                                :
+                                <ArrowUpward fontSize="inherit" color="inherit"/>
+                            }
+                        </IconButton>
+                        <p><b>{props.votesCount}</b></p>
+                        <IconButton onClick={VoteDown}>
+                            {props.direction===-1
+                                ?
+                                <ArrowDownward fontSize="inherit" style={{ color: red[500] }}/>
+                                :
+                                <ArrowDownward fontSize="inherit" color="inherit"/>
+                            }
+                        </IconButton>
+                    </VotesContainer>
+                    <p>{props.commentsCount} comentários</p>
+                </CountContainer>
+            </Card>
         </PostContainer>
     )
 }

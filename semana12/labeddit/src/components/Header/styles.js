@@ -22,8 +22,15 @@ export const Hello = styled(Typography) `
     font-weight: bold;
 `
 export const Title = styled(Typography) `
-    cursor: pointer;
     font-weight: bold;
+`
+export const TitleColor = styled(Typography) `
+    font-weight: bold;
+    color: orangered;
+`
+export const TitleContainer = styled.div `
+    display: flex;
+    cursor: pointer;
 `
 export const ButtonStyled = styled(Button) `
     height: 4vh;

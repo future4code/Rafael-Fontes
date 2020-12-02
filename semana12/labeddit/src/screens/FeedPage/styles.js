@@ -12,6 +12,14 @@ export const NewPostContainer = styled.form `
     max-width: 465px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 10vh;
+    margin-top: 10px;
     min-height: 18vh;
+`
+export const FeedPageContainer = styled.div `
+    display: flex;
+    flex-direction: column;
+    margin-top: 8vh;
+    height: 100%;
+    min-height: 100vh;
+    background-color: #DBE0E6;
 `

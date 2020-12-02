@@ -15,9 +15,13 @@ export const NewCommentContainer = styled.form `
 export const CommentsContainer = styled.div `
     display: flex;
     flex-direction: column;
+    background-color: #DBE0E6;
 `
 export const PostPageContainer = styled.div `
     display: flex;
     flex-direction: column;
-    margin-top: 9vh;
+    margin-top: 8vh;
+    height: 100%;
+    min-height: 100vh;
+    background-color: #DBE0E6;
 `

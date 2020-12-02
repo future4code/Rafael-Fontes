@@ -1,7 +1,7 @@
 import React from 'react'
 import { CommentContainer, CountContainer, VotesContainer } from './styles'
 import { ArrowDownward, ArrowUpward } from '@material-ui/icons'
-import { IconButton } from '@material-ui/core'
+import { IconButton, Card, Typography } from '@material-ui/core'
 import Axios from 'axios'
 import { green, red } from '@material-ui/core/colors'
 
@@ -59,29 +59,35 @@ const Comment = (props) => {
 
     return (
         <CommentContainer>
-            <p>Comentado por <b>{props.username}</b></p>
-            <p>{props.text}</p>
-            <CountContainer>
-                <VotesContainer>
-                    <IconButton onClick={VoteUp}>
-                        {props.direction===1
-                            ?
-                            <ArrowUpward fontSize="inherit" style={{ color: green[500] }}/>
-                            :
-                            <ArrowUpward fontSize="inherit" color="inherit"/>
-                        }
-                    </IconButton>
-                    <p><b>{props.votesCount}</b></p>
-                    <IconButton onClick={VoteDown}>
-                        {props.direction===-1
-                            ?
-                            <ArrowDownward fontSize="inherit" style={{ color: red[500] }}/>
-                            :
-                            <ArrowDownward fontSize="inherit" color="inherit"/>
-                        }
-                    </IconButton>
-                </VotesContainer>
-            </CountContainer>
+            <Card variant="contained">
+                <Typography color="textSecondary" gutterBottom>
+                    <p>Postado por <b>{props.username}</b></p>
+                </Typography>
+                <Typography variant="body2" component="p">
+                    <p>{props.text}</p>
+                </Typography>
+                <CountContainer>
+                    <VotesContainer>
+                        <IconButton onClick={VoteUp}>
+                            {props.direction===1
+                                ?
+                                <ArrowUpward fontSize="inherit" style={{ color: green[500] }}/>
+                                :
+                                <ArrowUpward fontSize="inherit" color="inherit"/>
+                            }
+                        </IconButton>
+                        <p><b>{props.votesCount}</b></p>
+                        <IconButton onClick={VoteDown}>
+                            {props.direction===-1
+                                ?
+                                <ArrowDownward fontSize="inherit" style={{ color: red[500] }}/>
+                                :
+                                <ArrowDownward fontSize="inherit" color="inherit"/>
+                            }
+                        </IconButton>
+                    </VotesContainer>
+                </CountContainer>
+            </Card>
         </CommentContainer>
     )
 }
