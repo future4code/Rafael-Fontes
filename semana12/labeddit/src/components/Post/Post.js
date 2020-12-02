@@ -72,11 +72,21 @@ const Post = (props) => {
             <CountContainer>
                 <VotesContainer>
                     <IconButton onClick={VoteUp}>
-                        <ArrowUpward fontSize="inherit" />
+                        {props.direction===1
+                            ?
+                            <ArrowUpward fontSize="inherit" color="secondary"/>
+                            :
+                            <ArrowUpward fontSize="inherit" color="inherit"/>
+                        }
                     </IconButton>
                     <p>{props.votesCount}</p>
                     <IconButton onClick={VoteDown}>
-                        <ArrowDownward fontSize="inherit" />
+                        {props.direction===-1
+                            ?
+                            <ArrowDownward fontSize="inherit" color="secondary"/>
+                            :
+                            <ArrowDownward fontSize="inherit" color="inherit"/>
+                        }
                     </IconButton>
                 </VotesContainer>
                 <p>{props.commentsCount} comentários</p>
