@@ -21,7 +21,7 @@ const PostPage = () => {
 
     useEffect(()=>{
         GetPostDetails()
-    },[])
+    },[postDetails])
 
     const GetPostDetails = () => {
         Axios.get(`https://us-central1-labenu-apis.cloudfunctions.net/labEddit/posts/${params.id}`,
@@ -70,6 +70,7 @@ const PostPage = () => {
                 commentsCount={postDetails.commentsCount}
                 id={postDetails.id}
                 title={postDetails.title}
+                direction={postDetails.userVoteDirection}
             />
             <NewCommentContainer onSubmit={SendComment}>
                 <textarea

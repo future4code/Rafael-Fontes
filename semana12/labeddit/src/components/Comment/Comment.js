@@ -25,7 +25,6 @@ const Comment = (props) => {
         })
         .then((res)=>{
             console.log(res)
-            alert("VoteUp")
         })
         .catch((err)=>{
             console.log(err)
@@ -51,7 +50,6 @@ const Comment = (props) => {
         })
         .then((res)=>{
             console.log(res)
-            alert("VoteDown")
         })
         .catch((err)=>{
             console.log(err)
@@ -60,7 +58,7 @@ const Comment = (props) => {
 
     return (
         <CommentContainer>
-            <p><b>{props.username}</b></p>
+            <p>Comentado por <b>{props.username}</b></p>
             <p>{props.text}</p>
             <CountContainer>
                 <VotesContainer>

@@ -20,7 +20,7 @@ const FeedPage = () => {
 
     useEffect(()=>{
         GetPosts()
-    },[])
+    },[posts])
 
     const GetPosts = () => {
         Axios.get('https://us-central1-labenu-apis.cloudfunctions.net/labEddit/posts',
