@@ -5,6 +5,8 @@ import { goToFeedPage, goToSignUpPage } from '../../router/Coordinator'
 import { useForm } from '../../hooks/UseForm'
 import axios from 'axios'
 import { useUnprotectedPage } from '../../hooks/UseUnprotectedPage'
+import { FormContainer } from './styles'
+import { Button, TextField } from '@material-ui/core'
 
 const LoginPage = () => {
     useUnprotectedPage()
@@ -28,7 +30,7 @@ const LoginPage = () => {
             localStorage.setItem('token',res.data.token)
             localStorage.setItem('username',res.data.user.username)
             goToFeedPage(history)
-            alert(`Bem-vindo ${res.data.user.username} Logado com sucesso.`)
+            alert(`Bem-vinde ${res.data.user.username}! Acesso autorizado.`)
         })
         .catch((err)=> {
             console.log(err)
@@ -39,12 +41,12 @@ const LoginPage = () => {
     return (
         <div>
             <Header />
-            <form onSubmit={onSubmitForm}>
-                <input name='email' value={form.email} type='email' required onChange={handleInputChange}/>
-                <input name='password' value={form.password} type='password' required onChange={handleInputChange}/>
-                <button type='submit'>Entrar</button>    
-            </form>
-            <button onClick={()=> goToSignUpPage(history)}>Não possui cadastro? Clique Aqui!</button>
+            <FormContainer onSubmit={onSubmitForm}>
+                <TextField label="E-mail" color="primary" variant="outlined" name='email' value={form.email} type='email' required onChange={handleInputChange}/>
+                <TextField label="Senha" color="primary" variant="outlined" name='password' value={form.password} type='password' required onChange={handleInputChange}/>
+                <Button type='submit' color="primary" variant="contained">Entrar</Button>    
+            </FormContainer>
+            <Button onClick={()=> goToSignUpPage(history)}>Não possui cadastro? Clique Aqui!</Button>
         </div>
     )
 }

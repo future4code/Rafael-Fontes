@@ -70,7 +70,7 @@ const Comment = (props) => {
                             <ArrowUpward fontSize="inherit" color="inherit"/>
                         }
                     </IconButton>
-                    <p>{props.votesCount}</p>
+                    <p><b>{props.votesCount}</b></p>
                     <IconButton onClick={VoteDown}>
                         {props.direction===-1
                             ?

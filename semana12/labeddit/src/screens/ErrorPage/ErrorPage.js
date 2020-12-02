@@ -2,6 +2,8 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import Header from '../../components/Header/Header'
 import { goToFeedPage } from '../../router/Coordinator'
+import { Button } from '@material-ui/core'
+import { ErrorContainer } from './styles'
 
 const ErrorPage = () => {
     const history = useHistory()
@@ -9,8 +11,11 @@ const ErrorPage = () => {
     return (
         <div>
             <Header />
-            ErrorPage
-            <button onClick={() => goToFeedPage(history)}>Voltar</button>
+            <ErrorContainer>
+                <h2>Esta página não existe!</h2>
+                <Button variant="contained" color="primary" onClick={() => goToFeedPage(history)}>Voltar</Button>
+            </ErrorContainer>
+
         </div>
     )
 }

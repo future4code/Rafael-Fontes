@@ -6,6 +6,7 @@ import Post from '../../components/Post/Post'
 import { useForm } from '../../hooks/UseForm'
 import { useProtectedPage } from '../../hooks/UseProtectedPage'
 import { FeedContainer, NewPostContainer } from './styles'
+import { Button, TextField } from '@material-ui/core'
 
 const FeedPage = () => {
     useProtectedPage()
@@ -65,21 +66,28 @@ const FeedPage = () => {
             <Header />
 
             <NewPostContainer onSubmit={CreatePost}>
-                <input
+                <TextField
                     name='title'
                     value={form.title}
+                    label="Título"
+                    variant="outlined"
+                    color="primary"
                     required
                     onChange={handleInputChange}
-                    placeholder="Escreva um Título"
+                    placeholder="Escreva um título aqui"
                 />
-                <textarea
+                <TextField
                     name='text'
                     value={form.text}
+                    label="Texto"
+                    variant="outlined"
+                    color="primary"
+                    multiline
                     required
                     onChange={handleInputChange}
-                    placeholder="Escreva um novo post aqui"
+                    placeholder="Escreva um texto aqui"
                 />
-                <button type="submit">Postar</button>
+                <Button type="submit" variant="contained" color="primary">Postar</Button>
             </NewPostContainer>
 
             <FeedContainer>

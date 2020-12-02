@@ -1,7 +1,8 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
-import { goToLoginPage, goToFeedPage, goToPostPage, goToSignUpPage } from '../../router/Coordinator'
-import { NavBar, Options, Hello, Title } from './styles'
+import { goToLoginPage, goToFeedPage, goToSignUpPage } from '../../router/Coordinator'
+import { NavBar, Options, Hello, Title, ButtonStyled } from './styles'
+import { AppBar, Toolbar } from '@material-ui/core'
 
 const Header = () => {
     const history = useHistory()
@@ -15,22 +16,25 @@ const Header = () => {
     }
 
     return (
-        <NavBar>
-            <Title onClick={()=> goToFeedPage(history)}>labeddit</Title>
-            {token ?
-                <Options>
-                    <Hello>Olá {username}</Hello>
-                    <button onClick={logout}>Sair</button>
-                </Options>
-            :
-                <Options>
-                    <button onClick={()=> goToLoginPage(history)}>Entrar</button>
-                    <button onClick={()=> goToSignUpPage(history)}>Cadastrar</button>
-                </Options>
-            }            
-            {/* <button onClick={()=> goToFeedPage(history)}>Feed</button>
-            <button onClick={()=> goToPostPage(history)}>Meus Posts</button> */}
-        </NavBar>
+        <AppBar color="inherit" position="fixed">
+            {/* <Toolbar > */}
+                <NavBar>
+                    <Title onClick={()=> goToFeedPage(history)}>labeddit</Title>
+                    {token ?
+                        <Options>
+                            <Hello>Olá {username}!</Hello>
+                            <ButtonStyled color="primary" variant="outlined" onClick={logout}>Sair</ButtonStyled>
+                        </Options>
+                    :
+                        <Options>
+                            <ButtonStyled color="primary" variant="outlined" onClick={()=> goToLoginPage(history)}>Entrar</ButtonStyled>
+                            <ButtonStyled color="primary" variant="contained" onClick={()=> goToSignUpPage(history)}>Cadastrar</ButtonStyled>
+                        </Options>
+                    }            
+                </NavBar>
+            {/* </Toolbar> */}
+        </AppBar>
+
     )
 }
 

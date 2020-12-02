@@ -4,6 +4,7 @@ export const PostContainer = styled.div `
     display: flex;
     flex-direction: column;
     border: 1px red solid;
+    border-radius: 5px;
     width: 80vw;
     max-width: 465px;
     margin-left: auto;
@@ -24,8 +25,11 @@ export const VotesContainer = styled.div `
     display: flex;
 `
 export const Title = styled.p `
-    cursor: pointer;
+    
 `
 export const TextPost = styled.p `
+    
+`
+export const ClickContainer = styled.div `
     cursor: pointer;
 `

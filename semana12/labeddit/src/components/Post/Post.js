@@ -1,7 +1,7 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { goToPostPage } from '../../router/Coordinator'
-import { PostContainer, CountContainer, TitleContainer, VotesContainer } from './styles'
+import { PostContainer, CountContainer, TitleContainer, VotesContainer, ClickContainer } from './styles'
 import { ArrowDownward, ArrowUpward } from '@material-ui/icons'
 import {IconButton} from '@material-ui/core'
 import { Title, TextPost } from './styles'
@@ -62,11 +62,14 @@ const Post = (props) => {
 
     return (
         <PostContainer>
-            <TitleContainer>
-                <Title onClick={()=> goToPostPage(history,props.id)}><b>{props.title}</b></Title>
-                <p>Postado por {props.username}</p>
-            </TitleContainer>
-            <TextPost onClick={()=> goToPostPage(history,props.id)}>{props.text}</TextPost>
+            <ClickContainer onClick={()=> goToPostPage(history,props.id)}>
+                <TitleContainer>
+                    <Title><b>{props.title}</b></Title>
+                    <p>Postado por {props.username}</p>
+                </TitleContainer>
+                <TextPost>{props.text}</TextPost>
+            </ClickContainer>
+
             <CountContainer>
                 <VotesContainer>
                     <IconButton onClick={VoteUp}>
@@ -77,7 +80,7 @@ const Post = (props) => {
                             <ArrowUpward fontSize="inherit" color="inherit"/>
                         }
                     </IconButton>
-                    <p>{props.votesCount}</p>
+                    <p><b>{props.votesCount}</b></p>
                     <IconButton onClick={VoteDown}>
                         {props.direction===-1
                             ?

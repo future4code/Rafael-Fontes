@@ -4,7 +4,8 @@ import Post from '../../components/Post/Post'
 import Comment from '../../components/Comment/Comment'
 import { useForm } from '../../hooks/UseForm'
 import { useProtectedPage } from '../../hooks/UseProtectedPage'
-import { CommentsContainer, NewCommentContainer } from './styles'
+import { CommentsContainer, NewCommentContainer, PostPageContainer } from './styles'
+import { Button, TextField } from '@material-ui/core'
 import { useParams } from 'react-router-dom'
 import Axios from 'axios'
 
@@ -63,41 +64,47 @@ const PostPage = () => {
     return (
         <div>
             <Header />
-            <Post
-                username={postDetails.username}
-                text={postDetails.text}
-                votesCount={postDetails.votesCount}
-                commentsCount={postDetails.commentsCount}
-                id={postDetails.id}
-                title={postDetails.title}
-                direction={postDetails.userVoteDirection}
-            />
-            <NewCommentContainer onSubmit={SendComment}>
-                <textarea
-                    name='text'
-                    value={form.text}
-                    required
-                    onChange={handleInputChange}
-                    placeholder="Escreva um comentário aqui"
+                <PostPageContainer>
+                <Post
+                    username={postDetails.username}
+                    text={postDetails.text}
+                    votesCount={postDetails.votesCount}
+                    commentsCount={postDetails.commentsCount}
+                    id={postDetails.id}
+                    title={postDetails.title}
+                    direction={postDetails.userVoteDirection}
                 />
-                <button type="submit">Enviar comentário</button>
-            </NewCommentContainer>
-            <CommentsContainer>
-                {postDetails.comments && 
-                    postDetails.comments.map(post=> {
-                        return(
-                            <Comment
-                                username={post.username}
-                                text={post.text}
-                                votesCount={post.votesCount}
-                                id={post.id}
-                                postId={params.id}
-                                direction={post.userVoteDirection}
-                            />
-                        )
-                        })
-                }
-            </CommentsContainer>
+                <NewCommentContainer onSubmit={SendComment}>
+                    <TextField
+                        name='text'
+                        value={form.text}
+                        label="Novo Comentário"
+                        variant="outlined"
+                        color="primary"
+                        multiline
+                        required
+                        onChange={handleInputChange}
+                        placeholder="Escreva um comentário aqui"
+                    />
+                    <Button type="submit" type="submit" variant="contained" color="primary">Enviar comentário</Button>
+                </NewCommentContainer>
+                <CommentsContainer>
+                    {postDetails.comments && 
+                        postDetails.comments.map(post=> {
+                            return(
+                                <Comment
+                                    username={post.username}
+                                    text={post.text}
+                                    votesCount={post.votesCount}
+                                    id={post.id}
+                                    postId={params.id}
+                                    direction={post.userVoteDirection}
+                                />
+                            )
+                            })
+                    }
+                </CommentsContainer>
+            </PostPageContainer>
         </div>
     )
 }

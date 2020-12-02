@@ -5,6 +5,9 @@ import { goToFeedPage, goToLoginPage } from '../../router/Coordinator'
 import { useForm } from '../../hooks/UseForm'
 import axios from 'axios'
 import { useUnprotectedPage } from '../../hooks/UseUnprotectedPage'
+import { FormContainer } from './styles'
+import { Button, TextField } from '@material-ui/core'
+import { TerrainSharp } from '@material-ui/icons'
 
 const SignUpPage = () => {
     useUnprotectedPage()
@@ -29,7 +32,7 @@ const SignUpPage = () => {
             localStorage.setItem('token',res.data.token)
             localStorage.setItem('username',res.data.user.username)
             goToFeedPage(history)
-            alert(`Bem-vindo ${res.data.user.username}. Cadastro criado com sucesso.`)
+            alert(`Bem-vinde ${res.data.user.username}! Cadastro criado com sucesso.`)
         })
         .catch((err)=> {
             console.log(err)
@@ -39,13 +42,13 @@ const SignUpPage = () => {
     return (
         <div>
             <Header />
-            <form onSubmit={onSubmitForm}>
-                <input name='name' value={form.name} type='text' required onChange={handleInputChange}/>
-                <input name='email' value={form.email} type='email' required onChange={handleInputChange}/>
-                <input name='password' value={form.password} type='password' required onChange={handleInputChange}/>
-                <button type='submit'>Cadastrar</button>    
-            </form>
-            <button onClick={()=> goToLoginPage(history)}>Voltar</button>
+            <FormContainer onSubmit={onSubmitForm}>
+                <TextField label="Nome" color="primary" variant="outlined" name='name' value={form.name} type='text' required onChange={handleInputChange}/>
+                <TextField label="E-mail" color="primary" variant="outlined" name='email' value={form.email} type='email' required onChange={handleInputChange}/>
+                <TextField label="Senha" color="primary" variant="outlined" name='password' value={form.password} type='password' required onChange={handleInputChange}/>
+                <Button type='submit' color="primary" variant="contained">Cadastrar</Button>    
+            </FormContainer>
+            <Button onClick={()=> goToLoginPage(history)}>Voltar para tela de acesso</Button>
         </div>
     )
 }
