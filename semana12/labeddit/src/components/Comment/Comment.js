@@ -1,5 +1,5 @@
 import React from 'react'
-import { CommentContainer, CountContainer, VotesContainer } from './styles'
+import { CommentContainer, CommentText, CountContainer, VotesContainer } from './styles'
 import { ArrowDownward, ArrowUpward } from '@material-ui/icons'
 import { IconButton, Card, Typography } from '@material-ui/core'
 import Axios from 'axios'
@@ -63,9 +63,9 @@ const Comment = (props) => {
                 <Typography color="textSecondary" gutterBottom>
                     <p>Postado por <b>{props.username}</b></p>
                 </Typography>
-                <Typography variant="body2" component="p">
+                <CommentText variant="body2" component="p">
                     <p>{props.text}</p>
-                </Typography>
+                </CommentText>
                 <CountContainer>
                     <VotesContainer>
                         <IconButton onClick={VoteUp}>

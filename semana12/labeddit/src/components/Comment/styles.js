@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Typography } from '@material-ui/core'
 
 export const CommentContainer = styled.div `
     display: flex;
@@ -18,4 +19,7 @@ export const CountContainer = styled.div `
 `
 export const VotesContainer = styled.div `
     display: flex;
+`
+export const CommentText = styled(Typography) `
+    padding: 5px;
 `

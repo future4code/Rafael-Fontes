@@ -5,9 +5,10 @@ import Header from '../../components/Header/Header'
 import Post from '../../components/Post/Post'
 import { useForm } from '../../hooks/UseForm'
 import { useProtectedPage } from '../../hooks/UseProtectedPage'
-import { FeedContainer, FeedPageContainer, NewPostContainer } from './styles'
+import { BackToTop, FeedContainer, FeedPageContainer, NewPostContainer } from './styles'
 import { Button, TextField } from '@material-ui/core'
-import { grey } from '@material-ui/core/colors'
+import { grey, red } from '@material-ui/core/colors'
+import { KeyboardArrowUp } from '@material-ui/icons'
 
 const FeedPage = () => {
     useProtectedPage()
@@ -19,6 +20,10 @@ const FeedPage = () => {
         const { value, name } = event.target
         onChange(value, name)
     }
+
+    useEffect(()=>{
+        topFunction()
+    },[])
 
     useEffect(()=>{
         GetPosts()
@@ -60,6 +65,22 @@ const FeedPage = () => {
         .catch((err)=>{
             console.log(err)
         })
+    }
+    
+    var mybutton = document.getElementById("back-to-top");
+    window.onscroll = function() {scrollFunction()};
+    
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
     }
 
     return (
@@ -112,8 +133,10 @@ const FeedPage = () => {
                         "Carregando..."
                     }
                 </FeedContainer>
+                <BackToTop onClick={topFunction} id="back-to-top" style={{ backgroundColor: red[500] }}>
+                    <KeyboardArrowUp style={{ color: grey[50] }}/>
+                </BackToTop>
             </FeedPageContainer>
-
         </div>
     )
 }

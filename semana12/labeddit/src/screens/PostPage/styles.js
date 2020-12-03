@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Fab } from '@material-ui/core'
 
 export const NewCommentContainer = styled.form `
     display: flex;
@@ -24,4 +25,10 @@ export const PostPageContainer = styled.div `
     height: 100%;
     min-height: 100vh;
     background-color: #DBE0E6;
+`
+export const BackToTop = styled(Fab) `
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
 `

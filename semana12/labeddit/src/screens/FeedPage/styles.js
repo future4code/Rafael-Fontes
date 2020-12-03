@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Fab } from '@material-ui/core'
 
 export const FeedContainer = styled.div `
     display: flex;
@@ -22,4 +23,10 @@ export const FeedPageContainer = styled.div `
     height: 100%;
     min-height: 100vh;
     background-color: #DBE0E6;
+`
+export const BackToTop = styled(Fab) `
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
 `

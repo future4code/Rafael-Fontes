@@ -15,7 +15,7 @@ export const Options = styled.div `
     justify-content: space-around;
     align-items: center;
     padding: 10px;
-    width: 11vw;
+    min-width: 11vw;
 `
 export const Hello = styled(Typography) `
     margin-right: 15px;
