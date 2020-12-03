@@ -27,7 +27,7 @@ const FeedPage = () => {
 
     useEffect(()=>{
         GetPosts()
-    },[posts])
+    },[])
 
     const GetPosts = () => {
         Axios.get('https://us-central1-labenu-apis.cloudfunctions.net/labEddit/posts',
@@ -82,7 +82,7 @@ const FeedPage = () => {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
     }
-console.log(posts)
+
     return (
         <div>
             <Header />
@@ -131,6 +131,7 @@ console.log(posts)
                                     id={post.id}
                                     title={post.title}
                                     direction={post.userVoteDirection}
+                                    getPosts={GetPosts}
                                 />
                             )
                         })

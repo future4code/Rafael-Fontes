@@ -28,7 +28,7 @@ const Post = (props) => {
             }
         })
         .then((res)=>{
-            console.log(res)
+            props.getPosts()
         })
         .catch((err)=>{
             console.log(err)
@@ -53,7 +53,7 @@ const Post = (props) => {
             }
         })
         .then((res)=>{
-            console.log(res)
+            props.getPosts()
         })
         .catch((err)=>{
             console.log(err)

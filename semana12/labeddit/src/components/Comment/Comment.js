@@ -25,7 +25,7 @@ const Comment = (props) => {
             }
         })
         .then((res)=>{
-            console.log(res)
+            props.getPostDetails()
         })
         .catch((err)=>{
             console.log(err)
@@ -50,7 +50,7 @@ const Comment = (props) => {
             }
         })
         .then((res)=>{
-            console.log(res)
+            props.getPostDetails()
         })
         .catch((err)=>{
             console.log(err)

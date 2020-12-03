@@ -28,7 +28,7 @@ const PostPage = () => {
 
     useEffect(()=>{
         GetPostDetails()
-    },[postDetails])
+    },[])
 
     const GetPostDetails = () => {
         Axios.get(`https://us-central1-labenu-apis.cloudfunctions.net/labEddit/posts/${params.id}`,
@@ -81,7 +81,7 @@ const PostPage = () => {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
     }
-
+console.log(postDetails)
     return (
         <div>
             <Header />
@@ -127,6 +127,7 @@ const PostPage = () => {
                                     id={post.id}
                                     postId={params.id}
                                     direction={post.userVoteDirection}
+                                    getPostDetails={GetPostDetails}
                                 />
                             )
                             })
