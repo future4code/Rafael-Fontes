@@ -5,7 +5,7 @@ import Header from '../../components/Header/Header'
 import Post from '../../components/Post/Post'
 import { useForm } from '../../hooks/UseForm'
 import { useProtectedPage } from '../../hooks/UseProtectedPage'
-import { BackToTop, FeedContainer, FeedPageContainer, Loading, NewPostContainer } from './styles'
+import { BackToTop, ButtonRemember, FeedContainer, FeedPageContainer, Loading, NewPostContainer, RememberContainer } from './styles'
 import { Button, TextField, CircularProgress, Typography } from '@material-ui/core'
 import { grey, red } from '@material-ui/core/colors'
 import { KeyboardArrowUp } from '@material-ui/icons'
@@ -22,11 +22,8 @@ const FeedPage = () => {
     }
 
     useEffect(()=>{
-        topFunction()
-    },[])
-
-    useEffect(()=>{
         GetPosts()
+        topFunction()
     },[])
 
     const GetPosts = () => {
@@ -67,21 +64,33 @@ const FeedPage = () => {
         })
     }
     
-    var mybutton = document.getElementById("back-to-top");
-    window.onscroll = function() {scrollFunction()};
+    let mybutton = document.getElementById("back-to-top")
+    window.onscroll = function() {scrollFunction()}
     
     function scrollFunction() {
-      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        mybutton.style.display = "block";
-      } else {
-        mybutton.style.display = "none";
-      }
+        if (posts.length>0) {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block"
+            } else {
+                mybutton.style.display = "none"
+            }
+        }
     }
 
     function topFunction() {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
     }
+    
+    // function updateRemember() {
+    //     rememberTime=0
+    //     console.log("tempo esgotado",rememberTime)
+    // }
+    
+    // let mydiv = document.getElementById("remember")
+    // function updateFeed() {
+    //     GetPosts()
+    // }
 
     return (
         <div>
@@ -121,20 +130,27 @@ const FeedPage = () => {
                             <CircularProgress />
                         </Loading>
                         :
-                        posts.map(post=> {
-                            return(
-                                <Post
-                                    username={post.username}
-                                    text={post.text}
-                                    votesCount={post.votesCount}
-                                    commentsCount={post.commentsCount}
-                                    id={post.id}
-                                    title={post.title}
-                                    direction={post.userVoteDirection}
-                                    getPosts={GetPosts}
-                                />
-                            )
-                        })
+                        <div>
+                            {/* <RememberContainer id="remember" >
+                                <ButtonRemember onClick={updateFeed}>Atualizar</ButtonRemember>
+                            </RememberContainer> */}
+                            <div>
+                            {posts.map(post=> {
+                                return(
+                                    <Post
+                                        username={post.username}
+                                        text={post.text}
+                                        votesCount={post.votesCount}
+                                        commentsCount={post.commentsCount}
+                                        id={post.id}
+                                        title={post.title}
+                                        direction={post.userVoteDirection}
+                                        getPosts={GetPosts}
+                                    />
+                                )
+                            })}
+                            </div>
+                        </div>
                     }
                 </FeedContainer>
                 <BackToTop onClick={topFunction} id="back-to-top" style={{ backgroundColor: red[500] }}>

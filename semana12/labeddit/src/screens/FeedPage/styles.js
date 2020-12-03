@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Fab } from '@material-ui/core'
+import { Button, Fab } from '@material-ui/core'
 
 export const FeedContainer = styled.div `
     display: flex;
@@ -37,4 +37,10 @@ export const Loading = styled.div `
     height: 10vh;
     margin: 20vh auto;
     align-items: center;
+`
+export const RememberContainer = styled.div `
+    display:block;
+`
+export const ButtonRemember = styled(Button) `
+    /* display: none; */
 `
