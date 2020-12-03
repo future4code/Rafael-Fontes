@@ -4,8 +4,8 @@ import Post from '../../components/Post/Post'
 import Comment from '../../components/Comment/Comment'
 import { useForm } from '../../hooks/UseForm'
 import { useProtectedPage } from '../../hooks/UseProtectedPage'
-import { BackToTop, CommentsContainer, NewCommentContainer, PostPageContainer } from './styles'
-import { Button, TextField } from '@material-ui/core'
+import { BackToTop, CommentsContainer, NewCommentContainer, PostPageContainer, Loading } from './styles'
+import { Button, TextField, Typography, CircularProgress } from '@material-ui/core'
 import { useParams } from 'react-router-dom'
 import { grey, red } from '@material-ui/core/colors'
 import { KeyboardArrowUp } from '@material-ui/icons'
@@ -111,7 +111,13 @@ const PostPage = () => {
                     <Button type="submit" type="submit" variant="contained" color="primary">Enviar comentário</Button>
                 </NewCommentContainer>
                 <CommentsContainer>
-                    {postDetails.comments && 
+                    {postDetails.length===0
+                        ? 
+                        <Loading>
+                            <Typography variant="h5" color="primary">Carregando...</Typography>
+                            <CircularProgress />
+                        </Loading>
+                        :
                         postDetails.comments.map(post=> {
                             return(
                                 <Comment

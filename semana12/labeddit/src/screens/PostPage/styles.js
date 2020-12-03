@@ -32,3 +32,11 @@ export const BackToTop = styled(Fab) `
     bottom: 30px;
     right: 30px;
 `
+export const Loading = styled.div `
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 10vh;
+    margin: 20vh auto;
+    align-items: center;
+`

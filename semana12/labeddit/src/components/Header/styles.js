@@ -34,4 +34,5 @@ export const TitleContainer = styled.div `
 `
 export const ButtonStyled = styled(Button) `
     height: 4vh;
+    margin-left: 10px;
 `

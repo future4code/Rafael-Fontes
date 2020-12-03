@@ -5,8 +5,8 @@ import Header from '../../components/Header/Header'
 import Post from '../../components/Post/Post'
 import { useForm } from '../../hooks/UseForm'
 import { useProtectedPage } from '../../hooks/UseProtectedPage'
-import { BackToTop, FeedContainer, FeedPageContainer, NewPostContainer } from './styles'
-import { Button, TextField } from '@material-ui/core'
+import { BackToTop, FeedContainer, FeedPageContainer, Loading, NewPostContainer } from './styles'
+import { Button, TextField, CircularProgress, Typography } from '@material-ui/core'
 import { grey, red } from '@material-ui/core/colors'
 import { KeyboardArrowUp } from '@material-ui/icons'
 
@@ -82,7 +82,7 @@ const FeedPage = () => {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
     }
-
+console.log(posts)
     return (
         <div>
             <Header />
@@ -114,8 +114,13 @@ const FeedPage = () => {
                     <Button type="submit" variant="contained" color="primary">Postar</Button>
                 </NewPostContainer>
                 <FeedContainer>
-                    {posts!==[]
+                    {posts.length===0
                         ? 
+                        <Loading>
+                            <Typography variant="h5" color="primary">Carregando...</Typography>
+                            <CircularProgress />
+                        </Loading>
+                        :
                         posts.map(post=> {
                             return(
                                 <Post
@@ -129,8 +134,6 @@ const FeedPage = () => {
                                 />
                             )
                         })
-                        :
-                        "Carregando..."
                     }
                 </FeedContainer>
                 <BackToTop onClick={topFunction} id="back-to-top" style={{ backgroundColor: red[500] }}>
