@@ -8,7 +8,7 @@ export const FormContainer = styled.form `
     margin-right: auto;
     width: 80vw;
     max-width: 465px;
-    height: 22vh;
+    min-height: 22vh;
     justify-content: space-around;
 `
 export const LoginPageContainer = styled.div `

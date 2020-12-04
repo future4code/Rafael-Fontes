@@ -19,10 +19,14 @@ export const NewPostContainer = styled.form `
 export const FeedPageContainer = styled.div `
     display: flex;
     flex-direction: column;
-    margin-top: 8vh;
+    padding-top: 9vh;
     height: 100%;
     min-height: 100vh;
     background-color: #DBE0E6;
+
+    @media (max-width: 500px) {
+        padding-top: 18vh;
+    }
 `
 export const BackToTop = styled(Fab) `
     display: none;

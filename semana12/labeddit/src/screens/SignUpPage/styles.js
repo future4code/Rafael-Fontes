@@ -8,7 +8,7 @@ export const FormContainer = styled.form `
     margin-right: auto;
     width: 80vw;
     max-width: 465px;
-    height: 31vh;
+    min-height: 31vh;
     justify-content: space-around;
 `
 export const SignUpPageContainer = styled.div `

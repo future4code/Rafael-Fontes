@@ -9,6 +9,12 @@ export const NavBar = styled(Toolbar) `
     margin-right: 20px;
     height: 8vh;
     flex-wrap: wrap;
+
+    @media (max-width: 500px) {
+        flex-direction: row;
+        height: auto;
+        justify-content: center;
+    }
 `
 export const Options = styled.div `
     display: flex;
@@ -35,4 +41,7 @@ export const TitleContainer = styled.div `
 export const ButtonStyled = styled(Button) `
     height: 4vh;
     margin-left: 10px;
+`
+export const SearchContainer = styled.div `
+
 `
