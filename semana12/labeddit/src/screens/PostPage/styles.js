@@ -27,7 +27,7 @@ export const PostPageContainer = styled.div `
     background-color: #DBE0E6;
 
     @media (max-width: 500px) {
-        padding-top: 20vh;
+        padding-top: 22vh;
     }
 `
 export const BackToTop = styled(Fab) `
