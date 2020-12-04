@@ -23,6 +23,7 @@ const PostPage = () => {
     }
 
     useEffect(()=>{
+        setInterval(updatePage, 180000)
         GetPostDetails()
         topFunction()
     },[])
@@ -79,6 +80,10 @@ const PostPage = () => {
     function topFunction() {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
+    }
+
+    function updatePage() {
+        GetPostDetails()
     }
 
     return (

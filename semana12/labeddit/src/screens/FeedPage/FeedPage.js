@@ -22,6 +22,7 @@ const FeedPage = () => {
     }
 
     useEffect(()=>{
+        setInterval(updatePage, 180000)
         GetPosts()
         topFunction()
     },[])
@@ -82,16 +83,10 @@ const FeedPage = () => {
         document.documentElement.scrollTop = 0;
     }
     
-    // function updateRemember() {
-    //     rememberTime=0
-    //     console.log("tempo esgotado",rememberTime)
-    // }
+    function updatePage() {
+        GetPosts()
+    }
     
-    // let mydiv = document.getElementById("remember")
-    // function updateFeed() {
-    //     GetPosts()
-    // }
-
     return (
         <div>
             <Header />
