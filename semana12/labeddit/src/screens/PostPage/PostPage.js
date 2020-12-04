@@ -117,7 +117,7 @@ const PostPage = () => {
                             <CircularProgress />
                         </Loading>
                         :
-                        postDetails.comments.map(post=> {
+                        postDetails.comments.sort((a, b) => a.createdAt < b.createdAt ? 1:-1).map(post=> {
                             return(
                                 <Comment
                                     username={post.username}

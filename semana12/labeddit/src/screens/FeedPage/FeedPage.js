@@ -135,7 +135,7 @@ const FeedPage = () => {
                                 <ButtonRemember onClick={updateFeed}>Atualizar</ButtonRemember>
                             </RememberContainer> */}
                             <div>
-                            {posts.map(post=> {
+                            {posts.sort((a, b) => a.createdAt < b.createdAt ? 1:-1).map(post=> {
                                 return(
                                     <Post
                                         username={post.username}
