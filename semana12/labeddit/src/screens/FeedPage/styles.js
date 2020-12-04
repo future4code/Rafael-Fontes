@@ -25,7 +25,7 @@ export const FeedPageContainer = styled.div `
     background-color: #DBE0E6;
 
     @media (max-width: 500px) {
-        padding-top: 18vh;
+        padding-top: 21vh;
     }
 `
 export const BackToTop = styled(Fab) `
