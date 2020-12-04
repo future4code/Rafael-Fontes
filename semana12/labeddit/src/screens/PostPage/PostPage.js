@@ -15,6 +15,8 @@ const PostPage = () => {
     useProtectedPage()
     const params = useParams()
     const [postDetails,setPostDetails] = useState([])
+    const [filteredPosts,setFilteredPosts] = useState([])
+    const [searchContent,setSearchContent] = useState("")
     const {form, onChange, resetState} = useForm({ text: "", title: "" })
 
     const handleInputChange = (event) => {
@@ -64,6 +66,18 @@ const PostPage = () => {
         })
     }
 
+    const SearchFilter = (e) => {
+        const searchArray = postDetails.comments.filter((post) => {
+            const text = post.text.toLowerCase()
+            const username = post.username.toLowerCase()
+            return (
+                text.includes(e.target.value) || username.includes(e.target.value)
+                )
+             })
+        setFilteredPosts(searchArray)
+        setSearchContent(e.target.value)
+    }
+
     let mybutton = document.getElementById("back-to-top")
     window.onscroll = function() {scrollFunction()}
     
@@ -88,7 +102,7 @@ const PostPage = () => {
 
     return (
         <div>
-            <Header />
+            <Header onChangeSearch={SearchFilter}/>
                 <PostPageContainer>
                 <Post
                     username={postDetails.username}
@@ -122,19 +136,38 @@ const PostPage = () => {
                             <CircularProgress />
                         </Loading>
                         :
-                        postDetails.comments.sort((a, b) => a.createdAt < b.createdAt ? 1:-1).map(post=> {
-                            return(
-                                <Comment
-                                    username={post.username}
-                                    text={post.text}
-                                    votesCount={post.votesCount}
-                                    id={post.id}
-                                    postId={params.id}
-                                    direction={post.userVoteDirection}
-                                    getPostDetails={GetPostDetails}
-                                />
-                            )
-                            })
+                        searchContent===""
+                            ?
+                            postDetails.comments.sort((a, b) => a.createdAt < b.createdAt ? 1:-1).map(post=> {
+                                return(
+                                    <Comment
+                                        username={post.username}
+                                        text={post.text}
+                                        votesCount={post.votesCount}
+                                        id={post.id}
+                                        postId={params.id}
+                                        direction={post.userVoteDirection}
+                                        getPostDetails={GetPostDetails}
+                                    />
+                                )
+                                })
+                            :
+                            <div>
+                            <p><b>Foram encontradas {filteredPosts.length} ocorrências</b></p>
+                            {filteredPosts.sort((a, b) => a.createdAt < b.createdAt ? 1:-1).map(post=> {
+                                return(
+                                    <Comment
+                                        username={post.username}
+                                        text={post.text}
+                                        votesCount={post.votesCount}
+                                        id={post.id}
+                                        postId={params.id}
+                                        direction={post.userVoteDirection}
+                                        getPostDetails={GetPostDetails}
+                                    />
+                                )
+                                })}
+                            </div>
                     }
                 </CommentsContainer>
                 <BackToTop onClick={topFunction} id="back-to-top" style={{ backgroundColor: red[500] }}>

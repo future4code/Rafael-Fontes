@@ -12,6 +12,8 @@ import { KeyboardArrowUp } from '@material-ui/icons'
 const FeedPage = () => {
     useProtectedPage()
     const [posts,setPosts] = useState([])
+    const [filteredPosts,setFilteredPosts] = useState([])
+    const [searchContent,setSearchContent] = useState("")
     const {form, onChange, resetState} = useForm({ text: "", title: "" })
 
     const handleInputChange = (event) => {
@@ -62,6 +64,19 @@ const FeedPage = () => {
             console.log(err)
         })
     }
+
+    const SearchFilter = (e) => {
+        const searchArray = posts.filter((post) => {
+            const title = post.title.toLowerCase()
+            const text = post.text.toLowerCase()
+            const username = post.username.toLowerCase()
+            return (
+                title.includes(e.target.value) || text.includes(e.target.value) || username.includes(e.target.value)
+                )
+             })
+        setFilteredPosts(searchArray)
+        setSearchContent(e.target.value)
+    }
     
     let mybutton = document.getElementById("back-to-top")
     window.onscroll = function() {scrollFunction()}
@@ -87,7 +102,7 @@ const FeedPage = () => {
     
     return (
         <div>
-            <Header />
+            <Header onChangeSearch={SearchFilter} />
             <FeedPageContainer>
                 <NewPostContainer onSubmit={CreatePost}>
                     <TextField
@@ -123,20 +138,40 @@ const FeedPage = () => {
                             <CircularProgress />
                         </Loading>
                         :
-                        posts.sort((a, b) => a.createdAt < b.createdAt ? 1:-1).map(post=> {
-                            return(
-                                <Post
-                                    username={post.username}
-                                    text={post.text}
-                                    votesCount={post.votesCount}
-                                    commentsCount={post.commentsCount}
-                                    id={post.id}
-                                    title={post.title}
-                                    direction={post.userVoteDirection}
-                                    getPosts={GetPosts}
-                                />
-                            )
-                        })
+                        searchContent===""
+                            ?
+                            posts.sort((a, b) => a.createdAt < b.createdAt ? 1:-1).map(post=> {
+                                return(
+                                    <Post
+                                        username={post.username}
+                                        text={post.text}
+                                        votesCount={post.votesCount}
+                                        commentsCount={post.commentsCount}
+                                        id={post.id}
+                                        title={post.title}
+                                        direction={post.userVoteDirection}
+                                        getPosts={GetPosts}
+                                    />
+                                )
+                            })
+                            :
+                            <div>
+                                <p><b>Foram encontradas {filteredPosts.length} ocorrências</b></p>
+                                {filteredPosts.sort((a, b) => a.createdAt < b.createdAt ? 1:-1).map(post=> {
+                                    return(
+                                        <Post
+                                            username={post.username}
+                                            text={post.text}
+                                            votesCount={post.votesCount}
+                                            commentsCount={post.commentsCount}
+                                            id={post.id}
+                                            title={post.title}
+                                            direction={post.userVoteDirection}
+                                            getPosts={GetPosts}
+                                        />
+                                    )
+                                })}
+                            </div>   
                     }
                 </FeedContainer>
                 <BackToTop onClick={topFunction} id="back-to-top" style={{ backgroundColor: red[500] }}>

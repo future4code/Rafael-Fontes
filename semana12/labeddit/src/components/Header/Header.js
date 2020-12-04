@@ -32,7 +32,7 @@ const Header = (props) => {
                             </Grid>
                             <Grid item>
                                 <TextField
-                                    onChange = {props.onChangeSearch}
+                                    onChange={props.onChangeSearch}
                                     value={props.searchInput}
                                     id="input-with-icon-grid"
                                     label="Busca" />

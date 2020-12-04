@@ -1,7 +1,7 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { goToPostPage } from '../../router/Coordinator'
-import { PostContainer, CountContainer, TitleContainer, VotesContainer, ClickContainer } from './styles'
+import { PostContainer, CountContainer, VotesContainer, ClickContainer } from './styles'
 import { ArrowDownward, ArrowUpward } from '@material-ui/icons'
 import { IconButton, Card, Typography } from '@material-ui/core'
 import Axios from 'axios'
