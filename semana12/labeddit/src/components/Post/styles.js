@@ -17,10 +17,6 @@ export const CountContainer = styled.div `
     justify-content: space-between;
     padding: 10px;
 `
-export const TitleContainer = styled.div `
-    display: flex;
-    justify-content: space-between;
-`
 export const VotesContainer = styled.div `
     display: flex;
 `

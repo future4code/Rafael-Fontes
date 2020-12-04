@@ -42,9 +42,3 @@ export const Loading = styled.div `
     margin: 20vh auto;
     align-items: center;
 `
-export const RememberContainer = styled.div `
-    display:block;
-`
-export const ButtonRemember = styled(Button) `
-    /* display: none; */
-`

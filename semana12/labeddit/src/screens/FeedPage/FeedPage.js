@@ -1,18 +1,16 @@
 import Axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useHistory } from 'react-router-dom'
 import Header from '../../components/Header/Header'
 import Post from '../../components/Post/Post'
 import { useForm } from '../../hooks/UseForm'
 import { useProtectedPage } from '../../hooks/UseProtectedPage'
-import { BackToTop, ButtonRemember, FeedContainer, FeedPageContainer, Loading, NewPostContainer, RememberContainer } from './styles'
+import { BackToTop, FeedContainer, FeedPageContainer, Loading, NewPostContainer } from './styles'
 import { Button, TextField, CircularProgress, Typography } from '@material-ui/core'
 import { grey, red } from '@material-ui/core/colors'
 import { KeyboardArrowUp } from '@material-ui/icons'
 
 const FeedPage = () => {
     useProtectedPage()
-    const history = useHistory()
     const [posts,setPosts] = useState([])
     const {form, onChange, resetState} = useForm({ text: "", title: "" })
 
@@ -125,27 +123,20 @@ const FeedPage = () => {
                             <CircularProgress />
                         </Loading>
                         :
-                        <div>
-                            {/* <RememberContainer id="remember" >
-                                <ButtonRemember onClick={updateFeed}>Atualizar</ButtonRemember>
-                            </RememberContainer> */}
-                            <div>
-                            {posts.sort((a, b) => a.createdAt < b.createdAt ? 1:-1).map(post=> {
-                                return(
-                                    <Post
-                                        username={post.username}
-                                        text={post.text}
-                                        votesCount={post.votesCount}
-                                        commentsCount={post.commentsCount}
-                                        id={post.id}
-                                        title={post.title}
-                                        direction={post.userVoteDirection}
-                                        getPosts={GetPosts}
-                                    />
-                                )
-                            })}
-                            </div>
-                        </div>
+                        posts.sort((a, b) => a.createdAt < b.createdAt ? 1:-1).map(post=> {
+                            return(
+                                <Post
+                                    username={post.username}
+                                    text={post.text}
+                                    votesCount={post.votesCount}
+                                    commentsCount={post.commentsCount}
+                                    id={post.id}
+                                    title={post.title}
+                                    direction={post.userVoteDirection}
+                                    getPosts={GetPosts}
+                                />
+                            )
+                        })
                     }
                 </FeedContainer>
                 <BackToTop onClick={topFunction} id="back-to-top" style={{ backgroundColor: red[500] }}>

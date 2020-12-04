@@ -7,7 +7,6 @@ import axios from 'axios'
 import { useUnprotectedPage } from '../../hooks/UseUnprotectedPage'
 import { FormContainer, SignUpPageContainer } from './styles'
 import { Button, TextField } from '@material-ui/core'
-import { TerrainSharp } from '@material-ui/icons'
 import { grey } from '@material-ui/core/colors'
 
 const SignUpPage = () => {
@@ -45,9 +44,36 @@ const SignUpPage = () => {
             <Header />
             <SignUpPageContainer>
                 <FormContainer onSubmit={onSubmitForm}>
-                    <TextField label="Nome" color="primary" style={{ backgroundColor: grey[50] }} variant="outlined" name='name' value={form.name} type='text' required onChange={handleInputChange}/>
-                    <TextField label="E-mail" color="primary" style={{ backgroundColor: grey[50] }} variant="outlined" name='email' value={form.email} type='email' required onChange={handleInputChange}/>
-                    <TextField label="Senha" color="primary" style={{ backgroundColor: grey[50] }} variant="outlined" name='password' value={form.password} type='password' required onChange={handleInputChange}/>
+                    <TextField
+                        label="Nome"
+                        color="primary"
+                        style={{ backgroundColor: grey[50] }}
+                        variant="outlined"
+                        name='name'
+                        value={form.name}
+                        type='text'
+                        required
+                        onChange={handleInputChange}/>
+                    <TextField
+                        label="E-mail"
+                        color="primary"
+                        style={{ backgroundColor: grey[50] }}
+                        variant="outlined"
+                        name='email'
+                        value={form.email}
+                        type='email'
+                        required
+                        onChange={handleInputChange}/>
+                    <TextField
+                        label="Senha"
+                        color="primary"
+                        style={{ backgroundColor: grey[50] }}
+                        variant="outlined"
+                        name='password'
+                        value={form.password}
+                        type='password'
+                        required
+                        onChange={handleInputChange}/>
                     <Button type='submit' color="primary" variant="contained">Cadastrar</Button>    
                 </FormContainer>
                 <Button onClick={()=> goToLoginPage(history)}>Voltar para tela de acesso</Button>
