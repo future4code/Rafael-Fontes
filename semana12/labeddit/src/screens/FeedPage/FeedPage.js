@@ -71,7 +71,9 @@ const FeedPage = () => {
             const text = post.text.toLowerCase()
             const username = post.username.toLowerCase()
             return (
-                title.includes(e.target.value) || text.includes(e.target.value) || username.includes(e.target.value)
+                title.includes(e.target.value.toLowerCase())
+                || text.includes(e.target.value.toLowerCase())
+                || username.includes(e.target.value.toLowerCase())
                 )
              })
         setFilteredPosts(searchArray)

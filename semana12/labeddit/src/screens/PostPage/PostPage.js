@@ -71,7 +71,7 @@ const PostPage = () => {
             const text = post.text.toLowerCase()
             const username = post.username.toLowerCase()
             return (
-                text.includes(e.target.value) || username.includes(e.target.value)
+                text.includes(e.target.value.toLowerCase()) || username.includes(e.target.value.toLowerCase())
                 )
              })
         setFilteredPosts(searchArray)
