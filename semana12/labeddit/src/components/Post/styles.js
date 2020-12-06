@@ -26,3 +26,20 @@ export const ClickContainer = styled(CardContent)`
     background-color: lightgrey;
     };
 `
+export const PostedContainer = styled.div `
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+
+    @media (max-width: 500px) {
+        flex-direction: column;
+    }
+`
+export const PostedText = styled.p `
+    margin-right: 8px;
+    
+    @media (max-width: 500px) {
+        margin: 0;
+        padding: 0;
+    }
+`

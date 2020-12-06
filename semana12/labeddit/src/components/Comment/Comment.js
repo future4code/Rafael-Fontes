@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { CommentContainer, CommentText, CountContainer, VotesContainer } from './styles'
+import { CommentContainer, CommentText, CountContainer, VotesContainer, PostedContainer, PostedText } from './styles'
 import { ArrowDownward, ArrowUpward } from '@material-ui/icons'
 import { IconButton, Card, Typography } from '@material-ui/core'
 import Axios from 'axios'
@@ -84,7 +84,10 @@ const Comment = (props) => {
         <CommentContainer>
             <Card variant="contained">
                 <Typography color="textSecondary" gutterBottom>
-                    <p>Postado por <b>{props.username}</b> há {timeCalculator()}</p>
+                    <PostedContainer>
+                        <PostedText>Postado por <b>{props.username}</b></PostedText>
+                        <PostedText>há {timeCalculator()}</PostedText>
+                    </PostedContainer>
                 </Typography>
                 <CommentText variant="body2" component="p">
                     <p>{props.text}</p>

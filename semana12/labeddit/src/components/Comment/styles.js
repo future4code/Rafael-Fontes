@@ -23,3 +23,21 @@ export const VotesContainer = styled.div `
 export const CommentText = styled(Typography) `
     padding: 5px;
 `
+export const PostedContainer = styled.div `
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+
+    @media (max-width: 500px) {
+        flex-direction: column;
+        margin-top: 10px;
+    }
+`
+export const PostedText = styled.p `
+    margin-right: 8px;
+    
+    @media (max-width: 500px) {
+        margin: 0;
+        padding: 0;
+    }
+`

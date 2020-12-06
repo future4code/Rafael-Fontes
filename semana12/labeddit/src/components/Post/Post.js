@@ -1,7 +1,7 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { goToPostPage } from '../../router/Coordinator'
-import { PostContainer, CountContainer, VotesContainer, ClickContainer } from './styles'
+import { PostContainer, CountContainer, VotesContainer, ClickContainer, PostedContainer, PostedText } from './styles'
 import { ArrowDownward, ArrowUpward } from '@material-ui/icons'
 import { IconButton, Card, Typography } from '@material-ui/core'
 import Axios from 'axios'
@@ -87,7 +87,10 @@ const Post = (props) => {
             <Card variant="contained">
                 <ClickContainer onClick={()=> goToPostPage(history,props.id)}>
                     <Typography color="textSecondary" gutterBottom>
-                        <p>Postado por <b>{props.username}</b> há {timeCalculator()}</p>
+                        <PostedContainer>
+                            <PostedText>Postado por <b>{props.username}</b></PostedText>
+                            <PostedText>há {timeCalculator()}</PostedText>
+                        </PostedContainer>
                     </Typography>
                     <Typography variant="h5" component="h2">
                         <p><b>{props.title}</b></p>
