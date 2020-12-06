@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { CommentContainer, CommentText, CountContainer, VotesContainer, PostedContainer, PostedText } from './styles'
 import { ArrowDownward, ArrowUpward } from '@material-ui/icons'
 import { IconButton, Card, Typography } from '@material-ui/core'
