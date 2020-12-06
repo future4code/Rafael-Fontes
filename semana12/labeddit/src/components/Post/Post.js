@@ -10,6 +10,28 @@ import { green, red } from '@material-ui/core/colors'
 const Post = (props) => {
     const history = useHistory()
 
+    const timeCalculator = () => {
+        const timeCalc=Math.round((Date.now()-props.createdAt)/60000)
+        if (timeCalc>=60 && timeCalc<1440) {
+            if(Math.round(timeCalc/60)===1) {
+                return '1 hora'
+            }
+            return Math.round(timeCalc/60) + ' horas'
+        } else if(timeCalc>=1440) {
+            if(Math.round(timeCalc/1440)===1) {
+                return '1 dia'
+            }
+            return Math.round(timeCalc/1440) + ' dias'
+        } else {
+            if (timeCalc<1) {
+                return ' menos de 1 minuto'
+            } else if (timeCalc===1) {
+                return ' 1 minuto'
+            }
+            return (timeCalc + ' minutos')
+        }
+    }
+
     const VoteUp = () => {
         let body = {}
         if(props.direction===1) {
@@ -65,7 +87,7 @@ const Post = (props) => {
             <Card variant="contained">
                 <ClickContainer onClick={()=> goToPostPage(history,props.id)}>
                     <Typography color="textSecondary" gutterBottom>
-                        <p>Postado por <b>{props.username}</b></p>
+                        <p>Postado por <b>{props.username}</b> há {timeCalculator()}</p>
                     </Typography>
                     <Typography variant="h5" component="h2">
                         <p><b>{props.title}</b></p>

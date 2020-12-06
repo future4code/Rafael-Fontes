@@ -78,6 +78,19 @@ const PostPage = () => {
         setSearchContent(e.target.value)
     }
 
+    const VoteOnSearchFilter = () => {
+        const searchArray = postDetails.comments.filter((post) => {
+            const text = post.text.toLowerCase()
+            const username = post.username.toLowerCase()
+            return (
+                text.includes(searchContent.toLowerCase()) || username.includes(searchContent.toLowerCase())
+                )
+             })
+        setFilteredPosts(searchArray)
+        setSearchContent("")
+        console.log("chamou função")
+    }
+
     let mybutton = document.getElementById("back-to-top")
     window.onscroll = function() {scrollFunction()}
     
@@ -105,10 +118,12 @@ const PostPage = () => {
             <Header onChangeSearch={SearchFilter}/>
                 <PostPageContainer>
                 <Post
+                    key={postDetails.id}
                     username={postDetails.username}
                     text={postDetails.text}
                     votesCount={postDetails.votesCount}
                     commentsCount={postDetails.commentsCount}
+                    createdAt={postDetails.createdAt}
                     id={postDetails.id}
                     title={postDetails.title}
                     direction={postDetails.userVoteDirection}
@@ -141,9 +156,11 @@ const PostPage = () => {
                             postDetails.comments.sort((a, b) => a.createdAt < b.createdAt ? 1:-1).map(post=> {
                                 return(
                                     <Comment
+                                        key={post.id}
                                         username={post.username}
                                         text={post.text}
                                         votesCount={post.votesCount}
+                                        createdAt={post.createdAt}
                                         id={post.id}
                                         postId={params.id}
                                         direction={post.userVoteDirection}
@@ -157,13 +174,16 @@ const PostPage = () => {
                             {filteredPosts.sort((a, b) => a.createdAt < b.createdAt ? 1:-1).map(post=> {
                                 return(
                                     <Comment
+                                        key={post.id}
                                         username={post.username}
                                         text={post.text}
                                         votesCount={post.votesCount}
+                                        createdAt={post.createdAt}
                                         id={post.id}
                                         postId={params.id}
                                         direction={post.userVoteDirection}
                                         getPostDetails={GetPostDetails}
+                                        voteOnSearch={VoteOnSearchFilter}
                                     />
                                 )
                                 })}

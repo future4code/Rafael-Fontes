@@ -145,10 +145,12 @@ const FeedPage = () => {
                             posts.sort((a, b) => a.createdAt < b.createdAt ? 1:-1).map(post=> {
                                 return(
                                     <Post
+                                        key={post.id}
                                         username={post.username}
                                         text={post.text}
                                         votesCount={post.votesCount}
                                         commentsCount={post.commentsCount}
+                                        createdAt={post.createdAt}
                                         id={post.id}
                                         title={post.title}
                                         direction={post.userVoteDirection}
@@ -162,10 +164,12 @@ const FeedPage = () => {
                                 {filteredPosts.sort((a, b) => a.createdAt < b.createdAt ? 1:-1).map(post=> {
                                     return(
                                         <Post
+                                            key={post.id}
                                             username={post.username}
                                             text={post.text}
                                             votesCount={post.votesCount}
                                             commentsCount={post.commentsCount}
+                                            createdAt={post.createdAt}
                                             id={post.id}
                                             title={post.title}
                                             direction={post.userVoteDirection}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { CommentContainer, CommentText, CountContainer, VotesContainer } from './styles'
 import { ArrowDownward, ArrowUpward } from '@material-ui/icons'
 import { IconButton, Card, Typography } from '@material-ui/core'
@@ -6,6 +6,28 @@ import Axios from 'axios'
 import { green, red } from '@material-ui/core/colors'
 
 const Comment = (props) => {
+
+    const timeCalculator = () => {
+        const timeCalc=Math.round((Date.now()-props.createdAt)/60000)
+        if (timeCalc>=60 && timeCalc<1440) {
+            if(Math.round(timeCalc/60)===1) {
+                return '1 hora'
+            }
+            return Math.round(timeCalc/60) + ' horas'
+        } else if(timeCalc>=1440) {
+            if(Math.round(timeCalc/1440)===1) {
+                return '1 dia'
+            }
+            return Math.round(timeCalc/1440) + ' dias'
+        } else {
+            if (timeCalc<1) {
+                return ' menos de 1 minuto'
+            } else if (timeCalc===1) {
+                return ' 1 minuto'
+            }
+            return (timeCalc + ' minutos')
+        }
+    }
 
     const VoteUp = () => {
         let body = {}
@@ -26,6 +48,7 @@ const Comment = (props) => {
         })
         .then((res)=>{
             props.getPostDetails()
+            props.voteOnSearch()
         })
         .catch((err)=>{
             console.log(err)
@@ -61,7 +84,7 @@ const Comment = (props) => {
         <CommentContainer>
             <Card variant="contained">
                 <Typography color="textSecondary" gutterBottom>
-                    <p>Postado por <b>{props.username}</b></p>
+                    <p>Postado por <b>{props.username}</b> há {timeCalculator()}</p>
                 </Typography>
                 <CommentText variant="body2" component="p">
                     <p>{props.text}</p>
