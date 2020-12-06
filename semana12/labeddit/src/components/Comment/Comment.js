@@ -74,6 +74,7 @@ const Comment = (props) => {
         })
         .then((res)=>{
             props.getPostDetails()
+            props.voteOnSearch()
         })
         .catch((err)=>{
             console.log(err)

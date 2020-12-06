@@ -79,6 +79,10 @@ const FeedPage = () => {
         setFilteredPosts(searchArray)
         setSearchContent(e.target.value)
     }
+
+    const VoteOnSearchFilter = () => {
+        console.log("votou com busca ativa")
+    }
     
     let mybutton = document.getElementById("back-to-top")
     window.onscroll = function() {scrollFunction()}
@@ -174,6 +178,7 @@ const FeedPage = () => {
                                             title={post.title}
                                             direction={post.userVoteDirection}
                                             getPosts={GetPosts}
+                                            voteOnSearch={VoteOnSearchFilter}
                                         />
                                     )
                                 })}

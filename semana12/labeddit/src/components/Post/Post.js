@@ -51,6 +51,7 @@ const Post = (props) => {
         })
         .then((res)=>{
             props.getPosts()
+            props.voteOnSearch()
         })
         .catch((err)=>{
             console.log(err)
@@ -76,6 +77,7 @@ const Post = (props) => {
         })
         .then((res)=>{
             props.getPosts()
+            props.voteOnSearch()
         })
         .catch((err)=>{
             console.log(err)

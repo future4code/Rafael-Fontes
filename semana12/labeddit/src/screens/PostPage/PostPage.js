@@ -79,16 +79,7 @@ const PostPage = () => {
     }
 
     const VoteOnSearchFilter = () => {
-        const searchArray = postDetails.comments.filter((post) => {
-            const text = post.text.toLowerCase()
-            const username = post.username.toLowerCase()
-            return (
-                text.includes(searchContent.toLowerCase()) || username.includes(searchContent.toLowerCase())
-                )
-             })
-        setFilteredPosts(searchArray)
-        setSearchContent("")
-        console.log("chamou função")
+        console.log("votou com busca ativa")
     }
 
     let mybutton = document.getElementById("back-to-top")
@@ -127,6 +118,7 @@ const PostPage = () => {
                     id={postDetails.id}
                     title={postDetails.title}
                     direction={postDetails.userVoteDirection}
+                    getPosts={GetPostDetails}
                 />
                 <NewCommentContainer onSubmit={SendComment}>
                     <TextField
