@@ -11,6 +11,13 @@ app.listen(3003, () => {
     console.log("Server is running in http://localhost:3003");
 });
 
-app.get('/countries', (req: Request, res: Response) => {
-    res.send(countries)
+app.get('/countries/all', (req: Request, res: Response) => {
+    const result = countries.map(country => ({
+        id: country.id,
+        name: country.name
+      }))
+      
+      res
+        .status(200)
+        .send(result)
 })
