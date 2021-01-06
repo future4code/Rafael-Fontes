@@ -69,6 +69,15 @@ app.get('/countries/:id', (req: Request, res: Response) => {
     }
 })
 
+app.put('/countries/edit/:id', (req: Request, res: Response) => {
+    countries[Number(req.params.id)].name = req.body.name
+    countries[Number(req.params.id)].capital = req.body.capital
+
+    res
+        .status(200)
+        .send("Alterado com sucesso")
+})
+
 app.listen(3003, () => {
     console.log("Server is running in http://localhost:3003");
 });
