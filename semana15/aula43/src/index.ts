@@ -137,6 +137,37 @@ app.get('/users/searchByName', (req: Request, res: Response) => {
 })
 //3a Query
 
+app.post("/user", (req: Request, res: Response)=>{
+
+    let errorCode: number = 400;
+
+    try {
+
+        if(!req.body.age || !req.body.email || !req.body.type || !req.body.name){
+            errorCode = 422;
+            throw new Error("Algum campo está inválido. Preencha corretamente.");
+        }
+
+        const reqBody: user = {
+            id: users.length+1,
+            name: req.body.name,
+            email: req.body.email,
+            type: req.body.type,
+            age: req.body.age,
+        }
+
+        users.push(reqBody);
+    
+        res.status(200).send({message: "Usuário inserido com sucesso!"});
+        
+    } catch (error) {
+        res.status(errorCode).send({message: error.message});
+    }
+
+})
+//4a O resultado foi o mesmo do método Post
+//4b O metódo do Post aparentemente faz mais sentido por se tratar de um novo objeto
+
 
 
 const server = app.listen(process.env.PORT || 3003, () => {

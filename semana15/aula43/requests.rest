@@ -8,3 +8,14 @@ GET http://localhost:3003/users/searchByType
 ###getUsersByName
 GET http://localhost:3003/users/searchByName
     ?name=a
+
+###PostNewUser
+POST http://localhost:3003/user
+Content-Type: application/json
+
+{
+    "name": "Fulano",
+    "email": "fulano@email.com",
+    "type": "ADMIN",
+    "age": 99
+}
