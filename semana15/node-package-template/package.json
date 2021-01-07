@@ -1,0 +1,14 @@
+{
+  "name": "aula40",
+  "version": "1.0.0",
+  "description": "Exercícios iniciais",
+  "main": "index.js",
+  "scripts": {
+    "start1": "clear && node ./ex1.js",
+    "start2": "clear && node ./ex2.js",
+    "start3": "clear && node ./ex3.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rafael Fontes",
+  "license": "ISC"
+}
