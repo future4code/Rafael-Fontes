@@ -70,19 +70,49 @@ let users: user[] = [
 ]
 
 app.get('/users', (req: Request, res: Response)=>{ 
-    const result = users.map(user => ({
-        id: user.id,
-        name: user.name
-    }))
-    
+   
+    const result = users
+
     res
         .status(200)
         .send(result)
 })
-
 //1a Método GET
 //1b /users
 
+app.get('/users/search', (req: Request, res: Response) => {
+    let errorCode: number = 400;
+
+    try {
+        if (!req.query.type) {
+            errorCode = 400;
+            throw new Error("Tipo não definido. Preencha algum tipo.")
+        }
+
+        if (req.query.type !== "ADMIN" && req.query.type !== "NORMAL") {
+            errorCode = 422;
+            throw new Error("Tipo inválido. Preencha um tipo existente.");
+        }
+
+        const result = users.filter(
+            user => user.type.includes(req.query.type as string)
+        )
+
+        if (result.length === 0) {
+            errorCode = 404;
+            throw new Error("Usuários não encontrados")
+        }
+
+        res
+            .status(200)
+            .send(result)
+
+    } catch (error) {
+        res.status(errorCode).send({message: error.message});
+    }
+})
+//2a Através de Query. Poderia ser através de Params pois é apenas um tipo, mas o Query possibilita ampliar a busca a mais tipos se necessário
+//2b Criando ums lista enum de tipos válidos e atribuindo esta lista no type user
 
 
 const server = app.listen(process.env.PORT || 3003, () => {
