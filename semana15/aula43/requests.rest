@@ -2,5 +2,9 @@
 GET http://localhost:3003/users
 
 ###getUsersByType
-GET http://localhost:3003/users/search
-    ?type=NORMAL
+GET http://localhost:3003/users/searchByType
+    ?type=ADMIN
+
+###getUsersByName
+GET http://localhost:3003/users/searchByName
+    ?name=a
