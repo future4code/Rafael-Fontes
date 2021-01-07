@@ -168,6 +168,47 @@ app.post("/user", (req: Request, res: Response)=>{
 //4a O resultado foi o mesmo do método Post
 //4b O metódo do Post aparentemente faz mais sentido por se tratar de um novo objeto
 
+app.put("/lastUser", (req: Request, res: Response)=>{
+
+    let errorCode: number = 400;
+
+    try {
+        users[users.length-1].name = users[users.length-1].name + '-ALTERADO';
+    
+        res.status(200).send({message: "Usuário atualizado com sucesso!"});
+        
+    } catch (error) {
+        res.status(errorCode).send({message: error.message});
+    }
+})
+
+app.patch("/lastUserMistake", (req: Request, res: Response)=>{
+
+    let errorCode: number = 400;
+
+    try {
+        users[users.length-1].name = users[users.length-1].name + '-REALTERADO';
+    
+        res.status(200).send({message: "Usuário atualizado com sucesso!"});
+        
+    } catch (error) {
+        res.status(errorCode).send({message: error.message});
+    }
+})
+
+app.delete("/user/:id", (req: Request, res: Response)=>{
+
+    let errorCode: number = 400;
+
+    try {
+        users.splice(Number(req.params.id)-1,1);
+    
+        res.status(200).send({message: "Usuário removido com sucesso!"});
+        
+    } catch (error) {
+        res.status(errorCode).send({message: error.message});
+    }
+})
 
 
 const server = app.listen(process.env.PORT || 3003, () => {
