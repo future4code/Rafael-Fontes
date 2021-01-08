@@ -30,6 +30,12 @@ app.post('/user', (req:Request, res:Response) => {
             throw new Error("CPF não preenchido. Preencha e tente novamente.")
         }
 
+        const findCpf = users.find((user:user)=>user.cpf===req.body.cpf)
+        if (findCpf!==undefined) {
+            errorCode = 422;
+            throw new Error("CPF existente. Preencha com outro valor e tente novamente.")
+        }
+        
         if(!req.body.birthDate){
             errorCode = 422;
             throw new Error("Data de nascimento não preenchida. Preencha e tente novamente.")
