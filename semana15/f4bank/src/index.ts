@@ -27,12 +27,32 @@ app.post('/user', (req:Request, res:Response) => {
 
         if(!req.body.cpf){
             errorCode = 422;
-            throw new Error("CPF inválido. Preencha novamente.")
+            throw new Error("CPF não preenchido. Preencha e tente novamente.")
         }
 
         if(!req.body.birthDate){
             errorCode = 422;
-            throw new Error("Data de nascimento inválida. Preencha novamente.")
+            throw new Error("Data de nascimento não preenchida. Preencha e tente novamente.")
+        }
+
+        function calcAge(day:number, month:number, year:number) {
+            const now = new Date();
+            let age = now.getFullYear() - year;
+            const mdif = now.getMonth() - month + 1;
+            if (mdif < 0) {
+                --age;
+            }
+            else if (mdif === 0) {
+                var ddif = now.getDate() - day;
+                if (ddif < 0) --age;
+            }
+            return age;
+        }
+
+        const dateNumbers = ((req.body.birthDate).split('/'))
+        if(calcAge(dateNumbers[0],dateNumbers[1],dateNumbers[2])<18){
+            errorCode = 422;
+            throw new Error("A conta só pode ser aberta por pessoas maiores de 18 anos.")
         }
 
         const reqBody: user = {

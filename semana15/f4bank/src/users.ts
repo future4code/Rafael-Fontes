@@ -1,13 +1,13 @@
 export type transaction = {
     value: number,
-    date: number,
+    date: string,
     description: string
 }
 
 export type user = {
     name: string,
     cpf: number, //sem pontos e traços (11 dígitos)
-    birthDate: number, //sem barras e no formato ddmmyyyy
+    birthDate: number, //formato dd/mm/yyyy
     balance: number,
     statement: transaction[]
 }
