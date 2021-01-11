@@ -142,9 +142,98 @@ WHERE
 ```
 
 ---
-##Exercício 5
+## Exercício 5
 
 a)
+```
+CREATE TABLE Movie (
+    id VARCHAR(255) PRIMARY KEY,
+    title VARCHAR (255) NOT NULL,
+    synopsis TEXT NOT NULL,
+    launch_date DATE NOT NULL,
+	rating FLOAT NOT NULL
+);
+```
+A query acima cria uma tabela com os campos e requisitos necessários.
 
+b)
+```
+INSERT INTO Movie (id, title, synopsis, launch_date, rating)
+VALUES(
+  "001", 
+  "Se Eu Fosse Você",
+  "Cláudio e Helena são casados há muitos anos e enfrentam a rotina do casamento. Um dia eles são atingidos por um fenômeno inexplicável e trocam de corpos",
+  "2006-01-06", 
+  "7"
+);
+```
+c)
+```
+INSERT INTO Movie (id, title, synopsis, launch_date, rating)
+VALUES(
+  "002", 
+  "Doce de mãe",
+  "Dona Picucha, uma animada senhora de 85 anos, sempre causa grandes confusões. A vida dela e dos seus quatro filhos sofre uma reviravolta depois que Zaida, empregada e amiga de Dona Picucha, anuncia que vai se casar e não poderá mais morar com ela",
+  "2012-12-27", 
+  "10"
+);
+```
+d)
+```
+INSERT INTO Movie (id, title, synopsis, launch_date, rating)
+VALUES(
+  "003", 
+  "Dona Flor e Seus Dois Maridos",
+  "Dona Flor é uma sedutora professora de culinária casada com Vadinho, que só quer saber de farras e jogatina nas boates. A vida de abusos acaba por acarretar sua morte precoce",
+  "2017-11-02", 
+  "8"
+);
+```
+e)
+```
+INSERT INTO Movie (id, title, synopsis, launch_date, rating)
+VALUES(
+  "004", 
+  "Que Horas Ela Volta?",
+  "A pernambucana Val (Regina Casé) se mudou para São Paulo a fim de dar melhores condições de vida para sua filha Jéssica. Com muito receio, ela deixou a menina no interior de Pernambuco para ser babá de Fabinho, morando integralmente na casa de seus patrões. Treze anos depois, quando o menino (Michel Joelsas) vai prestar vestibular, Jéssica (Camila Márdila) lhe telefona, pedindo ajuda para ir à São Paulo, no intuito de prestar a mesma prova. Os chefes de Val recebem a menina de braços abertos, só que quando ela deixa de seguir certo protocolo, circulando livremente, como não deveria, a situação se complica.",
+  "2015-08-27", 
+  "10"
+);
+```
+---
+## Exercício 6
+a)
 
+    SELECT id, title, rating from Movie WHERE id = "004";
+b)
 
+    SELECT * FROM Movie WHERE title = "Que Horas Ela Volta?";
+c)
+
+    SELECT id, title, synopsis FROM Movie WHERE rating >= 7;
+
+---
+## Exercício 7
+a)
+
+    SELECT * FROM Movie
+    WHERE title LIKE "%vida%";
+
+b)
+```
+SELECT * FROM Movie
+WHERE title LIKE "%vida%" OR
+    synopsis LIKE "%vida%";
+```
+c)
+```
+SELECT * FROM Movie
+WHERE launch_date <= "2021-01-11";
+```
+d)
+```
+SELECT * FROM Movie
+WHERE launch_date < "2021-01-11" AND 
+      (title LIKE "%vida%" OR
+      synopsis LIKE "%vida%") AND rating > 7;
+```
