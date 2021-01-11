@@ -1,0 +1,12 @@
+###GetAllUsers
+GET http://localhost:3003/users
+
+###AddNewUser
+POST http://localhost:3003/user
+Content-Type: application/json
+
+{
+    "name": "Fulano",
+    "cpf": 12345678907,
+    "birthDate": "08/01/2003"
+}
