@@ -121,8 +121,30 @@ Esta mensagem informa que não existe uma coluna chamada 'nome'. O correto seria
 
 ---
 ## Exercício 4
-a) 
+a) A query busca linhas na tabela 'Actor' que atendem os requisitos de possuir as letras 'A' ou 'J' no campo 'name' e valores superiores a 300000 no campo 'salary'.
 
+b)
+
+    SELECT * FROM Actor
+    WHERE name NOT LIKE "A%" AND salary > 350000;
+
+c)
+
+    SELECT * FROM Actor
+    WHERE name LIKE "%G%" OR "%g%";
+
+d)
+```
+SELECT * FROM Actor
+WHERE 
+	(name LIKE "%g%" OR name LIKE "%G%" OR name LIKE "%a%" OR name LIKE "%A%")
+	AND salary BETWEEN 350000 AND 900000;
+```
+
+---
+##Exercício 5
+
+a)
 
 
 
