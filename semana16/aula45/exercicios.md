@@ -48,3 +48,16 @@ Retornou uma mensagem de sucesso, mas não alterou nada pois a busca não teve r
 ---
 ## Exercício 3
 a)
+
+    DELETE FROM Actor WHERE name = "Fernanda Montenegro";
+b)
+```
+DELETE FROM Actor
+WHERE
+	gender = "male"
+    AND
+	salary > 1000000;
+```
+---
+
+## Exercício 4
