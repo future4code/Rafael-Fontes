@@ -11,3 +11,40 @@ d)
 ---
 ## Exercício 2
 a)
+```
+UPDATE Actor
+SET name = "Juliana T. Paes"
+WHERE id = "003";
+```
+b)
+```
+UPDATE Actor
+SET name = UPPER(name)
+WHERE id = "003";
+
+UPDATE Actor
+SET name = "Juliana Paes"
+WHERE id = "003";
+```
+c)
+```
+UPDATE Actor
+SET 
+	name = "Antonio Fagundes",
+	salary = 1000000,
+    birth_date = "1970-01-01",
+    gender = "MALE"
+WHERE id = "005";
+```
+d)
+```
+UPDATE Actor
+SET 
+	salary = 1000000
+WHERE id = "011";
+```
+Retornou uma mensagem de sucesso, mas não alterou nada pois a busca não teve resultados
+
+---
+## Exercício 3
+a)
