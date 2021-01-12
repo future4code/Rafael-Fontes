@@ -48,8 +48,10 @@ Retornou uma mensagem de sucesso, mas não alterou nada pois a busca não teve r
 ---
 ## Exercício 3
 a)
-
-    DELETE FROM Actor WHERE name = "Fernanda Montenegro";
+```
+SET SQL_SAFE_UPDATES = 0;
+DELETE FROM Actor WHERE name = "Fernanda Montenegro";
+```
 b)
 ```
 DELETE FROM Actor
@@ -79,3 +81,37 @@ d)
     SELECT SUM(salary) FROM Actor;
 ---
 ## Exercício 5
+a)
+```
+SELECT COUNT(*), gender
+FROM Actor
+GROUP BY gender;
+```
+Faz a contagem de atores e atrizes
+
+b)
+```
+SELECT id, name FROM Actor
+ORDER BY name DESC;
+```
+c)
+```
+SELECT * FROM Actor
+ORDER BY salary ASC;
+```
+d)
+```
+SELECT * FROM Actor
+ORDER BY salary ASC
+LIMIT 3;
+```
+e)
+```
+SELECT AVG(salary), gender
+FROM Actor
+GROUP BY gender;
+```
+
+---
+## Exercício 6
+a)
