@@ -115,3 +115,61 @@ GROUP BY gender;
 ---
 ## Exercício 6
 a)
+
+    ALTER TABLE Movie ADD playing_limit_date DATE;
+b)
+
+    ALTER TABLE Movie CHANGE rating rating FLOAT;
+c)
+```
+UPDATE Movie
+SET
+	playing_limit_date = "2021-01-31"
+WHERE id = "001";
+
+UPDATE Movie
+SET
+	playing_limit_date = "2021-01-01"
+WHERE id = "002";
+```
+d)
+```
+DELETE FROM Movie WHERE id = "003";
+
+UPDATE Movie
+SET
+	synopsis = "blábláblá"
+WHERE id = "003";
+```
+Ao tentar alterar o filme apagado uma mensagem de sucesso é recebida, mas nada é alterado pois não há resultado da busca pelo id.
+
+---
+## Exercício 7
+a)
+```
+SELECT COUNT(*) FROM Movie
+WHERE rating > 7.5;
+```
+b)
+
+    SELECT AVG(rating) FROM Movie;
+c)
+```
+SELECT COUNT(*) FROM Movie
+WHERE playing_limit_date >= CURDATE();
+```
+d)
+
+    SELECT COUNT(*) FROM Movie WHERE launch_date > CURDATE();
+e)
+
+    SELECT MAX(rating) FROM Movie;
+f)
+
+    SELECT MIN(rating) FROM Movie;
+
+---
+## Exercício 8
+a)
+
+
