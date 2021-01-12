@@ -61,3 +61,21 @@ WHERE
 ---
 
 ## Exercício 4
+a)
+
+    SELECT MAX(salary) FROM Actor;
+b)
+```
+SELECT MIN(salary) FROM Actor
+WHERE gender = "female";
+```
+c)
+```
+SELECT COUNT(*) FROM Actor
+WHERE gender = "female";
+```
+d)
+   
+    SELECT SUM(salary) FROM Actor;
+---
+## Exercício 5
