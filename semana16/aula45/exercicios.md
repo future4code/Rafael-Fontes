@@ -171,5 +171,27 @@ f)
 ---
 ## Exercício 8
 a)
-
+```
+SELECT * FROM Movie
+ORDER BY title ASC;
+```
+b)
+```
+SELECT * FROM Movie
+ORDER BY title DESC
+LIMIT 5;
+```
+c)
+```
+SELECT * FROM Movie 
+WHERE launch_date < CURDATE() 
+ORDER BY launch_date DESC 
+LIMIT 3;
+```
+d)
+```
+SELECT * FROM Movie 
+ORDER BY rating DESC 
+LIMIT 3;
+```
 
