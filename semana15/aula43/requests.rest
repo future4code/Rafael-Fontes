@@ -1,0 +1,30 @@
+###getAllUsers
+GET http://localhost:3003/users
+
+###getUsersByType
+GET http://localhost:3003/users/searchByType
+    ?type=ADMIN
+
+###getUsersByName
+GET http://localhost:3003/users/searchByName
+    ?name=a
+
+###postNewUser
+POST http://localhost:3003/user
+Content-Type: application/json
+
+{
+    "name": "Fulano",
+    "email": "fulano@email.com",
+    "type": "ADMIN",
+    "age": 99
+}
+
+###changeLastUser
+PUT http://localhost:3003/lastUser
+
+###changeAgainLastUser
+PATCH  http://localhost:3003/lastUserMistake
+
+###deleteUser
+DELETE http://localhost:3003/user/7
