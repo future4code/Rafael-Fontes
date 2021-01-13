@@ -60,3 +60,73 @@ const averageSalary = async (gender: string) : Promise<any> => {
    return result[0].average
 }
 ````
+
+---
+## Exercício 3
+a)
+```
+app.get('/actor/:id', async (req:Request , res:Response) => {
+   try {
+      const id = req.params.id;
+      const actor = await getActorById(id);
+      res.status(200).send(actor)
+    } catch (err) {
+      res.status(400).send({
+        message: err.message,
+      });
+    }
+})
+```
+
+b)
+```
+app.get('/actor', async (req:Request , res:Response) => {
+   try {
+      const gender = req.query.gender;
+      const count = await countActorByGender(gender as string);
+      res.status(200).send({
+         quantity: count,
+       })
+    } catch (err) {
+      res.status(400).send({
+        message: err.message,
+      });
+    }
+})
+```
+
+---
+## Exercício 4
+
+a)
+```
+app.post('/actor', async (req: Request, res: Response) => {
+   try {
+      await updateSalaryById(
+         req.body.id,
+         req.body.salary
+       )
+   
+       res.status(200).send("Salário atualizado");
+   } catch (err) {
+      res.status(400).send({
+         message: err.message,
+       })
+   }
+})
+```
+
+b)
+```
+app.delete('/actor/:id', async (req:Request , res:Response) => {
+   try {
+      const id = req.params.id;
+      await deleteActorById(id);
+      res.status(200).send(`Id ${id} apagado com sucesso`)
+    } catch (err) {
+      res.status(400).send({
+        message: err.message,
+      });
+    }
+})
+```
