@@ -23,24 +23,13 @@ const app: Express = express();
 app.use(express.json());
 app.use(cors())
 
-// const getActorById = async (id: string): Promise<any> => {
-//    const result = await connection.raw(`
-//       SELECT * FROM Actor WHERE id = '${id}'
-//    `)
-//    console.log(result[0][0])
-//    return result[0][0]
-// }
-
-// getActorById("001")
-
-// const getActorByName = async (name: string): Promise<any> => {
-//    const result = await connection.raw(`
-//       SELECT * FROM Actor WHERE name = '${name}'
-//    `)
-//    console.log(result[0][0])
-//    return result[0][0]
-// }
-
+const getActorByName = async (name: string): Promise<any> => {
+   const result = await connection.raw(`
+      SELECT * FROM Actor WHERE name = '${name}'
+   `)
+   console.log(result[0][0])
+   return result[0][0]
+}
 // getActorByName("Juliana Paes")
 
 const countActorByGender = async (gender: string): Promise<any> => {
@@ -50,10 +39,63 @@ const countActorByGender = async (gender: string): Promise<any> => {
    console.log(result[0][0].count)
    return result[0][0].count
 }
+// countActorByGender("female")
 
-countActorByGender("female")
+const createActor = async (
+   id: string,
+   name: string,
+   salary: number,
+   dateOfBirth: string,
+   gender: string
+ ): Promise<void> => {
+   await connection
+     .insert({
+       id: id,
+       name: name,
+       salary: salary,
+       birth_date: dateOfBirth,
+       gender: gender,
+     })
+     .into("Actor");
+ };
+//  createActor("007","Fulano de Tal",100000,"1970-01-01","male")
 
+const updateSalaryById = async (
+      id: string,
+      salary: number
+   ): Promise<any> => {
+   await connection("Actor")
+     .update({
+       salary: salary,
+     })
+     .where("id", id);
+ }
+// updateSalaryById("007",40000)
 
+ const getActorById = async (id: string): Promise<any> => {
+   const result = await connection.raw(`
+      SELECT * FROM Actor WHERE id = '${id}'
+   `)
+   console.log(result[0][0])
+   return result[0][0]
+}
+// getActorById("007")
+
+const deleteActorById = async (id: string) : Promise<any> => {
+   await connection("Actor")
+   .delete()
+   .where("id",id)
+}
+// deleteActorById("007")
+
+const averageSalary = async (gender: string) : Promise<any> => {
+   const result = await connection("Actor")
+   .avg("salary as average")
+   .where({gender})
+
+   return result[0].average
+}
+// averageSalary("female")
 
 
 // const pokemons: Pokemon[] = []
