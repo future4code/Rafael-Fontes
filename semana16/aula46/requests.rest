@@ -27,3 +27,23 @@ Content-Type: application/json
 
 ###Ex4b
 DELETE http://localhost:3003/actor/007
+
+###Ex5
+POST http://localhost:3003/movie
+Content-Type: application/json
+
+{
+    "id": "007",
+    "title": "Novo filme",
+    "synopsis": "blá blá blá",
+    "launch_date": "2021-01-01",
+    "rating": 8,
+    "playing_limit_date": "2021-01-31"
+}
+
+###Ex6
+GET http://localhost:3003/movie/all
+
+###Ex7
+GET http://localhost:3003/movie/search
+    ?searchQuery=Eu
