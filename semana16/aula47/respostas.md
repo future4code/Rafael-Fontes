@@ -199,5 +199,67 @@ JOIN Actor ON Actor.id = MovieCast.actor_id;
 ---
 ## Exercício 6
 
-a)
+a) É uma relação N:M pois vários prêmios de Oscar podem se relacionar com diversos filmes.
+
+b) 
+```
+CREATE TABLE MovieAward (
+		movie_id VARCHAR(255),
+		award_name VARCHAR(255),
+        award_date DATE NOT NULL,
+    FOREIGN KEY (movie_id) REFERENCES Movie(id)
+);
+```
+
+c)
+```
+INSERT INTO MovieAward (movie_id, award_name, award_date)
+VALUES(
+  "001", 
+  "Melhor Roteiro",
+  "2007-02-01"
+);
+
+INSERT INTO MovieAward (movie_id, award_name, award_date)
+VALUES(
+  "001", 
+  "Melhor Comédia",
+  "2007-02-01"
+);
+
+INSERT INTO MovieAward (movie_id, award_name, award_date)
+VALUES(
+  "002", 
+  "Melhor Roteiro",
+  "2007-02-01"
+);
+
+INSERT INTO MovieAward (movie_id, award_name, award_date)
+VALUES(
+  "002", 
+  "Melhor Direção",
+  "2007-02-01"
+);
+
+INSERT INTO MovieAward (movie_id, award_name, award_date)
+VALUES(
+  "004", 
+  "Melhor Filme",
+  "2016-02-01"
+);
+
+INSERT INTO MovieAward (movie_id, award_name, award_date)
+VALUES(
+  "004", 
+  "Melhor Direção",
+  "2016-02-01"
+);
+```
+
+d)
+```
+SELECT Movie.title as movie_title, MovieAward.award_name as award_name, MovieAward.award_date as award_date FROM Movie
+RIGHT JOIN MovieAward ON Movie.id = MovieAward.movie_id
+ORDER BY MovieAward.award_date DESC;
+```
 
