@@ -153,12 +153,51 @@ INNER JOIN Rating ON Movie.id = Rating.movie_id;
 ## Exercício 4
 
 a)
+```
+SELECT Movie.id, Movie.title, Rating.rate, Rating.comment FROM Movie 
+LEFT JOIN Rating ON Movie.id = Rating.movie_id;
+```
+
+b)
+```
+SELECT Movie.id, Movie.title, MovieCast.actor_id FROM Movie 
+RIGHT JOIN MovieCast ON Movie.id = MovieCast.movie_id;
+```
+
+c)
+```
+SELECT Movie.id, Movie.title, AVG(Rating.rate) FROM Movie 
+LEFT JOIN Rating ON Movie.id = Rating.movie_id
+```
 
 ---
 ## Exercício 5
+a) Essa query junta as informações da tabela de filmes com a tabela de elenco e a partir desta com a tabela de atores. É necessário usar JOIN duas vezes pois a tabela de atores necessita da tabela de elenco, que por sua vez necessita das informações da tabela de filmes.
+
+b)
+```
+SELECT Movie.id as movie_id, Movie.title as movie_title, Actor.id as actor_id, Actor.name as actor_name FROM Movie
+LEFT JOIN MovieCast ON Movie.id = MovieCast.movie_id
+JOIN Actor ON Actor.id = MovieCast.actor_id;
+```
+
+c)
+```
+Error Code: 1054. Unknown column 'm' in 'field list'
+```
+A mensagem informa que não encontro o campo 'm', pois ele só está definido com este nome posteriormente ao final da sentença
+
+d)
+```
+SELECT Movie.id as movie_id, Movie.title as movie_title, Rating.comment as comment, Rating.rate as rate, Actor.id as actor_id, Actor.name as actor_name FROM Movie
+LEFT JOIN Rating ON Movie.id = Rating.movie_id
+LEFT JOIN MovieCast ON Movie.id = MovieCast.movie_id
+JOIN Actor ON Actor.id = MovieCast.actor_id;
+```
 
 
 ---
 ## Exercício 6
 
+a)
 
