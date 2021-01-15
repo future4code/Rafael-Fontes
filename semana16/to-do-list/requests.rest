@@ -1,0 +1,24 @@
+###createUser
+PUT http://localhost:3003/user
+Content-Type: application/json
+
+{
+    "name":"Fulano de Tal2",
+    "nickname":"Fulano2",
+    "email":"fulano2@tal.com"
+}
+
+###getAllUsers
+GET http://localhost:3003/user/all
+
+###getUserById
+GET http://localhost:3003/user/1610731456214
+
+###editUser
+POST  http://localhost:3003/user/edit/1610733126944
+Content-Type: application/json
+
+{
+    "name":"Beltrano de tal",
+    "nickname":"Beltrano"
+}
