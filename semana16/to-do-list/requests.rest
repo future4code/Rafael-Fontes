@@ -5,7 +5,7 @@ Content-Type: application/json
 {
     "name":"Fulano de Tal2",
     "nickname":"Fulano2",
-    "email":"fulano2@tal.com"
+    "email":"fulano@tal.com"
 }
 
 ###getAllUsers
@@ -22,3 +22,17 @@ Content-Type: application/json
     "name":"Beltrano de tal",
     "nickname":"Beltrano"
 }
+
+###createTask
+PUT http://localhost:3003/task
+Content-Type: application/json
+
+{
+	"title": "Criar banco dos alunos",
+	"description": "Devemos criar o banco dos alunos para o módulo do backend",
+	"limitDate": "04/05/2020",
+	"creatorUserId": "001"
+}
+
+###getTaskById
+GET http://localhost:3003/task/1610731456214

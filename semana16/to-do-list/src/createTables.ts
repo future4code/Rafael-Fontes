@@ -22,14 +22,15 @@ app.use(cors())
 
 const createTable = async (): Promise<void> => {
     await connection.raw(`
-
     CREATE TABLE TodoListUser (
         id VARCHAR(255) PRIMARY KEY, 
         name VARCHAR(255) NULL, 
         nickname VARCHAR(255) UNIQUE NOT NULL, 
         email VARCHAR(255) UNIQUE NOT NULL
     );
-    
+    `)
+
+    await connection.raw(`
     CREATE TABLE TodoListTask (
 		id VARCHAR(255) PRIMARY KEY, 
         title VARCHAR(255) NOT NULL, 
@@ -39,17 +40,18 @@ const createTable = async (): Promise<void> => {
         creator_user_id varchar(255) NOT NULL,
         FOREIGN KEY (creator_user_id) REFERENCES TodoListUser(id)
     );
+    `)
 
+    await connection.raw(`
     CREATE TABLE TodoListResponsibleUserTaskRelation (
 		task_id VARCHAR(255),
         responsible_user_id VARCHAR(255),
         FOREIGN KEY (task_id) REFERENCES TodoListTask(id),
         FOREIGN KEY (responsible_user_id) REFERENCES TodoListUser(id)
     );
-
     `)
     console.log("Tabelas criadas")
-    // connection.destroy()
+    connection.destroy()
 }
 
 createTable()
