@@ -3,16 +3,16 @@ PUT http://localhost:3003/user
 Content-Type: application/json
 
 {
-    "name":"Fulano de Tal2",
-    "nickname":"Fulano2",
-    "email":"fulano@tal.com"
+    "name":"Beltrano de Tal2",
+    "nickname":"Beltrano",
+    "email":"Beltrano@tal.com"
 }
 
 ###getAllUsers
 GET http://localhost:3003/user/all
 
 ###getUserById
-GET http://localhost:3003/user/1610731456214
+GET http://localhost:3003/user/1610741060046
 
 ###editUser
 POST  http://localhost:3003/user/edit/1610733126944
@@ -30,9 +30,9 @@ Content-Type: application/json
 {
 	"title": "Criar banco dos alunos",
 	"description": "Devemos criar o banco dos alunos para o módulo do backend",
-	"limitDate": "04/05/2020",
-	"creatorUserId": "001"
+	"limitDate": "04/08/2021",
+	"creatorUserId": "1610745176330"
 }
 
 ###getTaskById
-GET http://localhost:3003/task/1610731456214
+GET http://localhost:3003/task/1610745176330

@@ -32,7 +32,7 @@ const createTable = async (): Promise<void> => {
 
     await connection.raw(`
     CREATE TABLE TodoListTask (
-		id VARCHAR(255) PRIMARY KEY, 
+	    id VARCHAR(255) PRIMARY KEY, 
         title VARCHAR(255) NOT NULL, 
         description TEXT NOT NULL, 
         status VARCHAR(255) NOT NULL DEFAULT "to_do",
@@ -44,7 +44,7 @@ const createTable = async (): Promise<void> => {
 
     await connection.raw(`
     CREATE TABLE TodoListResponsibleUserTaskRelation (
-		task_id VARCHAR(255),
+	    task_id VARCHAR(255),
         responsible_user_id VARCHAR(255),
         FOREIGN KEY (task_id) REFERENCES TodoListTask(id),
         FOREIGN KEY (responsible_user_id) REFERENCES TodoListUser(id)

@@ -3,6 +3,7 @@ import knex from "knex";
 import cors from "cors";
 import dotenv from "dotenv";
 import { AddressInfo } from "net";
+import dayjs from 'dayjs';
 
 dotenv.config();
 
@@ -91,7 +92,11 @@ app.get("/user/:id", async (req: Request, res: Response) => {
          throw new Error("Preencha o ID e tente novamente.")
       }
       const result = await getUserById(id)
-      res.status(200).send(result);
+      if (result===undefined){
+         errorCode = 400;
+         throw new Error("ID não encontrado.")
+      }
+      res.status(200).send({result});
    } catch (err) {
      res.status(400).send({
        message: err.message
@@ -132,6 +137,79 @@ app.post("/user/edit/:id", async (req: Request, res: Response) => {
      })
    }
 })
+
+
+const createTask = async (
+   title: string,
+   description: string,
+   limitDate: string,
+   creatorUserId: string
+   ): Promise<void> => {
+   await connection
+     .insert({
+       id: Date.now(),
+       title: title,
+       description: description,
+       limit_date: limitDate,
+       creator_user_id: creatorUserId
+     })
+     .into("TodoListTask");
+};
+
+app.put("/task", async (req: Request, res: Response) => {
+   let errorCode: number = 400;
+   try {
+      if(!req.body.title ||
+         !req.body.description ||
+         !req.body.limitDate ||
+         !req.body.creatorUserId){
+         errorCode = 422;
+         throw new Error("Preencha todos os campos e tente novamente.")
+      }
+      await createTask(
+         req.body.title,
+         req.body.description,
+         dayjs(req.body.limitDate).format("YYYY-DD-MM"),
+         req.body.creatorUserId
+      )
+      res.status(200).send("Tarefa criada com sucesso");
+   } catch (err) {
+     res.status(400).send({
+       message: err.message
+     })
+   }
+})
+
+const getTaskById = async (id: string): Promise<any> => {
+   const result = await connection.raw(`
+      SELECT * FROM TodoListTask
+      LEFT JOIN TodoListUser ON TodoListTask.creator_user_id = TodoListUser.id
+      WHERE TodoListUser.id=${id};
+   `)
+   return result[0][0]
+};
+
+app.get("/task/:id", async (req: Request, res: Response) => {
+   let errorCode: number = 400;
+   try {
+      const id = req.params.id
+      if(!req.params.id){
+         errorCode = 422;
+         throw new Error("Preencha o ID e tente novamente.")
+      }
+      const result = await getTaskById(id)
+      if (result===undefined){
+         errorCode = 400;
+         throw new Error("ID não encontrado.")
+      }
+      res.status(200).send({result});
+   } catch (err) {
+     res.status(400).send({
+       message: err.message
+     })
+   }
+})
+
 
 const server = app.listen(process.env.PORT || 3003, () => {
    if (server) {
