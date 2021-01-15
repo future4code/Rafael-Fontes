@@ -77,7 +77,7 @@ app.get("/user/all", async (req: Request, res: Response) => {
 
 const getUserById = async (id: string): Promise<any> => {
    const result = await connection.raw(`
-      SELECT * FROM TodoListUser
+      SELECT id, nickname FROM TodoListUser
       WHERE id=${id};
    `)
    return result[0][0]
@@ -96,7 +96,7 @@ app.get("/user/:id", async (req: Request, res: Response) => {
          errorCode = 400;
          throw new Error("ID não encontrado.")
       }
-      res.status(200).send({result});
+      res.status(200).send(result);
    } catch (err) {
      res.status(400).send({
        message: err.message
@@ -182,7 +182,15 @@ app.put("/task", async (req: Request, res: Response) => {
 
 const getTaskById = async (id: string): Promise<any> => {
    const result = await connection.raw(`
-      SELECT * FROM TodoListTask
+      SELECT
+         TodoListTask.id as taskId,
+         TodoListTask.title,
+         TodoListTask.description,
+         TodoListTask.limit_date as limitDate,
+         TodoListTask.status,
+         TodoListTask.creator_user_id as creatorUserId,
+         TodoListUser.nickname as creatorUserNickname
+      FROM TodoListTask
       LEFT JOIN TodoListUser ON TodoListTask.creator_user_id = TodoListUser.id
       WHERE TodoListUser.id=${id};
    `)
@@ -202,7 +210,7 @@ app.get("/task/:id", async (req: Request, res: Response) => {
          errorCode = 400;
          throw new Error("ID não encontrado.")
       }
-      res.status(200).send({result});
+      res.status(200).send(result);
    } catch (err) {
      res.status(400).send({
        message: err.message

@@ -10,6 +10,10 @@ DB_NAME =
 
 No terminal:
 ```
+npm install
+```
+
+```
 npm run createTables
 ```
 
