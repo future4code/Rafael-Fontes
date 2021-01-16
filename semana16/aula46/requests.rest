@@ -1,0 +1,49 @@
+###Ex3a
+GET http://localhost:3003/actor/007
+
+###Ex3b
+GET http://localhost:3003/actor?gender=male
+
+###Ex4
+PUT http://localhost:3003/actor
+Content-Type: application/json
+
+{
+    "id":"007",
+    "name":"Fulano de Tal",
+    "salary":100000,
+    "dateOfBirth":"1970-01-01",
+    "gender":"male"
+}
+
+###Ex4a
+POST http://localhost:3003/actor
+Content-Type: application/json
+
+{
+    "id":"007",
+    "salary":50000
+}
+
+###Ex4b
+DELETE http://localhost:3003/actor/007
+
+###Ex5
+POST http://localhost:3003/movie
+Content-Type: application/json
+
+{
+    "id": "007",
+    "title": "Novo filme",
+    "synopsis": "blá blá blá",
+    "launch_date": "2021-01-01",
+    "rating": 8,
+    "playing_limit_date": "2021-01-31"
+}
+
+###Ex6
+GET http://localhost:3003/movie/all
+
+###Ex7
+GET http://localhost:3003/movie/search
+    ?searchQuery=Eu
