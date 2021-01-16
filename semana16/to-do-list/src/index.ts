@@ -262,6 +262,44 @@ app.get("/task", async (req: Request, res: Response) => {
    }
 })
 
+//Endpoint 12
+const updateStatus = async (
+   status: string,
+   id: string
+   ): Promise<void> => {
+   await connection.raw(`
+      UPDATE TodoListTask
+      SET
+      status="${status}"
+      WHERE id=${id};
+   `)
+};
+
+app.post("/task/status/edit/:id", async (req: Request, res: Response) => {
+   let errorCode: number = 400;
+   try {
+      if(req.body.status!== "to-do" &&
+      req.body.status!== "doing" &&
+      req.body.status!== "done") {
+         errorCode = 422;
+         throw new Error("Status inválido.")
+      }
+      if(!req.body.status || !req.params.id) {
+         errorCode = 422;
+         throw new Error("Preencha todas informações e tente novamente.")
+      }
+      await updateStatus(
+         req.body.status,
+         req.params.id,
+      )
+      res.status(200).send("Status atualizado");
+   } catch (err) {
+     res.status(400).send({
+       message: err.message
+     })
+   }
+})
+
 const server = app.listen(process.env.PORT || 3003, () => {
    if (server) {
       const address = server.address() as AddressInfo;

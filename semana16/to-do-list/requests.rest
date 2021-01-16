@@ -37,6 +37,14 @@ Content-Type: application/json
 ###getTaskById
 GET http://localhost:3003/task/1610743932016
 
-###Ex7
+###getTaskByUserId
 GET http://localhost:3003/task
     ?creatorUserId=1610741060046
+
+###updateStatus
+POST  http://localhost:3003/task/status/edit/1610743932016
+Content-Type: application/json
+
+{
+    "status":"done"
+}
