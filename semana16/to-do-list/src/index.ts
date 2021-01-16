@@ -22,6 +22,7 @@ const app: Express = express();
 app.use(express.json());
 app.use(cors())
 
+//Endpoint 1
 const createUser = async (
    name: string,
    nickname: string,
@@ -57,6 +58,7 @@ app.put("/user", async (req: Request, res: Response) => {
    }
 })
 
+//Endpoint 6
 const getAllUsers = async(): Promise<any> => {
    const result = await connection.raw(`
       SELECT * FROM TodoListUser;
@@ -75,6 +77,7 @@ app.get("/user/all", async (req: Request, res: Response) => {
    }
 })
 
+//Endpoint 2
 const getUserById = async (id: string): Promise<any> => {
    const result = await connection.raw(`
       SELECT id, nickname FROM TodoListUser
@@ -104,6 +107,7 @@ app.get("/user/:id", async (req: Request, res: Response) => {
    }
 })
 
+//Endpoint 3
 const editUser = async (
    id: string,
    name: string,
@@ -138,7 +142,7 @@ app.post("/user/edit/:id", async (req: Request, res: Response) => {
    }
 })
 
-
+//Endpoint 4
 const createTask = async (
    title: string,
    description: string,
@@ -180,6 +184,7 @@ app.put("/task", async (req: Request, res: Response) => {
    }
 })
 
+//Endpoint 5
 const getTaskById = async (id: string): Promise<any> => {
    const result = await connection.raw(`
       SELECT
@@ -192,7 +197,7 @@ const getTaskById = async (id: string): Promise<any> => {
          TodoListUser.nickname as creatorUserNickname
       FROM TodoListTask
       LEFT JOIN TodoListUser ON TodoListTask.creator_user_id = TodoListUser.id
-      WHERE TodoListUser.id=${id};
+      WHERE TodoListTask.id=${id};
    `)
    return result[0][0]
 };
@@ -218,6 +223,44 @@ app.get("/task/:id", async (req: Request, res: Response) => {
    }
 })
 
+//Endpoint 7
+const getTaskByUserId = async (user_id: string): Promise<any> => {
+   const result = await connection.raw(`
+   SELECT
+      TodoListTask.id as taskId,
+      TodoListTask.title,
+      TodoListTask.description,
+      TodoListTask.limit_date as limitDate,
+      TodoListTask.status,
+      TodoListTask.creator_user_id as creatorUserId,
+      TodoListUser.nickname as creatorUserNickname
+   FROM TodoListTask
+   LEFT JOIN TodoListUser ON TodoListTask.creator_user_id = TodoListUser.id
+   WHERE TodoListUser.id=${user_id};
+   `)
+   return result[0]
+};
+
+app.get("/task", async (req: Request, res: Response) => {
+   let errorCode: number = 400;
+   try {
+      const user_id : string = req.query.creatorUserId as string
+      if(!req.query.creatorUserId){
+         errorCode = 422;
+         throw new Error("Preencha o ID e tente novamente.")
+      }
+      const tasks = await getTaskByUserId(user_id)
+      if (tasks===undefined){
+         errorCode = 400;
+         throw new Error("ID não encontrado.")
+      }
+      res.status(200).send({tasks});
+   } catch (err) {
+     res.status(400).send({
+       message: err.message
+     })
+   }
+})
 
 const server = app.listen(process.env.PORT || 3003, () => {
    if (server) {

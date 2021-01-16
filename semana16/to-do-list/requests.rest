@@ -35,4 +35,8 @@ Content-Type: application/json
 }
 
 ###getTaskById
-GET http://localhost:3003/task/1610745176330
+GET http://localhost:3003/task/1610743932016
+
+###Ex7
+GET http://localhost:3003/task
+    ?creatorUserId=1610741060046
