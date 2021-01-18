@@ -9,7 +9,7 @@ export const getUsersByNameAndType = async(req: Request,res: Response): Promise<
        
        if(!users.length){
           res.statusCode = 404
-          throw new Error("No recipes found")
+          throw new Error("Nenhum usuário encontrado")
        }
  
        res.status(200).send(users)

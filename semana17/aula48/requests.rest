@@ -5,7 +5,7 @@ GET http://localhost:3003/recipes/all
 GET http://localhost:3003/recipes/search
     ?name=na
 
-###getUsersByName (Ex1b)
+###getUsersByNameAndType (Ex1b)
 GET http://localhost:3003/recipes/search/CX
     ?name=na
 
@@ -14,3 +14,11 @@ GET http://localhost:3003/recipes/all/name
 
 ###getAllUsersLimit (Ex3)
 GET http://localhost:3003/recipes/all/limit/5
+
+###getUsersByFilters (Ex4)
+GET http://localhost:3003/recipes/filters
+    ?name=a
+    &type=Teacher
+    &orderBy=name
+    &limit=3
+    &offset=3

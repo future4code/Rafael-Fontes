@@ -8,6 +8,7 @@ import { getUsersByName } from "./endpoints/getUsersByName";
 import { getUsersByNameAndType } from "./endpoints/getUsersByNameAndType";
 import { getAllUsersByNameOrType } from "./endpoints/getAllUsersByNameOrType";
 import { getAllUsersLimited } from "./endpoints/getAllUsersLimited";
+import { getUsersByFilters } from "./endpoints/getUsersByFilters";
 
 dotenv.config();
 
@@ -35,6 +36,8 @@ app.get('/recipes/search/:type', getUsersByNameAndType)
 app.get('/recipes/all/:orderBy', getAllUsersByNameOrType)
 
 app.get('/recipes/all/limit/:limit', getAllUsersLimited)
+
+app.get('/recipes/filters', getUsersByFilters)
 
 const server = app.listen(process.env.PORT || 3003, () => {
    if (server) {
