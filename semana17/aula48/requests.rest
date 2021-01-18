@@ -8,3 +8,9 @@ GET http://localhost:3003/recipes/search
 ###getUsersByName (Ex1b)
 GET http://localhost:3003/recipes/search/CX
     ?name=na
+
+###getAllUsersByNameOrType (Ex2)
+GET http://localhost:3003/recipes/all/name
+
+###getAllUsersLimit (Ex3)
+GET http://localhost:3003/recipes/all/limit/5
