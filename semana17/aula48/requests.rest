@@ -17,8 +17,8 @@ GET http://localhost:3003/recipes/all/limit/5
 
 ###getUsersByFilters (Ex4)
 GET http://localhost:3003/recipes/filters
-    ?name=a
+    ?name=
     &type=Teacher
     &orderBy=name
     &limit=3
-    &offset=3
+    &offset=
