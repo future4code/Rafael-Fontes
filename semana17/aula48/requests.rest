@@ -1,0 +1,10 @@
+###getAllUsers (exemplo)
+GET http://localhost:3003/recipes/all
+
+###getUsersByName (Ex1a)
+GET http://localhost:3003/recipes/search
+    ?name=na
+
+###getUsersByName (Ex1b)
+GET http://localhost:3003/recipes/search/CX
+    ?name=na
