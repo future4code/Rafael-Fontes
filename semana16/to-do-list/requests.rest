@@ -1,0 +1,50 @@
+###createUser
+PUT http://localhost:3003/user
+Content-Type: application/json
+
+{
+    "name":"Beltrano de Tal2",
+    "nickname":"Beltrano",
+    "email":"Beltrano@tal.com"
+}
+
+###getAllUsers
+GET http://localhost:3003/user/all
+
+###getUserById
+GET http://localhost:3003/user/1610741060046
+
+###editUser
+POST  http://localhost:3003/user/edit/1610733126944
+Content-Type: application/json
+
+{
+    "name":"Beltrano de tal",
+    "nickname":"Beltrano"
+}
+
+###createTask
+PUT http://localhost:3003/task
+Content-Type: application/json
+
+{
+	"title": "Criar banco dos alunos",
+	"description": "Devemos criar o banco dos alunos para o módulo do backend",
+	"limitDate": "04/08/2021",
+	"creatorUserId": "1610745176330"
+}
+
+###getTaskById
+GET http://localhost:3003/task/1610743932016
+
+###getTaskByUserId
+GET http://localhost:3003/task
+    ?creatorUserId=1610741060046
+
+###updateStatus
+POST  http://localhost:3003/task/status/edit/1610743932016
+Content-Type: application/json
+
+{
+    "status":"done"
+}
