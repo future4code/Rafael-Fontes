@@ -1,0 +1,24 @@
+###getAllUsers (exemplo)
+GET http://localhost:3003/recipes/all
+
+###getUsersByName (Ex1a)
+GET http://localhost:3003/recipes/search
+    ?name=na
+
+###getUsersByNameAndType (Ex1b)
+GET http://localhost:3003/recipes/search/CX
+    ?name=na
+
+###getAllUsersByNameOrType (Ex2)
+GET http://localhost:3003/recipes/all/name
+
+###getAllUsersLimit (Ex3)
+GET http://localhost:3003/recipes/all/limit/5
+
+###getUsersByFilters (Ex4)
+GET http://localhost:3003/recipes/filters
+    ?name=
+    &type=Teacher
+    &orderBy=name
+    &limit=3
+    &offset=
