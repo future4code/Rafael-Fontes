@@ -2,7 +2,8 @@ import knex from "knex";
 import express from "express";
 import dotenv from "dotenv";
 import { AddressInfo } from "net";
-import { PostUser } from "./endpoints/PostUser";
+import { postUser } from './endpoints/PostUser'
+import { getUserAndLogin } from "./endpoints/getUserAndLogin";
 
 dotenv.config();
 
@@ -20,7 +21,8 @@ export const connection = knex({
 const app = express();
 app.use(express.json());
 
-app.post('/signup', PostUser)
+app.post('/signup', postUser)
+app.post('/login', getUserAndLogin)
 
 
 const server = app.listen(process.env.PORT || 3003, () => {

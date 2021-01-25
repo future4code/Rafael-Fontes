@@ -39,7 +39,7 @@ export default async function createUser(
     `)
 }
 ```
-
+---
 ## Exercício 3
 
 a) Indica que o valor recebido será necessariamente uma string, eliminando a possibilidade de undefined
@@ -67,7 +67,7 @@ type AuthenticationData = {
   id: string;
 }
 ```
-
+---
 ## Exercício 4
 
 a)
@@ -86,8 +86,8 @@ export const PostUser = async(req: Request,res: Response): Promise<any> =>{
             req.body.email,
             req.body.password
         )
-
-        res.status(200).send(generateToken({id}))
+        const token = generateToken({id})
+        res.status(200).send({token})
 
     } catch (error) {
         res.send(error.message || error.sqlMessage)
@@ -95,33 +95,66 @@ export const PostUser = async(req: Request,res: Response): Promise<any> =>{
 }
 ```
 
-b/c)
+b)
 ```
-export const PostUser = async(req: Request,res: Response): Promise<any> =>{
-    try {
-        if(!req.body.email || req.body.email.indexOf("@") === -1){
-            res.statusCode = 422
-            throw new Error("E-mail inválido")
-        }
+    if(!req.body.email || req.body.email.indexOf("@") === -1){
+        res.statusCode = 422
+        throw new Error("E-mail inválido")
+    }
+```
 
-        if(!req.body.password || req.body.password.length < 6){
+c)
+```
+    if(!req.body.password || req.body.password.length < 6){
+        res.statusCode = 422
+        throw new Error("Senha inválida")
+    }
+```
+
+---
+## Exercício 5
+a)
+```
+export default async function getUserByEmail(email: string):Promise<any> {
+    const result = await connection.raw(`
+        SELECT * FROM User_aula50
+        WHERE email = "${email}";
+    `)
+    return result[0][0]
+}
+```
+
+---
+## Exercício 6
+a)
+```
+export const getUserAndLogin = async(req: Request,res: Response): Promise<any> =>{
+    try {
+        const result = await getUserByEmail(
+            req.body.email
+        )
+
+        if (req.body.password !== result.password) {
             res.statusCode = 422
-            throw new Error("Senha inválida")
+            throw new Error("Senha incorreta")
         }
 
         const id: string = generateId()
-
-        await createUser(
-            id,
-            req.body.email,
-            req.body.password
-        )
-
-        res.status(200).send(generateToken({id}))
+        const token = generateToken({id})
+        res.status(200).send({token})
 
     } catch (error) {
         res.send(error.message || error.sqlMessage)
     }
 }
 ```
+
+b)
+```
+    if (!req.body.email || req.body.email.indexOf("@") === -1) {
+        res.statusCode = 422
+        throw new Error("E-mail inválido")
+    }
+```
+----
 

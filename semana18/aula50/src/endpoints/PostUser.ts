@@ -3,7 +3,7 @@ import createUser from "../data/createUser";
 import { generateId } from "../services/generateId";
 import { generateToken } from "../services/generateToken";
 
-export const PostUser = async(req: Request,res: Response): Promise<any> =>{
+export const postUser = async(req: Request,res: Response): Promise<any> =>{
     try {
         if(!req.body.email || req.body.email.indexOf("@") === -1){
             res.statusCode = 422
@@ -22,8 +22,8 @@ export const PostUser = async(req: Request,res: Response): Promise<any> =>{
             req.body.email,
             req.body.password
         )
-
-        res.status(200).send(generateToken({id}))
+        const token = generateToken({id})
+        res.status(200).send({token})
 
     } catch (error) {
         res.send(error.message || error.sqlMessage)
