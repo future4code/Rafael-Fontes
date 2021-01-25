@@ -2,7 +2,7 @@ import knex from "knex";
 import express from "express";
 import dotenv from "dotenv";
 import { AddressInfo } from "net";
-
+import { PostUser } from "./endpoints/PostUser";
 
 dotenv.config();
 
@@ -20,11 +20,10 @@ export const connection = knex({
 const app = express();
 app.use(express.json());
 
+app.post('/signup', PostUser)
 
 
-
-
-const server = app.listen(process.env.PORT || 3000, () => {
+const server = app.listen(process.env.PORT || 3003, () => {
   if (server) {
     const address = server.address() as AddressInfo;
     console.log(`Server is running in http://localhost:${address.port}`);
