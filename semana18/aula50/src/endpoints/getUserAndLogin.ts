@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import getUserByEmail from "../data/getUserByEmail";
-import { generateId } from "../services/generateId";
 import { generateToken } from "../services/generateToken";
 
 export const getUserAndLogin = async(req: Request,res: Response): Promise<any> =>{
@@ -24,7 +23,7 @@ export const getUserAndLogin = async(req: Request,res: Response): Promise<any> =
             throw new Error("Senha incorreta")
         }
 
-        const id: string = generateId()
+        const id: string = result[0].id
         const token = generateToken({id})
         res.status(200).send({token})
 

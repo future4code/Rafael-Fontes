@@ -157,4 +157,55 @@ b)
     }
 ```
 ----
+## Exercício 7
+a) Indica que qualquer tipo de valor pode ser atribuído. Ocorre uma mensagem de tipo errado no objeto id.
 
+b)
+```
+export function getData(token: string): AuthenticationData {
+  const payload = jwt.verify(token, process.env.JWT_KEY as string) as any
+  const result = {
+    id: payload.id,
+  }
+
+  return result
+}
+
+type AuthenticationData = {
+    id: string;
+}
+```
+
+---
+## Exercício 8
+a)
+```
+export default async function getUserById(id: string):Promise<any> {
+    const result = await connection.raw(`
+        SELECT * FROM User_aula50
+        WHERE id = "${id}";
+    `)
+
+    return result[0][0]
+}
+```
+b)
+```
+export const getProfile = async(req: Request,res: Response): Promise<any> =>{
+    try {
+        const token = req.headers.authorization as string
+
+        const authenticationData = getData(token)
+
+        const user = await getUserById(authenticationData.id)
+        
+        res.status(200).send({
+            id: user.id,
+            email: user.email,
+          })
+
+    } catch (error) {
+        res.send(error.message || error.sqlMessage)
+    }
+}
+```
