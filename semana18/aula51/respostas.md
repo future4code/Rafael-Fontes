@@ -265,4 +265,65 @@ export const getProfile = async(req: Request,res: Response): Promise<any> =>{
 ---
 ## Exercício 5
 
-a)
+```
+export default async function deleteUser(id: string):Promise<void> {
+    const result = await connection.raw(`
+        DELETE FROM User_aula50
+        WHERE id = "${id}";
+    `)
+
+}
+```
+```
+export const deleteProfile = async(req: Request,res: Response): Promise<any> =>{
+    let errorCode = 400
+    try {
+        const token = req.headers.authorization as string
+
+        const authenticationData = getData(token)
+
+        if (authenticationData.role !== "ADMIN") {
+            errorCode = 401
+            throw new Error("Apenas usuários do tipo ADMIN podem usar esta funcionalidade");
+        }
+
+        const id = req.params.id;
+        const user = await getUserById(id)
+
+        if(!user) {
+            errorCode = 421
+            throw new Error("Perfil não encontrado");
+        }
+
+        await deleteUser(id);
+        
+        res.status(200).send("Perfil apagado com sucesso")
+
+    } catch (error) {
+        res.status(errorCode).send(error.message || error.sqlMessage)
+    }
+}
+```
+
+---
+## Exercício 6
+```
+export const getUserInfo = async(req: Request,res: Response): Promise<any> =>{
+    let errorCode = 400
+    try {
+        const token = req.headers.authorization as string
+
+	    const tokenData = getData(token)
+	
+	    const user = await getUserById(tokenData.id);
+	
+	    res.status(200).send({
+	      id: user.id,
+	      email: user.email
+	    })
+
+    } catch (error) {
+        res.status(errorCode).send(error.message || error.sqlMessage)
+    }
+}
+```

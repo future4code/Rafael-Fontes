@@ -1,4 +1,3 @@
-  
 import { connection } from '../index'
 
 export default async function getUserById(id: string):Promise<any> {

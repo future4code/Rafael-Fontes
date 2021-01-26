@@ -5,6 +5,8 @@ import { AddressInfo } from "net";
 import { postUser } from './endpoints/postUser'
 import { getUserAndLogin } from "./endpoints/getUserAndLogin";
 import { getProfile } from "./endpoints/getProfile";
+import { deleteProfile } from "./endpoints/deleteProfile";
+import { getUserInfo } from "./endpoints/getUserInfo";
 
 dotenv.config();
 
@@ -25,8 +27,8 @@ app.use(express.json());
 app.post('/signup', postUser)
 app.post('/login', getUserAndLogin)
 app.get('/user/profile', getProfile)
-app.delete('/user/:id')
-app.get('/user')
+app.delete('/user/:id', deleteProfile)
+app.get('/user', getUserInfo)
 
 const server = app.listen(process.env.PORT || 3003, () => {
   if (server) {

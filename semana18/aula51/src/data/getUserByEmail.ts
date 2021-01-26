@@ -1,4 +1,3 @@
-  
 import { connection } from '../index'
 
 export default async function getUserByEmail(email: string):Promise<any> {
