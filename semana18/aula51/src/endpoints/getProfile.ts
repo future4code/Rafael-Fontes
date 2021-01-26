@@ -3,10 +3,16 @@ import { getData } from "../data/getData";
 import getUserById from "../data/getUserById";
 
 export const getProfile = async(req: Request,res: Response): Promise<any> =>{
+    let errorCode = 400
     try {
         const token = req.headers.authorization as string
 
         const authenticationData = getData(token)
+
+        if (authenticationData.role !== "NORMAL") {
+            errorCode = 401
+            throw new Error("Apenas usuários do tipo NORMAL podem usar esta funcionalidade");
+        }
 
         const user = await getUserById(authenticationData.id)
         
@@ -16,6 +22,6 @@ export const getProfile = async(req: Request,res: Response): Promise<any> =>{
           })
 
     } catch (error) {
-        res.send(error.message || error.sqlMessage)
+        res.status(errorCode).send(error.message || error.sqlMessage)
     }
 }

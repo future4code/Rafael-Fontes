@@ -29,7 +29,10 @@ export const getUserAndLogin = async(req: Request,res: Response): Promise<any> =
         }
       
         const id: string = result[0].id
-        const token = generateToken({id})
+        const token = generateToken({
+            id,
+            role: result[0].role
+        })
         res.status(200).send({token})
 
     } catch (error) {

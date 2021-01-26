@@ -3,8 +3,9 @@ POST http://localhost:3003/signup
 Content-Type: application/json
 
 {
-    "email": "ciclano8@email.com",
-	"password": "123456"
+    "email": "ciclano11@email.com",
+	"password": "123456",
+    "role": "NORMAL"
 }
 
 ### getUserAndLogin
@@ -12,10 +13,10 @@ POST http://localhost:3003/login
 Content-Type: application/json
 
 {
-    "email": "ciclano8@email.com",
+    "email": "ciclano9@email.com",
 	"password": "123456"
 }
 
 ### getProfile
 GET http://localhost:3003/user/profile
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg3MDA1NTEwLTE2MjUtNDZmYi05NzdiLWM2MTcyYjA4NWMwNiIsImlhdCI6MTYxMTY4MzI4NSwiZXhwIjoxNjExNjgzMzQ1fQ.UA285Z7tVnR7KTUAFhxwN0VJrSZ3BOlrSPCu0_k-8RI
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjFhNzQ0NmQ2LTgyYzYtNGEyYi04ZjdjLTlmMDgwMTUzMGUwNyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTYxMTY4OTQ1NiwiZXhwIjoxNjExNjg5NTE2fQ._uT-6SQM2bEFZsu4kKU1Kz1cIdN5Cq7ArQdqtR1ywxQ

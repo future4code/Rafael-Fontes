@@ -25,6 +25,8 @@ app.use(express.json());
 app.post('/signup', postUser)
 app.post('/login', getUserAndLogin)
 app.get('/user/profile', getProfile)
+app.delete('/user/:id')
+app.get('/user')
 
 const server = app.listen(process.env.PORT || 3003, () => {
   if (server) {

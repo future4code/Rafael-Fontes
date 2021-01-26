@@ -23,9 +23,13 @@ export const postUser = async(req: Request,res: Response): Promise<any> =>{
         await createUser(
             id,
             req.body.email,
-            hashPassword
+            hashPassword,
+            req.body.role
         )
-        const token = generateToken({id})
+        const token = generateToken({
+            id,
+            role: req.body.role
+        })
         res.status(200).send({token})
 
     } catch (error) {
