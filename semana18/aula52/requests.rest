@@ -1,0 +1,36 @@
+### postUser
+POST http://localhost:3003/signup
+Content-Type: application/json
+
+{
+    "email": "ciclano11@email.com",
+	"password": "123456",
+    "role": "NORMAL",
+    "cep": 05424150,
+    "number": 122,
+    "additional": "bloco 2"
+}
+
+### getUserAndLogin
+POST http://localhost:3003/login
+Content-Type: application/json
+
+{
+    "email": "ciclano9@email.com",
+	"password": "123456"
+}
+
+### getProfile
+GET http://localhost:3003/user/profile
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjFhNzQ0NmQ2LTgyYzYtNGEyYi04ZjdjLTlmMDgwMTUzMGUwNyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTYxMTY4OTQ1NiwiZXhwIjoxNjExNjg5NTE2fQ._uT-6SQM2bEFZsu4kKU1Kz1cIdN5Cq7ArQdqtR1ywxQ
+
+### deleteProfile
+DELETE  http://localhost:3003/user/249d5cb8-a62a-4720-9d19-1865870793a8
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg3MDA1NTEwLTE2MjUtNDZmYi05NzdiLWM2MTcyYjA4NWMwNiIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2MTE2OTc4NzgsImV4cCI6MTYxMTY5NzkzOH0.uwIJpq8HzA5umg5YaEyAaD1nszIDaYAbs3nWeZdEWHs
+
+### getUserInfo
+GET http://localhost:3003/user
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjFhNzQ0NmQ2LTgyYzYtNGEyYi04ZjdjLTlmMDgwMTUzMGUwNyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTYxMTY5ODUwOCwiZXhwIjoxNjExNjk4NTY4fQ._AwEp_zR2-AbsBhr2I4au-t3rSL6Z0HLXXlE0aWfKGw
+
+### getAddressInfo
+GET http://localhost:3003/address/05424150
