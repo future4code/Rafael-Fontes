@@ -6,8 +6,11 @@ export default async function createUser(
     email: string, 
     password: string,
     role: ROLES,
-    cep: number,
+    place: string,
     number: number,
+    neighbourhood: string,
+    state: string,
+    city: string,
     additional?: string):Promise<void> {
 
     await connection.raw(`
@@ -15,8 +18,8 @@ export default async function createUser(
         VALUES ("${id}", "${email}", "${password}", "${role}");
     `)
     await connection.raw(`
-        INSERT INTO User_aula50
-        VALUES ("${id}", "${email}", "${password}", "${role}");
+        INSERT INTO AddressInfo_aula52
+        VALUES ("${place}", ${number}, "${additional}", "${neighbourhood}", "${state}", "${city}", "${id}");
     `)
 }
 

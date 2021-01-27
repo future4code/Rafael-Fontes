@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import createUser from "../data/createUser";
+import { getAddressByCep } from "../services/addressManager";
 import { generateId } from "../services/generateId";
 import { generateToken } from "../services/generateToken";
 import { generateHash } from "../services/hashManager";
@@ -20,11 +21,19 @@ export const postUser = async(req: Request,res: Response): Promise<any> =>{
 
         const hashPassword = await generateHash(req.body.password)
 
+        const address = await getAddressByCep(req.body.cep)
+
         await createUser(
             id,
             req.body.email,
             hashPassword,
-            req.body.role
+            req.body.role,
+            address.place,
+            req.body.number,
+            address.neighbourhood,
+            address.state,
+            address.city,
+            req.body.additional
         )
         const token = generateToken({
             id,
