@@ -14,7 +14,7 @@ POST http://localhost:3003/login
 Content-Type: application/json
 
 {
-    "email": "ciclano@email.com",
+    "email": "fulano@email.com",
 	"password": "123456"
 }
 
@@ -39,3 +39,21 @@ Content-Type: application/json
 ### getRecipe (Pegar receita)
 GET http://localhost:3003/recipe/f18551da-e5cf-40b9-9888-8ed01de48fd1
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUyYjI0ZWYyLTQ2YjYtNGEwMi05OTA2LTYxNmQzY2UwYjM5MCIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2MTE4NTg2NjUsImV4cCI6MTYxMTg1ODk2NX0.B7b2z2C7DLssTZCCrxSsci55rWRwdk5bElfinhoNtGI
+
+### followUser (Seguir usuário)
+POST http://localhost:3003/user/follow
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ3NDNkOTVjLWQ2NDQtNDg4ZS1iOWRkLTU4MTQ5Nzc3ZDhiOSIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2MTE4NzMxNTEsImV4cCI6MTYxMTg3MzQ1MX0.KuWbV0KLif0LZjFr6ZC1ni-NqoKZsPWx3vF47EhykVQ
+Content-Type: application/json
+
+{
+    "userToFollowId": "b005ed32-b147-4e3f-bf6b-7b7b1f5c5fed"
+}
+
+### unfollowUser (Deixar de seguir usuário)
+POST http://localhost:3003/user/unfollow
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ3NDNkOTVjLWQ2NDQtNDg4ZS1iOWRkLTU4MTQ5Nzc3ZDhiOSIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2MTE4NzM4NzYsImV4cCI6MTYxMTg3NDE3Nn0.Y3FBM0dpn_vFV9xmEsaocyKnWGAhBmECWk3UBWpsGgs
+Content-Type: application/json
+
+{
+    "userToUnfollowId": "b005ed32-b147-4e3f-bf6b-7b7b1f5c5fed"
+}

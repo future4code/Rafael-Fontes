@@ -9,6 +9,8 @@ import { deleteProfile } from "./endpoints/deleteProfile";
 import { getUserProfile } from "./endpoints/getUserProfile";
 import { postRecipe } from "./endpoints/postRecipe";
 import { getRecipe } from "./endpoints/getRecipe";
+import { followUser } from "./endpoints/followUser";
+import { unfollowUser } from "./endpoints/unfollowUser";
 
 
 dotenv.config();
@@ -33,6 +35,8 @@ app.get('/user/profile', getProfile)
 app.get('/user/:id', getUserProfile)
 app.post('/recipe', postRecipe)
 app.get('/recipe/:id', getRecipe)
+app.post('/user/follow', followUser)
+app.post('/user/unfollow', unfollowUser)
 // app.delete('/user/:id', deleteProfile)
 // app.get('/user', getUserInfo)
 
