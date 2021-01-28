@@ -4,7 +4,7 @@ export default async function createRecipe(
     id: string,
     title: string, 
     description: string, 
-    createDate: string,
+    createDate: number,
     user_id: string):Promise<void> {
 
     await connection.raw(`

@@ -18,12 +18,12 @@ export const getRecipe = async(req: Request,res: Response): Promise<any> =>{
         }
 
         const recipe = await getRecipeById(req.params.id)
-        
+        var dayjs = require('dayjs')
         res.status(200).send({
             id: recipe.id,
             title: recipe.title,
             description: recipe.description,
-            createdAt: recipe.createDate
+            createdAt: dayjs(recipe.createDate).format('DD/MM/YYYY')
         })
 
     } catch (error) {

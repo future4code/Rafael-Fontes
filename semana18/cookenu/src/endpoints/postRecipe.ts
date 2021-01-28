@@ -17,7 +17,9 @@ export const postRecipe = async(req: Request,res: Response): Promise<any> =>{
         }
 
         const id: string = generateId()
-        const today: string = "2021-01-01"
+        let today = Date.now()
+        var dayjs = require('dayjs')
+        today = dayjs(today, 'x').format('YYYY-MM-DD')
         const token = req.headers.authorization as string
         const authenticationData = getData(token)
         const user_id = await getUserById(authenticationData.id)
