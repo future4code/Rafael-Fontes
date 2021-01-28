@@ -1,0 +1,41 @@
+### postUser (Signup)
+POST http://localhost:3003/signup
+Content-Type: application/json
+
+{
+    "name": "Beltrano",
+    "email": "beltrano@email.com",
+	"password": "123456",
+    "role": "NORMAL"
+}
+
+### getUserAndLogin (Login)
+POST http://localhost:3003/login
+Content-Type: application/json
+
+{
+    "email": "ciclano@email.com",
+	"password": "123456"
+}
+
+### getProfile (Pegar próprio perfil)
+GET http://localhost:3003/user/profile
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUyYjI0ZWYyLTQ2YjYtNGEwMi05OTA2LTYxNmQzY2UwYjM5MCIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2MTE4NTMwNjYsImV4cCI6MTYxMTg1MzM2Nn0.VdIvwCrys2QZY7B-R98-6zciC5-wb3m7bNi3OV5ORX8
+
+### getUserProfile (Pegar perfil de outro usuário)
+GET http://localhost:3003/user/4743d95c-d644-488e-b9dd-58149777d8b9
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUyYjI0ZWYyLTQ2YjYtNGEwMi05OTA2LTYxNmQzY2UwYjM5MCIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2MTE4NTMwNjYsImV4cCI6MTYxMTg1MzM2Nn0.VdIvwCrys2QZY7B-R98-6zciC5-wb3m7bNi3OV5ORX8
+
+### createRecipe
+POST http://localhost:3003/recipe
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUyYjI0ZWYyLTQ2YjYtNGEwMi05OTA2LTYxNmQzY2UwYjM5MCIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2MTE4NTYxNzAsImV4cCI6MTYxMTg1NjQ3MH0.Mmz3TXv9SM9HFOYjXat4Yu_qwjqIBt2DhxQiPNAMpsc
+Content-Type: application/json
+
+{
+    "title": "Receita de bolo 2",
+	"description": "Modo de preparo"
+}
+
+### getRecipe
+GET http://localhost:3003/recipe/63315c9a-4b5d-4a17-97b4-237ade8469c9
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUyYjI0ZWYyLTQ2YjYtNGEwMi05OTA2LTYxNmQzY2UwYjM5MCIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2MTE4NTY5NTksImV4cCI6MTYxMTg1NzI1OX0.iUYkeVMjUmqMTLe65ZVnKm4_ZmjRILPGL0G2zLwRS-Y
