@@ -14,7 +14,7 @@ POST http://localhost:3003/login
 Content-Type: application/json
 
 {
-    "email": "fulano@email.com",
+    "email": "ciclano@email.com",
 	"password": "123456"
 }
 
@@ -28,11 +28,11 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUyYjI0ZWYyLTQ2YjYt
 
 ### createRecipe (Criar receita)
 POST http://localhost:3003/recipe
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUyYjI0ZWYyLTQ2YjYtNGEwMi05OTA2LTYxNmQzY2UwYjM5MCIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2MTE4NTg2NjUsImV4cCI6MTYxMTg1ODk2NX0.B7b2z2C7DLssTZCCrxSsci55rWRwdk5bElfinhoNtGI
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ3NDNkOTVjLWQ2NDQtNDg4ZS1iOWRkLTU4MTQ5Nzc3ZDhiOSIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2MTE4ODAxMDYsImV4cCI6MTYxMTg4MDQwNn0.0V1c4OJosghU7C5gODoXPjIuWdBXoKpw9bI8qv4N_ac
 Content-Type: application/json
 
 {
-    "title": "Receita de bolo 4",
+    "title": "Receita de torta",
 	"description": "Modo de preparo"
 }
 
@@ -57,3 +57,7 @@ Content-Type: application/json
 {
     "userToUnfollowId": "b005ed32-b147-4e3f-bf6b-7b7b1f5c5fed"
 }
+
+### getFeed (Pegar feed de receitas)
+GET http://localhost:3003/user/feed
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUyYjI0ZWYyLTQ2YjYtNGEwMi05OTA2LTYxNmQzY2UwYjM5MCIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2MTE4ODI4MzQsImV4cCI6MTYxMTg4MzEzNH0.6LXby6c0FLHBxgKMprbU5JlpUqLqi0UtMvOcMCUDGvI

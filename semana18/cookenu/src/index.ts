@@ -11,6 +11,7 @@ import { postRecipe } from "./endpoints/postRecipe";
 import { getRecipe } from "./endpoints/getRecipe";
 import { followUser } from "./endpoints/followUser";
 import { unfollowUser } from "./endpoints/unfollowUser";
+import { getFeed } from "./endpoints/getFeed";
 
 
 dotenv.config();
@@ -32,11 +33,13 @@ app.use(express.json());
 app.post('/signup', postUser)
 app.post('/login', getUserAndLogin)
 app.get('/user/profile', getProfile)
+app.get('/user/feed', getFeed)
 app.get('/user/:id', getUserProfile)
 app.post('/recipe', postRecipe)
 app.get('/recipe/:id', getRecipe)
 app.post('/user/follow', followUser)
 app.post('/user/unfollow', unfollowUser)
+
 // app.delete('/user/:id', deleteProfile)
 // app.get('/user', getUserInfo)
 
