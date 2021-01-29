@@ -3,10 +3,10 @@ POST http://localhost:3003/signup
 Content-Type: application/json
 
 {
-    "name": "Admin",
-    "email": "admin@email.com",
+    "name": "teste2",
+    "email": "teste2@email.com",
 	"password": "123456",
-    "role": "ADMIN"
+    "role": "NORMAL"
 }
 
 ### getUserAndLogin (Login)
@@ -14,7 +14,7 @@ POST http://localhost:3003/login
 Content-Type: application/json
 
 {
-    "email": "ciclano@email.com",
+    "email": "admin@email.com",
 	"password": "123456"
 }
 
@@ -28,11 +28,11 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUyYjI0ZWYyLTQ2YjYt
 
 ### createRecipe (Criar receita)
 POST http://localhost:3003/recipe
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ3NDNkOTVjLWQ2NDQtNDg4ZS1iOWRkLTU4MTQ5Nzc3ZDhiOSIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2MTE4ODAxMDYsImV4cCI6MTYxMTg4MDQwNn0.0V1c4OJosghU7C5gODoXPjIuWdBXoKpw9bI8qv4N_ac
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExMGVhZmE3LTlmYjctNDcwYi1hMDA0LTBjNGQ0OTk2ZjI4NyIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2MTE5NjEzNDUsImV4cCI6MTYxMTk2MTY0NX0.jxRKAAA_P2WiLC_VkQRAGMmKWKGVSVALgI3Vt3wIPWI
 Content-Type: application/json
 
 {
-    "title": "Receita de torta",
+    "title": "Receita de comida",
 	"description": "Modo de preparo"
 }
 
@@ -42,11 +42,11 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUyYjI0ZWYyLTQ2YjYt
 
 ### followUser (Seguir usuário)
 POST http://localhost:3003/user/follow
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ3NDNkOTVjLWQ2NDQtNDg4ZS1iOWRkLTU4MTQ5Nzc3ZDhiOSIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2MTE4NzMxNTEsImV4cCI6MTYxMTg3MzQ1MX0.KuWbV0KLif0LZjFr6ZC1ni-NqoKZsPWx3vF47EhykVQ
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUyYjI0ZWYyLTQ2YjYtNGEwMi05OTA2LTYxNmQzY2UwYjM5MCIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2MTE5NjE1ODIsImV4cCI6MTYxMTk2MTg4Mn0.m5ua73ju-t5nbWOFPPWtfGc-N5goLGnbekyPbjKHDac
 Content-Type: application/json
 
 {
-    "userToFollowId": "b005ed32-b147-4e3f-bf6b-7b7b1f5c5fed"
+    "userToFollowId": "110eafa7-9fb7-470b-a004-0c4d4996f287"
 }
 
 ### unfollowUser (Deixar de seguir usuário)
@@ -60,7 +60,7 @@ Content-Type: application/json
 
 ### getFeed (Pegar feed de receitas)
 GET http://localhost:3003/user/feed
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUyYjI0ZWYyLTQ2YjYtNGEwMi05OTA2LTYxNmQzY2UwYjM5MCIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2MTE5MzY4ODksImV4cCI6MTYxMTkzNzE4OX0.zMLRYaIjxrWPuZY6FqFMazgJJJi4gRlVbieoSGUgfpQ
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNjMTFjNzQzLWE1MDMtNDhiYy05YTM2LTM2MTNmOWJlZmI1YyIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2MTE5NjE4MjEsImV4cCI6MTYxMTk2MjEyMX0.7Sz4OUPNaCaajrDcAs53RkyM9zXDNkqlCGc6XZuWEFk
 
 ### editRecipe (Editar receita)
 PUT http://localhost:3003/recipe/edit/feb0e930-3b5d-4280-a225-0bac9bf2c8b5
@@ -72,6 +72,10 @@ Content-Type: application/json
 	"description": "Modo de preparo"
 }
 
-### editRecipe (Editar receita)
+### deleteRecipe (Deletar receita)
 DELETE http://localhost:3003/recipe/delete/63315c9a-4b5d-4a17-97b4-237ade8469c9
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUyYjI0ZWYyLTQ2YjYtNGEwMi05OTA2LTYxNmQzY2UwYjM5MCIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2MTE5NDYyODAsImV4cCI6MTYxMTk0NjU4MH0.qHDEDEp0KNua3yn1pChGqAQB_ivzGy8m4RKxWCzd3GE
+
+### deleteProfile (Deletar conta)
+DELETE http://localhost:3003/user/0b2d605c-8bd7-49e1-9107-049d4d3251d7
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjBiMmQ2MDVjLThiZDctNDllMS05MTA3LTA0OWQ0ZDMyNTFkNyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTYxMTk2NDE1OSwiZXhwIjoxNjExOTY0NDU5fQ.Q-FWdT3qlsy4crFvnhhoRrrfME52qBYFZBldcdkvcR8

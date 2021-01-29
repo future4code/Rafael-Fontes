@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./build/index.js ",
+    "start": "tsc && node ./build/index.js ",
     "build": " echo \"Transpiling files…\" && tsc && echo \"Done!\"",
     "dev": "ts-node-dev ./src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -43,6 +43,7 @@ app.post('/user/follow', followUser)
 app.post('/user/unfollow', unfollowUser)
 app.put('/recipe/edit/:id', putRecipe)
 app.delete('/recipe/delete/:id', deleteRecipe)
+app.delete('/user/:id', deleteProfile)
 
 // app.delete('/user/:id', deleteProfile)
 // app.get('/user', getUserInfo)
