@@ -29,7 +29,8 @@ export const postUser = async(req: Request,res: Response): Promise<any> =>{
             id,
             req.body.name,
             req.body.email,
-            hashPassword
+            hashPassword,
+            req.body.role
         )
         const token = generateToken({
             id,

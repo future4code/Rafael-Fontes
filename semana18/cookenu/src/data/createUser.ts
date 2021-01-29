@@ -1,13 +1,15 @@
 import { connection } from '../index'
+import { ROLES } from '../types/authentication'
 
 export default async function createUser(
     id: string,
     name: string, 
     email: string, 
-    password: string):Promise<void> {
+    password: string,
+    role: ROLES):Promise<void> {
 
     await connection.raw(`
         INSERT INTO Cookenu_user
-        VALUES ("${id}", "${name}", "${email}", "${password}");
+        VALUES ("${id}", "${name}", "${email}", "${password}", "${role}");
     `)
 }

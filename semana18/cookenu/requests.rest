@@ -3,10 +3,10 @@ POST http://localhost:3003/signup
 Content-Type: application/json
 
 {
-    "name": "Beltrano",
-    "email": "beltrano@email.com",
+    "name": "Admin",
+    "email": "admin@email.com",
 	"password": "123456",
-    "role": "NORMAL"
+    "role": "ADMIN"
 }
 
 ### getUserAndLogin (Login)
@@ -60,4 +60,18 @@ Content-Type: application/json
 
 ### getFeed (Pegar feed de receitas)
 GET http://localhost:3003/user/feed
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUyYjI0ZWYyLTQ2YjYtNGEwMi05OTA2LTYxNmQzY2UwYjM5MCIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2MTE4ODI4MzQsImV4cCI6MTYxMTg4MzEzNH0.6LXby6c0FLHBxgKMprbU5JlpUqLqi0UtMvOcMCUDGvI
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUyYjI0ZWYyLTQ2YjYtNGEwMi05OTA2LTYxNmQzY2UwYjM5MCIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2MTE5MzY4ODksImV4cCI6MTYxMTkzNzE4OX0.zMLRYaIjxrWPuZY6FqFMazgJJJi4gRlVbieoSGUgfpQ
+
+### editRecipe (Editar receita)
+PUT http://localhost:3003/recipe/edit/feb0e930-3b5d-4280-a225-0bac9bf2c8b5
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIwMDVlZDMyLWIxNDctNGUzZi1iZjZiLTdiN2IxZjVjNWZlZCIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2MTE5NDUzMzEsImV4cCI6MTYxMTk0NTYzMX0.KzHqdKye-4_-hWEDeYJ1_sYybyY_NThKuxUwkyGbno8
+Content-Type: application/json
+
+{
+    "title": "Receita de macarrão ao pesto",
+	"description": "Modo de preparo"
+}
+
+### editRecipe (Editar receita)
+DELETE http://localhost:3003/recipe/delete/63315c9a-4b5d-4a17-97b4-237ade8469c9
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUyYjI0ZWYyLTQ2YjYtNGEwMi05OTA2LTYxNmQzY2UwYjM5MCIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2MTE5NDYyODAsImV4cCI6MTYxMTk0NjU4MH0.qHDEDEp0KNua3yn1pChGqAQB_ivzGy8m4RKxWCzd3GE
