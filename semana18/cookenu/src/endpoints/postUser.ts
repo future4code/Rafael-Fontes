@@ -22,7 +22,6 @@ export const postUser = async(req: Request,res: Response): Promise<any> =>{
         }
 
         const id: string = generateId()
-
         const hashPassword = await generateHash(req.body.password)
 
         await createUser(

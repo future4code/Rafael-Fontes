@@ -7,9 +7,7 @@ export const getRecipe = async(req: Request,res: Response): Promise<any> =>{
     let errorCode = 400
     try {
         const token = req.headers.authorization as string
-
         const authenticationData = getData(token)
-
         const profile = await getUserById(authenticationData.id)
         
         if (!profile.id) {

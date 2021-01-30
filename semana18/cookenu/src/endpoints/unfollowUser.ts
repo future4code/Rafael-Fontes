@@ -4,7 +4,6 @@ import deleteFollow from "../data/deleteFollow";
 import { getData } from "../data/getData";
 import getUserById from "../data/getUserById";
 
-
 export const unfollowUser = async(req: Request,res: Response): Promise<any> =>{
     try {
         if(!req.body.userToUnfollowId){
@@ -36,7 +35,7 @@ export const unfollowUser = async(req: Request,res: Response): Promise<any> =>{
             user.id,
             req.body.userToUnfollowId
         )
-        console.log(follow)
+        
         if(!follow) {
             res.statusCode = 422
             throw new Error("Você não está seguindo este usuário")

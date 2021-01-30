@@ -8,9 +8,7 @@ export const getFeed = async(req: Request,res: Response): Promise<any> =>{
         const token = req.headers.authorization as string
         const authenticationData = getData(token)
         const user_id = await getUserById(authenticationData.id)
-        const feed = await selectRecipes(
-            user_id.id
-        )
+        const feed = await selectRecipes(user_id.id)
 
         var dayjs = require('dayjs')
         const recipes = feed.map((recipe: { id: string; title: string; description: string; createdAt: string; userId: string; userName: string  }) => {

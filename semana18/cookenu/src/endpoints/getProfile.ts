@@ -6,9 +6,7 @@ export const getProfile = async(req: Request,res: Response): Promise<any> =>{
     let errorCode = 400
     try {
         const token = req.headers.authorization as string
-
         const authenticationData = getData(token)
-
         const user = await getUserById(authenticationData.id)
         
         res.status(200).send({
