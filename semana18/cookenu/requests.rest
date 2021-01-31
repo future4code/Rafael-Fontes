@@ -3,8 +3,8 @@ POST http://localhost:3003/signup
 Content-Type: application/json
 
 {
-    "name": "teste2",
-    "email": "teste2@email.com",
+    "name": "Sicrano",
+    "email": "sicrano@gmail.com",
 	"password": "123456",
     "role": "NORMAL"
 }
@@ -14,8 +14,8 @@ POST http://localhost:3003/login
 Content-Type: application/json
 
 {
-    "email": "admin@email.com",
-	"password": "123456"
+    "email": "ciclano@email.com",
+	"password": "90f91267"
 }
 
 ### getProfile (Pegar próprio perfil)
@@ -79,3 +79,11 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUyYjI0ZWYyLTQ2YjYt
 ### deleteProfile (Deletar conta)
 DELETE http://localhost:3003/user/0b2d605c-8bd7-49e1-9107-049d4d3251d7
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjBiMmQ2MDVjLThiZDctNDllMS05MTA3LTA0OWQ0ZDMyNTFkNyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTYxMTk2NDE1OSwiZXhwIjoxNjExOTY0NDU5fQ.Q-FWdT3qlsy4crFvnhhoRrrfME52qBYFZBldcdkvcR8
+
+### resetPassword (Esqueci a senha)
+POST http://localhost:3003/user/reset/password
+Content-Type: application/json
+
+{
+    "email": "ciclano@email.com"
+}

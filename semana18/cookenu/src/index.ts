@@ -14,6 +14,7 @@ import { unfollowUser } from "./endpoints/unfollowUser";
 import { getFeed } from "./endpoints/getFeed";
 import { putRecipe } from "./endpoints/putRecipe";
 import { deleteRecipe } from "./endpoints/deleteRecipe";
+import { resetPassword } from "./endpoints/resetPassword";
 
 dotenv.config();
 
@@ -43,6 +44,7 @@ app.post('/user/unfollow', unfollowUser)
 app.put('/recipe/edit/:id', putRecipe)
 app.delete('/recipe/delete/:id', deleteRecipe)
 app.delete('/user/:id', deleteProfile)
+app.post('/user/reset/password', resetPassword)
 
 const server = app.listen(process.env.PORT || 3003, () => {
   if (server) {
