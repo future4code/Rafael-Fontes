@@ -36,3 +36,10 @@ export async function getUserById(id: string):Promise<any> {
     `)
     return result[0][0]
 }
+
+export async function getUsersList():Promise<any> {
+    const result = await connection.raw(`
+        SELECT * FROM User_aula54;
+    `)
+    return result[0]
+}

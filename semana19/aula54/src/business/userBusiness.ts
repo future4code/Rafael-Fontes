@@ -1,5 +1,5 @@
-import { createUser, getUserByEmail } from "../data/userDatabase";
-import { ROLES } from "./entities/user";
+import { createUser, getUserByEmail, getUserById, getUsersList } from "../data/userDatabase";
+import { ROLES, user } from "./entities/user";
 import { generateId } from "./services/generateId";
 import { generateToken } from "./services/generateToken";
 import { compareHash, generateHash } from "./services/hashManager";
@@ -48,33 +48,49 @@ export const businessLogin = async (
         throw new Error("E-mail inválido")
     }
 
-    const result = await getUserByEmail(
+    const user: user[] = await getUserByEmail(
         email
     )
 
-    if (result.length===0) {
+    if (user.length===0) {
         statusCode = 422
         throw new Error("E-mail inexistente ou incorreto")
     }
 
     const compareResult = await compareHash(
         password,
-        result[0].password
+        user[0].password
     )
 
     if (!compareResult) {
         throw new Error("Senha incorreta");
     }
 
-    const id: string = result[0].id
+    const id: string = user[0].id
     const token = generateToken({
         id,
-        role: result[0].role
+        role: user[0].role
     })
 
     return token
 }
 
+export const businessGetAllUsers = async (
+    id: string
+ ) => {
+    let statusCode = 400
+    
+    const user: user = await getUserById(id)
+
+    if (!user) {
+        statusCode = 422
+        throw new Error("Usuário inexistente")
+    } 
+    
+    const users: user[] = await getUsersList()
+
+    return users
+}
 
 // import { Request, Response } from "express";
 // import deleteUser from "../data/deleteUser";

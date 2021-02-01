@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
-import { businessLogin, businessSignup } from "../business/userBusiness";
+import { user } from "../business/entities/user";
+import { businessGetAllUsers, businessLogin, businessSignup } from "../business/userBusiness";
+import { getData } from "../data/getData";
 
 export const signup = async (
     req: Request,
@@ -51,3 +53,21 @@ export const login = async (
     }
 }
 
+export const getAllUsers = async (
+    req: Request,
+    res: Response
+    ) => {
+    try {
+        const token = req.headers.authorization as string
+        const authenticationData = getData(token)
+        const id = authenticationData.id
+        const users: user[] = await businessGetAllUsers(id)
+
+        res
+          .status(201)
+          .send({users})
+ 
+    } catch (error) {
+       res.status(400).send(error.message)
+    }
+}
