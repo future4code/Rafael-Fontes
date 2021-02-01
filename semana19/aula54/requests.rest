@@ -1,0 +1,19 @@
+### signup
+PUT http://localhost:3003/signup
+Content-Type: application/json
+
+{
+    "name": "Sicrano",
+    "email": "sicrano@gmail.com",
+	"password": "123456",
+    "role": "NORMAL"
+}
+
+### Login
+POST http://localhost:3003/login
+Content-Type: application/json
+
+{
+    "email": "sicrano@gmail.com",
+	"password": "123456"
+}
