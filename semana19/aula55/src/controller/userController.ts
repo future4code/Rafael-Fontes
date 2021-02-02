@@ -36,16 +36,6 @@ export const signup = async (
 
       const token = await businessSignup(input);
 
-      // const { name, nickname, email, password, role } = req.body
-
-      // const token = await businessSignup(
-      //    name,
-      //    nickname,
-      //    email,
-      //    password,
-      //    role
-      // )
-
       res
          .status(201)
          .send({
