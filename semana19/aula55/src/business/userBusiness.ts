@@ -2,42 +2,38 @@ import { compare, hash } from "./services/hashManager";
 import { insertUser, selectUserByEmail } from "../data/userDatabase";
 import { generateToken } from "./services/authenticator";
 import { generateId } from "./services/idGenerator";
-import { user, USER_ROLES } from "./entities/user";
+import { signupInputDTO, user, USER_ROLES } from "./entities/user";
 
 export const businessSignup = async (
-   name: string,
-   nickname: string,
-   email: string,
-   password: string,
-   role: USER_ROLES
+   input: signupInputDTO
 ) => {
 
    if (
-      !name ||
-      !nickname ||
-      !email ||
-      !password ||
-      !role
+      !input.name ||
+      !input.nickname ||
+      !input.email ||
+      !input.password ||
+      !input.role
    ) {
       throw new Error('Preencha os campos "name","nickname", "email" e "password"')
    }
 
    const id: string = generateId()
 
-   const cypherPassword = await hash(password);
+   const cypherPassword = await hash(input.password);
 
    await insertUser({
       id,
-      name,
-      nickname,
-      email,
+      name: input.name,
+      nickname: input.nickname,
+      email: input.email,
       password: cypherPassword,
-      role
+      role: input.role as USER_ROLES
    })
 
    const token: string = generateToken({
       id,
-      role: role
+      role: input.role as USER_ROLES
    })
 
    return token

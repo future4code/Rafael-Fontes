@@ -19,3 +19,10 @@ export type user = {
    role: USER_ROLES
 }
 
+export type signupInputDTO = {
+   name: string,
+   nickname: string,
+   email: string,
+   password: string,
+   role: string
+}
