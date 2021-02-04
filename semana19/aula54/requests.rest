@@ -1,0 +1,27 @@
+### signup
+PUT http://localhost:3003/signup
+Content-Type: application/json
+
+{
+    "name": "Admin",
+    "email": "admin@gmail.com",
+	"password": "123456",
+    "role": "ADMIN"
+}
+
+### Login
+POST http://localhost:3003/login
+Content-Type: application/json
+
+{
+    "email": "admin@gmail.com",
+	"password": "123456"
+}
+
+### GetAllUsers
+GET http://localhost:3003/user/all
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJiZjVlN2I4LTE0NTEtNDMzNi1hMDAyLTA1MWZmYTU0YThlMyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTYxMjIxNTYwNCwiZXhwIjoxNjEyMjE1NjY0fQ.S5-5d0NAvWUnr3d3fBmxAsO4VDkMxjneDJ5SknN_8_E
+
+### DeleteUser
+DELETE http://localhost:3003/user/b64ca1b2-01a5-4469-9aa9-57c70a75db68
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJiZjVlN2I4LTE0NTEtNDMzNi1hMDAyLTA1MWZmYTU0YThlMyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTYxMjIxNTYwNCwiZXhwIjoxNjEyMjE1NjY0fQ.S5-5d0NAvWUnr3d3fBmxAsO4VDkMxjneDJ5SknN_8_E
