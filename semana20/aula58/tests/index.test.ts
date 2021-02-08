@@ -1,5 +1,5 @@
-import { performPurchase } from '../src/index'
-import { User } from '../src/types'
+import { performPurchase, verifyAge } from '../src/index'
+import { User, User_ex3, Casino, NACIONALITY, LOCATION } from '../src/types'
 
 describe("Exercício 2", () => {
 	test("Teste de usuário com saldo maior que valor de compra", () => {
@@ -43,5 +43,25 @@ describe("Exercício 2", () => {
 		const result = performPurchase(user, value)
 		
 		expect(result).toEqual(undefined)
+	})
+})
+
+describe("Exercício 4", () => {
+	test("Teste de usuário brasileiro em casino no Brasil", () => {
+		const brazilian: User_ex3 = {
+		  name: "Fulano",
+		  age: 18,
+		  nacionality: NACIONALITY.BRAZILIAN,
+		}
+	
+		const name = brazilian.name
+
+		const casino: Casino = {
+		  name: "Casino",
+		  location: LOCATION.BRAZIL,
+		}
+	
+		const result = verifyAge(casino, [brazilian]);
+		expect(result.brazilians.allowed).toEqual([name]);
 	})
 })
