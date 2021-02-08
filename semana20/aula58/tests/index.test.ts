@@ -61,7 +61,28 @@ describe("Exercício 4", () => {
 		  location: LOCATION.BRAZIL,
 		}
 	
-		const result = verifyAge(casino, [brazilian]);
-		expect(result.brazilians.allowed).toEqual([name]);
+		const result = verifyAge(casino, [brazilian])
+		expect(result.brazilians.allowed).toEqual([name])
+	})
+})
+
+describe("Exercício 5", () => {
+	test("Teste (a)", () => {
+		const brazilian: User_ex3 = {
+		  name: "Fulano",
+		  age: 18,
+		  nacionality: NACIONALITY.BRAZILIAN,
+		}
+	
+		const name = brazilian.name
+
+		const casino: Casino = {
+		  name: "Casino",
+		  location: LOCATION.BRAZIL,
+		}
+	
+		const result = verifyAge(casino, [brazilian])
+		expect(result.brazilians.allowed.length).toBeGreaterThan(0)
+		expect(result.brazilians.allowed.length).toBeLessThan(2)
 	})
 })
