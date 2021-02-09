@@ -4,7 +4,7 @@ export interface User {
 }
 
 export enum LOCATION {
-	EUA = "EUA",
+	USA = "USA",
 	BRAZIL = "BRAZIL",
 }
   

@@ -15,7 +15,7 @@ export function verifyAge(casino: Casino, users: User_ex3[]): Result {
 	const unallowed: User_ex3[] = [];
   
 	for (const user of users) {
-	  if (casino.location === LOCATION.EUA) {
+	  if (casino.location === LOCATION.USA) {
 		if (user.age >= 21) {
 		  allowed.push(user)
 		} else {

@@ -100,4 +100,72 @@ describe("Exercício 5", () => {
 		expect(result.americans.unallowed.length).toBe(0)
 	})
 
+	test("Teste (c)", () => {
+		const users: User_ex3[] = [
+			{
+				name: "John Doe",
+				age: 19,
+				nacionality: NACIONALITY.AMERICAN,
+			},
+			{
+				name: "Mary Doe",
+				age: 19,
+				nacionality: NACIONALITY.AMERICAN,
+		  	},
+			{
+				name: "Fulano",
+				age: 19,
+				nacionality: NACIONALITY.BRAZILIAN,
+			},
+			{
+				name: "Beltrano",
+				age: 19,
+				nacionality: NACIONALITY.BRAZILIAN,
+		  	}
+		]
+
+		const casino: Casino = {
+		  name: "Casino",
+		  location: LOCATION.USA,
+		}
+	
+		const result = verifyAge(casino, users)
+		expect(result.brazilians.unallowed.length).toBe(2)
+		expect(result.americans.unallowed.length).toBe(2)
+	})
+
+	test("Teste (d)", () => {
+		const users: User_ex3[] = [
+			{
+				name: "John Doe",
+				age: 21,
+				nacionality: NACIONALITY.AMERICAN,
+			},
+			{
+				name: "Mary Doe",
+				age: 21,
+				nacionality: NACIONALITY.AMERICAN,
+		  	},
+			{
+				name: "Fulano",
+				age: 19,
+				nacionality: NACIONALITY.BRAZILIAN,
+			},
+			{
+				name: "Beltrano",
+				age: 19,
+				nacionality: NACIONALITY.BRAZILIAN,
+		  	}
+		]
+
+		const casino: Casino = {
+		  name: "Casino",
+		  location: LOCATION.USA,
+		}
+	
+		const result = verifyAge(casino, users)
+		expect(result.brazilians.unallowed.length).toBeGreaterThan(1)
+		expect(result.americans.unallowed.length).toBeLessThan(1)
+		expect(result.americans.allowed.length).toBe(2)
+	})
 })
