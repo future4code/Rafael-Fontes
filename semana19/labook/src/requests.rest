@@ -1,0 +1,32 @@
+### signup
+POST http://localhost:3003/user/signup
+Content-Type: application/json
+
+{
+    "name": "Beltrano",
+    "email": "beltrano@gmail.com",
+	"password": "123456"
+}
+
+### login
+POST http://localhost:3003/user/login
+Content-Type: application/json
+
+{
+    "email": "sicrano@gmail.com",
+	"password": "123456"
+}
+
+### createPost
+PUT http://localhost:3003/post/create
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjcyOWZhODY3LTJkMGQtNGU1YS04YWU2LTVhZDlmYWFhMWU4MiIsImlhdCI6MTYxMjcxNzkwOSwiZXhwIjoxNjEyNzE4MjA5fQ.xOdqzGoaimF6PbUVFtC3xqN9IDD0_8dlBTsls6GPWPc
+Content-Type: application/json
+
+{
+    "photo": "https://picsum.photos/200",
+	"description": "Novo Post",
+    "type": "normal"
+}
+
+### getPostById
+GET http://localhost:3003/post/e16b8c98-52d7-4bd5-99e9-392610b9dffd
