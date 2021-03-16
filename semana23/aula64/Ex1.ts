@@ -22,8 +22,8 @@ const checkOneEdit = (inputA: string, inputB: string): boolean => {
     }
 }
 
-console.log("1",checkOneEdit('banan', 'banana'))
-console.log("2",checkOneEdit('bananak', 'banana'))
-console.log("3",checkOneEdit('panana', 'banana'))
-console.log("4",checkOneEdit('bananaaa', 'banana'))
-console.log("5",checkOneEdit('amoraa', 'banana'))
+console.log("1",checkOneEdit('banan', 'banana')) // true
+console.log("2",checkOneEdit('bananak', 'banana')) // true
+console.log("3",checkOneEdit('panana', 'banana')) // true
+console.log("4",checkOneEdit('bananaaa', 'banana')) // false
+console.log("5",checkOneEdit('amoraa', 'banana')) // false
